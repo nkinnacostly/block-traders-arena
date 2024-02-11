@@ -17,11 +17,11 @@ function Navbar() {
           <Link href={"/"} className="text-white">
             Home
           </Link>
-          <Link href={"homepage/about"} className="text-white">
+          <Link href={"/homepage/about"} className="text-white">
             About Us
           </Link>
           <Link
-            href={"homepage/education"}
+            href={"/homepage/education"}
             className="flex items-center text-white"
           >
             <p>Education Arena</p>
@@ -30,7 +30,7 @@ function Navbar() {
             </span>
           </Link>
           <Link
-            href={"homepage/trading"}
+            href={"/homepage/trading"}
             className="flex items-center text-white"
           >
             <p>Trading Arena</p>
@@ -40,7 +40,7 @@ function Navbar() {
           </Link>
         </div>
         <div className="flex items-center justify-center space-x-3">
-          <Buttonwithoutbg Btntext={"Sign in"} />
+          <Buttonwithoutbg Btntext={"Sign in"} className={"text-white"} />
           <Buttonwithbg btnText={"Create account"} />
         </div>
       </div>

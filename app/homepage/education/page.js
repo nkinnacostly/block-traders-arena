@@ -27,7 +27,7 @@ function Education() {
         className="w-full px-[2rem] xl:px-[5rem]  h-[100vh] bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <div className=" bg-black h-[1500px] lg:[2000px] lg:left-[6.5rem] overflow-scroll xl:overscroll-none p-6 rounded-[20px] border-2 border-red-700 flex items-start left-0  justify-center flex-col absolute top-[45rem] 2xl:left-[13rem] lg:right-[6.5rem] lg:w-[80%] lg:px-[2rem] xl:right-[7.5rem] py-10">
+        <div className=" bg-black h-[1500px] lg:[2000px] lg:left-[6.5rem] overflow-scroll xl:overscroll-none p-6 rounded-[20px]  flex items-start left-0  justify-center flex-col absolute top-[45rem] 2xl:left-[13rem] lg:right-[6.5rem] lg:w-[80%] lg:px-[2rem] xl:right-[7.5rem] py-10">
           <div className="w-full h-full">
             <div className="mb-5">
               <p className=" h-[57px] text-white text-[40px] font-medium">
@@ -77,7 +77,7 @@ function Education() {
         className="w-full bg-center bg-no-repeat bg-cover"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <div className="flex flex-col lg:flex-row justify-between px-[2rem] xl:px-[5rem]  pb-[4rem] border-2 border-red-500 w-full">
+        <div className="flex flex-col lg:flex-row justify-between px-[2rem] xl:px-[5rem]  pb-[4rem]  w-full">
           <div className="w-full space-x-2 text-center lg:flex lg:items-center lg:text-start">
             <span className="text-black text-2xl  lg:text-[40px] font-bold ">
               Copy

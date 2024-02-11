@@ -50,7 +50,7 @@ function HomepageFooter() {
           <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
             <h5 className="text-[24px]  font-[600] text-white">Contact</h5>
             <p className="flex flex-wrap mt-2 text-sm text-white truncate">
-              blocktraders@gmail.
+              blocktraders
             </p>
             <p className="mt-2 text-sm text-white">+234-000-000-000</p>
             <p className="mt-2 text-sm text-white">

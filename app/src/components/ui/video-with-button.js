@@ -23,7 +23,7 @@ export function VideoWithButton() {
             height={70}
             width={70}
           />
-          <div className="px-5 border-2 border-red-500 ">
+          <div className="px-5  ">
             <p className="  text-black text-2xl font-medium mt-[2rem]">
               Trading for Beginners: Entry Level
             </p>
@@ -61,7 +61,7 @@ export function VideoWithButtons() {
           height={70}
           width={70}
         />
-        <div className="px-5 border-2 border-red-500 ">
+        <div className="px-5  ">
           <p className=" text-black text-2xl font-medium mt-[2rem] text-center">
             Trading for Beginners: Entry Level
           </p>

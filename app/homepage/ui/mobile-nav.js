@@ -33,11 +33,11 @@ function MobileNav() {
             <Link href={"/"} className="text-white">
               Home
             </Link>
-            <Link href={"homepage/about"} className="text-white">
+            <Link href={"/homepage/about"} className="text-white">
               About Us
             </Link>
             <Link
-              href={"homepage/education"}
+              href={"/homepage/education"}
               className="flex items-center text-white  justify-center space-x-3"
             >
               <p>Education Arena</p>
@@ -45,7 +45,7 @@ function MobileNav() {
               <FaSortDown size={30} className="mb-3" />
             </Link>
             <Link
-              href={"homepage/trading"}
+              href={"/homepage/trading"}
               className="flex items-center text-white justify-center space-x-3"
             >
               <p>Trading Arena</p>
