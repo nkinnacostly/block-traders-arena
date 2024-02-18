@@ -24,7 +24,7 @@ function Education() {
         className={"relative "}
       />
       <div
-        className="w-full px-[2rem] xl:px-[5rem]  h-[100vh] bg-no-repeat bg-cover bg-center"
+        className="w-full px-[2rem] xl:px-[5rem]  h-[100vh] 2xl:h-[50vh] bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
         <div className=" bg-black h-[1500px] lg:[2000px] lg:left-[6.5rem] overflow-scroll xl:overscroll-none p-6 rounded-[20px]  flex items-start left-0  justify-center flex-col absolute top-[45rem] 2xl:left-[13rem] lg:right-[6.5rem] lg:w-[80%] lg:px-[2rem] xl:right-[7.5rem] py-10">
@@ -66,11 +66,11 @@ function Education() {
         </div>
       </div>
       <div
-        className="w-full h-[80vh] lg:h-[100vh] bg-no-repeat bg-cover bg-center"
+        className="w-full h-[80vh] lg:h-[100vh] bg-no-repeat 2xl:h-[30vh]  bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       ></div>
       <div
-        className="w-full bg-center bg-no-repeat bg-cover"
+        className="w-full bg-center bg-no-repeat bg-cover "
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       ></div>
       <div
