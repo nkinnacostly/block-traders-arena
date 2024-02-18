@@ -49,7 +49,7 @@ function AboutPage() {
         className="w-full px-[5rem] pt-[2rem] h-[800px] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <div className=" h-[820px] overflow-scroll p-6 bg-black rounded-[20px] flex items-start justify-center flex-col absolute -bottom-[46rem] left-[2rem] right-[2rem] lg:-bottom-[45rem] 2xl:right-[13rem] lg:left-[6rem] lg:w-[80%] lg:px-[2rem] xl:right-[7.5rem]">
+        <div className=" h-[820px] overflow-scroll 2xl:text-center p-6 bg-black rounded-[20px] flex items-start justify-center flex-col absolute -bottom-[46rem] left-[2rem] right-[2rem] lg:-bottom-[45rem] 2xl:right-[13rem] lg:left-[6rem] lg:w-[80%] lg:px-[2rem] xl:right-[7.5rem]">
           <div className="w-full h-full">
             <div className="">
               <span className="text-white text-[40px] font-semibold">
@@ -59,7 +59,7 @@ function AboutPage() {
                 Block Traders Academy
               </span>
             </div>
-            <p className="text-xl font-normal text-white text-opacity-90 lg:text-start">
+            <p className="text-xl font-normal text-white text-opacity-90 lg:text-start 2xl:text-center">
               Block Traders Academy was created because we believed that trading
               was too interesting to be reserved for a select few.
               <br />
@@ -98,7 +98,7 @@ function AboutPage() {
         className="w-full bg-center bg-no-repeat bg-cover "
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <p className="text-2xl  text-black lg:text-[40px] font-semibold  w-full px-[2rem] lg:px-[5rem]">
+        <p className="text-2xl  text-black lg:text-[40px] font-semibold  w-full px-[2rem] lg:px-[5rem] py-[3rem]">
           Block Traders In Numbers
         </p>
         <div className="w-full bg-black lg:h-[270px] flex-col lg:flex-row flex items-center px-[2rem] justify-between xl:px-[7rem] space-y-10 lg:space-y-0 py-5 lg:py-0">

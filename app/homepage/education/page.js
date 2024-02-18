@@ -66,7 +66,7 @@ function Education() {
         </div>
       </div>
       <div
-        className="w-full h-[80vh] lg:h-[100vh] bg-no-repeat 2xl:h-[30vh]  bg-cover bg-center"
+        className="w-full h-[50vh] lg:h-[100vh] bg-no-repeat  2xl:h-20  bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       ></div>
       <div
@@ -77,7 +77,7 @@ function Education() {
         className="w-full bg-center bg-no-repeat bg-cover"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <div className="flex flex-col lg:flex-row justify-between px-[2rem] xl:px-[5rem]  pb-[4rem]  w-full">
+        <div className="flex flex-col lg:flex-row justify-between px-[2rem] xl:px-[5rem]  pb-[4rem] pt-3  w-full">
           <div className="w-full space-x-2 text-center lg:flex lg:items-center lg:text-start">
             <span className="text-black text-2xl  lg:text-[40px] font-bold ">
               Copy

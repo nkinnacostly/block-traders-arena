@@ -30,12 +30,14 @@ function Trading() {
       >
         <div className=" bg-black rounded-[20px]  p-5 lg:p-0 lg:[2000px] left-0 overflow-scroll xl:overscroll-none flex items-start z-10 justify-center flex-col absolute top-[46rem] 2xl:right-[13rem] lg:right-[6.5rem]  lg:px-[2rem] xl:left-[7.5rem] py-10">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 place-content-center">
-            <div>
+            <div className="">
               <Image
                 src={"/assets/img/png/beginner.png"}
-                height={100}
-                width={100}
+                height={500}
+                width={500}
                 alt="beginner"
+                // layout="fill"
+                // objectFit="contain"
                 className="w-full h-full"
               />
             </div>
@@ -82,8 +84,8 @@ function Trading() {
             <div>
               <Image
                 src={"/assets/img/png/intermediate.png"}
-                height={100}
-                width={100}
+                height={500}
+                width={500}
                 alt="beginner"
                 className="w-full h-full"
               />
@@ -93,8 +95,8 @@ function Trading() {
             <div>
               <Image
                 src={"/assets/img/png/expert.png"}
-                height={100}
-                width={100}
+                height={500}
+                width={500}
                 alt="beginner"
                 className="w-full h-full"
               />
@@ -118,17 +120,17 @@ function Trading() {
         </div>
       </div>
       <div
-        className="w-full h-[100vh]  lg:h-[60vh]  2xl:h-0 bg-no-repeat bg-cover bg-center"
+        className="w-full h-[100vh]  lg:h-[60vh]  2xl:h-[30vh] bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       ></div>
       <div
         className="w-full h-[40vh]  lg:h-[60vh]  2xl:h-[30vh] bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       ></div>
-      <div
+      {/* <div
         className="w-full  lg:h-[60vh]  2xl:h-[50vh] bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
-      ></div>
+      ></div> */}
       <div
         className="w-full 2xl:h-[50vh]  xl:h-[60vh] bg-center bg-no-repeat bg-cover px-[2rem]"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
