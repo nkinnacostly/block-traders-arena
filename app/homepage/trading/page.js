@@ -118,11 +118,11 @@ function Trading() {
         </div>
       </div>
       <div
-        className="w-full h-[100vh]  lg:h-[60vh]  2xl:h-[100vh] bg-no-repeat bg-cover bg-center"
+        className="w-full h-[100vh]  lg:h-[60vh]  2xl:h-0 bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       ></div>
       <div
-        className="w-full h-[40vh]  lg:h-[60vh]  2xl:h-[100vh] bg-no-repeat bg-cover bg-center"
+        className="w-full h-[40vh]  lg:h-[60vh]  2xl:h-[30vh] bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       ></div>
       <div
@@ -130,12 +130,12 @@ function Trading() {
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       ></div>
       <div
-        className="w-full 2xl:h-[100vh]  xl:h-[60vh] bg-center bg-no-repeat bg-cover px-[2rem]"
+        className="w-full 2xl:h-[50vh]  xl:h-[60vh] bg-center bg-no-repeat bg-cover px-[2rem]"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
         <div className="flex flex-col items-center justify-center w-full ">
           <div className="flex flex-col w-full space-y-10 lg:flex-row lg:space-y-0 justify-evenly lg:gap-2">
-            <div className="border-2 border-red-600 bg-black bg-opacity-80  h-[532px] rounded-tl-xl rounded-bl-xl p-5 flex flex-col justify-evenly ">
+            <div className=" bg-black bg-opacity-80  h-[532px] rounded-tl-xl rounded-bl-xl p-5 flex flex-col justify-evenly ">
               <div className="flex flex-col items-center justify-center">
                 <Image
                   src={"/assets/img/svg/beg.svg"}
@@ -178,7 +178,7 @@ function Trading() {
                 </div>
               </div>
             </div>
-            <div className="border-2 border-red-600 bg-black bg-opacity-80  h-[532px]  p-5 flex flex-col justify-evenly ">
+            <div className=" bg-black bg-opacity-80  h-[532px]  p-5 flex flex-col justify-evenly ">
               <div className="flex flex-col items-center justify-center">
                 <Image
                   src={"/assets/img/svg/inter.svg"}
@@ -221,7 +221,7 @@ function Trading() {
                 </div>
               </div>
             </div>
-            <div className="border-2 border-red-600 bg-black bg-opacity-80  h-[532px] rounded-tr-xl rounded-br-xl p-5 flex flex-col justify-evenly ">
+            <div className=" bg-black bg-opacity-80  h-[532px] rounded-tr-xl rounded-br-xl p-5 flex flex-col justify-evenly ">
               <div className="flex flex-col items-center justify-center">
                 <Image
                   src={"/assets/img/svg/exp.svg"}
@@ -271,7 +271,7 @@ function Trading() {
         className="w-full bg-center bg-no-repeat bg-cover pt-5 lg:pt-[8rem]"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <div className="flex lg:justify-between justify-center px-[2rem] flex-col lg:flex-row lg:px-[5rem]  pb-[4rem] border-2 border-red-500">
+        <div className="flex lg:justify-between justify-center px-[2rem] flex-col lg:flex-row lg:px-[5rem]  pb-[4rem] ">
           <div className="">
             <span className="text-black text-[40px] font-bold ">Copy</span>
             <span className="text-black text-[40px] font-semibold "> </span>

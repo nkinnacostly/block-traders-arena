@@ -63,7 +63,7 @@ export default function Home() {
         </div>
         <div className="w-full lg:px-[5rem] ">
           <div className="bg-black lg:rounded-3xl pb-[4rem]">
-            <div className="flex-col-reverse lg:flex-row flex justify-between gap-4 ">
+            <div className="flex flex-col-reverse justify-between gap-4 lg:flex-row ">
               <div className="lg:pl-[4rem] pt-[4rem] w-full lg:w-1/2">
                 <Textwithcolor
                   colouredText={"Welcome"}
@@ -84,7 +84,7 @@ export default function Home() {
                   }
                 />
               </div>
-              <div className="lg:w-1/2 w-full">
+              <div className="w-full lg:w-1/2">
                 <Image
                   src={Stocks}
                   // height={100}
@@ -96,7 +96,7 @@ export default function Home() {
             </div>
             <div className="lg:px-[4rem] pt-[4rem]">
               <Textwithcolor colouredText={"Welcome"} otherText={"to Block"} />
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <Checkwithtext
                   Check={Fund}
                   check1={"Trade Funding"}
@@ -203,7 +203,7 @@ export default function Home() {
         <p className=" text-black text-[40px] font-semibold leading-[72px] mb-[4rem]">
           Testimonials
         </p>
-        <div className="flex items-center justify-between flex-col lg:flex-row space-y-14 lg:space-y-0">
+        <div className="flex flex-col items-center justify-evenly lg:flex-row space-y-14 lg:space-y-0">
           {Testimonials.map((testimonial, i) => (
             <TestimonialsCard key={i} testimonial={testimonial} />
           ))}
@@ -229,7 +229,7 @@ export default function Home() {
         </div>
       </div>
       <Account />
-      <div className="hidden lg:block border-2 border-red-500">
+      <div className="hidden border-2 border-red-500 lg:block">
         <div className="w-full h-[312px] relative bg-[#D4AF37]">
           <div className="w-[187px] mt-8 h-16 px-[30px] py-5 left-[641px] top-[189px] absolute bg-black rounded-lg justify-center items-center gap-2.5 inline-flex">
             <div className="text-base font-medium text-center text-white capitalize">

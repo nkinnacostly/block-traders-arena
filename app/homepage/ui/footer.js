@@ -64,7 +64,7 @@ function HomepageFooter() {
         <Image src={Logo} height={100} width={100} alt="logo" />
         <div className="flex items-center justify-center space-x-2">
           <Buttonwithbg btnText={"Get Educated"} />
-          <Buttonwithoutbg Btntext={"Start Trading"} />
+          <Buttonwithoutbg Btntext={"Start Trading"} className={"text-white"} />
         </div>
       </div>
     </>
