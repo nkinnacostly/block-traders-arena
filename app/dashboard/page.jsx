@@ -13,6 +13,7 @@ import Modal from "react-modal";
 import { eachDayOfInterval, startOfMonth, endOfMonth, format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import Buttonwithbg from "../src/components/ui/button-with-bg";
+import DashboardChallenges from "../src/components/dashboard/challenges";
 const courseContent = [
   {
     number: "4",
@@ -196,32 +197,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-black shadow-lg text-white flex items-center justify-center rounded-xl h-[291px]">
-        <div className="w-[65%] p-4">
-          <h5 className="text-[24px]  font-[500]">
-            Earn badges while learning or trading
-          </h5>
-          <p className="mb-4">
-            Explore the potential challenges of implementing trade knowledge in
-            trade market. Discover your strengths, test out all levels and earn
-            badges and get rewards. Get rewards with unique achievements as you
-            engage in challenge activities.
-          </p>
-          <Buttonwithbg
-            btnText={"Get Challenged"}
-            className={"w-[167px] mb-4"}
-          />
-        </div>
-        <div className="w-[35%] h-full">
-          <Image
-            src={"/assets/img/png/rect-img.png"}
-            alt=""
-            height={200}
-            width={600}
-            className="w-full h-full"
-          />
-        </div>
-      </div>
+      <DashboardChallenges />
     </>
   );
 }
