@@ -75,7 +75,7 @@ function Dashboard() {
       <div>
         <h5 className="text-[24px]  font-[500]">Overview</h5>
       </div>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {courseContent.map((courseContent, index) => (
           <div
             className={`rounded-[20px]  bg-[${courseContent.bgColor}] p-4 ${
@@ -102,22 +102,25 @@ function Dashboard() {
           </div>
         ))}
       </div>
-      <div className="flex items-center justify-center gap-3 mt-4">
-        <div className="w-[337px] border-2 rounded-xl shadow-md p-4 h-[405px]">
+      <div className="flex flex-col items-center justify-center gap-3 mt-4 lg:flex-row">
+        <div className=" w-full lg:w-[337px] border-2 rounded-xl shadow-md p-4 h-[405px]">
           <h5 className="text-[24px]  font-[500]">Overview</h5>
 
           <BarChart />
         </div>
-        <div className="border-2 w-[calc(100%-337px)] h-[405px] xl:flex rounded-xl shadow-md p-4 overflow-scroll">
-          <h5 className="text-[24px]  font-[500]">Schedule</h5>
+        <div className="border-2 w-full lg:w-[calc(100%-337px)] overflow-scroll h-[405px] xl:flex rounded-xl shadow-md p-4 lg:overflow-scroll items-center justify-center space-x-5">
+          <div>
 
-          <div className="w-full">
+          <h5 className="text-[24px]  font-[500] m-4">Schedule</h5>
+
+          <div className="flex items-start justify-center w-full">
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
               // className=""
               inline
             />
+          </div>
             {/* {dates.map((date, index) => (
               <div key={index}>{format(date, "dd/MM/yyyy")}</div>
             ))} */}
@@ -148,7 +151,7 @@ function Dashboard() {
               </div>
             </Modal>
           </div>
-          <div className="mt-5">
+          <div className="mt-5 overflow-scroll">
             {meetings.map((meeting, index) => (
               <div
                 key={index}

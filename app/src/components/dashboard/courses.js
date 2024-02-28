@@ -5,7 +5,7 @@ function AllDashboardCourses() {
   return (
     <div>
       <>
-        <div className="relative bg-white border-2 border-red-500 shadow-xl rounded-xl">
+        <div className="relative bg-white  shadow-xl rounded-xl">
           <Image
             src={"/assets/img/png/chart.png"}
             alt=""
@@ -16,7 +16,7 @@ function AllDashboardCourses() {
           <Image
             src={"/assets/img/svg/play.svg"}
             alt=""
-            className="absolute right-4 top-[11rem] lg:top-[6rem] cursor-pointer"
+            className="absolute right-4 top-[11rem] lg:top-[6rem] cursor-pointer xl:top-[9rem]"
             height={70}
             width={70}
           />
@@ -28,7 +28,7 @@ function AllDashboardCourses() {
               Introduction to Trading Basics for Beginners: Exploring the World
               of Financial Markets
             </p>
-            <div className="border-2 flex items-center justify-between mt-[1rem]">
+            <div className=" flex items-center justify-between mt-[1rem]">
               <div className="flex items-center justify-center">
                 <Image
                   src={"/assets/img/svg/clock.svg"}
@@ -52,7 +52,7 @@ function AllDashboardCourses() {
                 </p>
               </div>
             </div>
-            <div className="w-full p-5 ">
+            <div className="w-full p-5  xl:space-y-4">
               {/* <Progress
               progress={80}
               // textLabel="Flowbite"

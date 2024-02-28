@@ -5,8 +5,8 @@ import Image from "next/image";
 function DashboardChallenges() {
   return (
     <>
-      <div className="w-full bg-black shadow-lg text-white flex items-center justify-center rounded-xl h-[291px]">
-        <div className="w-[65%] p-4">
+      <div className="w-full bg-black shadow-lg text-white flex flex-col lg:flex-row items-center justify-center rounded-xl lg:h-[291px]">
+        <div className=" w-full lg:w-[65%] p-4">
           <h5 className="text-[24px]  font-[500]">
             Earn badges while learning or trading
           </h5>
@@ -21,7 +21,7 @@ function DashboardChallenges() {
             className={"w-[167px] mb-4"}
           />
         </div>
-        <div className="w-[35%] h-full">
+        <div className="lg:w-[35%]  w-full h-full">
           <Image
             src={"/assets/img/png/rect-img.png"}
             alt=""

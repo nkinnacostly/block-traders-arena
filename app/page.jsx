@@ -3,9 +3,9 @@ import Home from "./homepage/page";
 
 function Page() {
   return (
-    <>
+    <div className="container">
       <Home />
-    </>
+    </div>
   );
 }
 

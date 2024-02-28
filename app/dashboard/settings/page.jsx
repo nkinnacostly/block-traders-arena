@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 function Settings() {
   return (
-    <div className="flex gap-5 border-2 justify-evenly">
+    <div className="flex gap-5 flex-col lg:flex-row  justify-evenly">
       <div className="flex flex-col items-center justify-center space-y-5 ">
         <div className="h-[355px] w-full rounded-xl shadow-xl flex items-center justify-center flex-col space-y-5">
           <div className="rounded-full h-[220px] w-[220px] flex items-center justify-center flex-col border-2">
@@ -70,11 +70,11 @@ function Settings() {
         </div>
       </div>
       <div className="flex flex-col items-start justify-start">
-        <div className="flex flex-col items-start justify-start w-[534px] p-5 space-y-5 shadow-xl rounded-xl">
+        <div className="flex flex-col items-start justify-start w-full lg:w-[534px] p-5 space-y-5 shadow-xl rounded-xl">
           <p className=" text-black text-xl font-medium mt-[2rem] text-start">
             Notification Preferences
           </p>
-          <div className="flex items-start justify-between w-full p-4 space-x-3 border-b-2">
+          <div className="flex items-start flex-col lg:flex-row justify-between w-full p-4 space-y-3 lg:space-y-0 lg:space-x-3 border-b-2">
             <div>
               <p>First Name</p>
               <p>Snr Dev</p>
@@ -120,7 +120,7 @@ function Settings() {
             <ToggleSwitch />
           </div>
         </div>
-        <div className="flex flex-col items-start justify-start w-[534px] p-5 space-y-5 shadow-xl rounded-xl">
+        <div className="flex flex-col items-start justify-start w-full lg:w-[534px] p-5 space-y-5 shadow-xl rounded-xl">
           <p className=" text-black text-xl font-medium mt-[2rem] text-start">
             Feedback and Help
           </p>

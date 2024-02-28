@@ -9,7 +9,7 @@ function Challenges() {
       <div className="p-4 mt-4 border-2 shadow-xl rounded-xl">
         <h5 className="text-[20px]  font-[500] mb-3">Recommended Challenges</h5>
 
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
           <AllDashboardCourses />
           <AllDashboardCourses />
           <AllDashboardCourses />
@@ -19,7 +19,7 @@ function Challenges() {
       <div className="p-4 mt-4 border-2 shadow-xl rounded-xl">
         <h5 className="text-[20px]  font-[500] mb-3"> Challenges</h5>
 
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
           <AllDashboardCourses />
           <AllDashboardCourses />
           <AllDashboardCourses />

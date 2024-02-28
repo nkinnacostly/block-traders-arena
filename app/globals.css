@@ -41,7 +41,7 @@ body {
     text-wrap: balance;
   }
 }
-.react-datepicker__day--selected {
+/* .react-datepicker__day--selected {
   background-color: #D4AF37 !important;
   color: black !important;
 }
@@ -50,7 +50,7 @@ width: 360px;
 }
 .react-datepicker__month-container {
 width: 360px;
-}
+} */
 /* @keyframes slideIn {
   0% {
     transform: translateX(100%);
