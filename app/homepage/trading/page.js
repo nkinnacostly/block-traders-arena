@@ -28,7 +28,7 @@ function Trading() {
         className="w-full px-[2rem] xl:px-[5rem]  h-[100vh] bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <div className=" bg-black rounded-[20px]  p-5 lg:p-0 lg:[2000px] left-0 overflow-scroll xl:overscroll-none flex items-start z-10 justify-center flex-col absolute top-[46rem] 2xl:right-[13rem] lg:right-[6.5rem]  lg:px-[2rem] xl:left-[7.5rem] py-10">
+        <div className=" bg-black rounded-[20px]  p-5 lg:p-0 lg:[2000px] left-0 overflow-y-scroll xl:overscroll-none flex items-start z-10 justify-center flex-col absolute top-[46rem] 2xl:right-[13rem] lg:right-[6.5rem]  lg:px-[2rem] xl:left-[7.5rem] py-10">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 place-content-center">
             <div className="">
               <Image

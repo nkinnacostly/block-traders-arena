@@ -108,7 +108,7 @@ function Dashboard() {
 
           <BarChart />
         </div>
-        <div className="border-2 w-full lg:w-[calc(100%-337px)] overflow-scroll h-[405px] xl:flex rounded-xl shadow-md p-4 lg:overflow-scroll items-center justify-center space-x-5">
+        <div className="border-2 w-full lg:w-[calc(100%-337px)] overflow-y-scroll h-[405px] xl:flex rounded-xl shadow-md p-4 lg:overflow-y-scroll items-center justify-center space-x-5">
           <div>
 
           <h5 className="text-[24px]  font-[500] m-4">Schedule</h5>
@@ -151,7 +151,7 @@ function Dashboard() {
               </div>
             </Modal>
           </div>
-          <div className="mt-5 overflow-scroll">
+          <div className="mt-5 overflow-y-scroll">
             {meetings.map((meeting, index) => (
               <div
                 key={index}

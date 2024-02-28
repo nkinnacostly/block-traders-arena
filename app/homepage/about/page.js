@@ -49,7 +49,7 @@ function AboutPage() {
         className="w-full px-[5rem] pt-[2rem] h-[800px] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <div className=" h-[820px] overflow-scroll 2xl:text-center p-6 bg-black rounded-[20px] flex items-start justify-center flex-col absolute -bottom-[46rem] left-[2rem] right-[2rem] lg:-bottom-[45rem] 2xl:right-[13rem] lg:left-[6rem] lg:w-[80%] lg:px-[2rem] xl:right-[7.5rem]">
+        <div className=" h-[820px] overflow-y-scroll 2xl:text-center p-6 bg-black rounded-[20px] flex items-start justify-center flex-col absolute -bottom-[46rem] left-[2rem] right-[2rem] lg:-bottom-[45rem] 2xl:right-[13rem] lg:left-[6rem] lg:w-[80%] lg:px-[2rem] xl:right-[7.5rem]">
           <div className="w-full h-full">
             <div className="">
               <span className="text-white text-[40px] font-semibold">

@@ -14,7 +14,7 @@ function AuthLayout({ children }) {
             className="h-full"
           />
         </div>
-        <div className="h-[80%] overflow-scroll">{children}</div>
+        <div className="h-[80%] overflow-y-scroll">{children}</div>
         <div className="h-[10%]  flex items-end justify-end">
           <Image
             src={"/assets/img/svg/ellipse2.svg"}
