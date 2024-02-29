@@ -10,7 +10,7 @@ function DashboardLayout({ children }) {
         <DashboardHeader />
         <hr className="w-full border" />
       </div>
-      <div className="flex items-center h-full lg:h-[calc(100%-100px-200px)]  overflow-y-scroll">
+      <div className="flex h-full lg:h-[calc(100%-100px)]">
         <div className="hidden lg:block w-[250px]  h-full p-3 ">
           <DashboardSidebar />
         </div>
@@ -20,9 +20,9 @@ function DashboardLayout({ children }) {
           </div>
         </div>
       </div>
-      <div className="lg:h-[200px] bg-black text-white overflow-y-scroll p-3 ">
+      {/* <div className="lg:h-[200px] bg-black text-white overflow-y-scroll p-3 ">
         <DashboardFooter />
-      </div>
+      </div> */}
     </div>
   );
 }
