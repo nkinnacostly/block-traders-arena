@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function AuthLayout({ children }) {
   return (
-    <div className="w-full h-[100vh]  bg-white flex flex-col lg:flex-row">
+    <div className="w-full h-[100vh]  bg-white flex flex-col lg:flex-row container">
       <div className="bg-white w-full lg:w-[50%] h-full  ">
         <div className="h-[10%]">
           <Image

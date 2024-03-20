@@ -1,5 +1,5 @@
 "use client";
-import Buttonwithoutbg from "@/app/src/components/ui/button-without-bg";
+import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
 import React, { useState } from "react";
 
 function Settings() {

@@ -2,7 +2,7 @@ import React from "react";
 import { VscBellDot } from "react-icons/vsc";
 import Image from "next/image";
 import { IoIosSearch } from "react-icons/io";
-import ProgressBar from "@/app/src/components/dashboard/progressBar/progressBar";
+import ProgressBar from "@/src/components/dashboard/progressBar/progressBar";
 import { Progress } from "flowbite-react";
 // import { VideoWithButton } from "@/app/src/components/ui/video-with-button";
 function Courses() {

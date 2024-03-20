@@ -1,13 +1,13 @@
 "use client";
-import NumbersCard from "@/app/src/components/cards/numbersCard";
-import Topheader from "@/app/src/components/screens/top-header/top-header";
+import NumbersCard from "@/src/components/cards/numbersCard";
+import Topheader from "@/src/components/screens/top-header/top-header";
 import Image from "next/image";
 import {
   VideoWithButtons,
   VideoWithButton,
-} from "@/app/src/components/ui/video-with-button";
+} from "@/src/components/ui/video-with-button";
 import React from "react";
-import Footercontact from "@/app/src/components/ui/footer-contact";
+import Footercontact from "@/src/components/ui/footer-contact";
 
 function Education() {
   return (

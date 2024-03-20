@@ -5,15 +5,15 @@ import { IoRefreshCircleSharp } from "react-icons/io5";
 import { GiHourglass } from "react-icons/gi";
 import { GiProgression } from "react-icons/gi";
 import { RiAwardFill } from "react-icons/ri";
-import BarChart from "../src/components/dashboard/chart/barChart";
+import BarChart from "../../components/dashboard/chart/barChart";
 import Link from "next/link";
 import Image from "next/image";
 import DatePicker from "react-datepicker";
 import Modal from "react-modal";
 import { eachDayOfInterval, startOfMonth, endOfMonth, format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
-import Buttonwithbg from "../src/components/ui/button-with-bg";
-import DashboardChallenges from "../src/components/dashboard/challenges";
+import Buttonwithbg from "../../components/ui/button-with-bg";
+import DashboardChallenges from "../../components/dashboard/challenges";
 const courseContent = [
   {
     number: "4",

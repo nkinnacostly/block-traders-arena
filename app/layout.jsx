@@ -2,7 +2,9 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 // import Navbar from "./homepage/ui/layout/nav-bar";
 import Footer from "./homepage/ui/footer";
-import Topheader from "@/app/src/components/screens/top-header/top-header";
+import Topheader from "@/src/components/screens/top-header/top-header";
+import { Toaster } from "react-hot-toast";
+import Providers from "../src/utils/provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,9 +24,13 @@ export default function RootLayout({ children }) {
       <body className={poppins.className}>
         {/* <Topheader /> */}
         {/* <Navbar /> */}
+        <Providers>
+
         {children}
+        </Providers>
 
         {/* <Footer /> */}
+        <Toaster position="top-right" reverseOrder={false} />
       </body>
     </html>
   );

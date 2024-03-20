@@ -1,16 +1,16 @@
 import React from "react";
-import Card from "@/app/src/components/cards/card";
-import NumbersCard from "@/app/src/components/cards/numbersCard";
-import Topheader from "@/app/src/components/screens/top-header/top-header";
+import Card from "@/src/components/cards/card";
+import NumbersCard from "@/src/components/cards/numbersCard";
+import Topheader from "@/src/components/screens/top-header/top-header";
 import Image from "next/image";
-import Textwithcolor from "@/app/src/components/ui/text-with-color";
+import Textwithcolor from "@/src/components/ui/text-with-color";
 import Envelop from "@/public/assets/img/svg/Envelope.svg";
 import Telephone from "@/public/assets/img/svg/Telephone.svg";
 import Address from "@/public/assets/img/svg/address.svg";
 import Send from "@/public/assets/img/svg/send.svg";
-import Buttonwithbg from "@/app/src/components/ui/button-with-bg";
-import Buttonwithoutbg from "@/app/src/components/ui/button-without-bg";
-import Footercontact from "@/app/src/components/ui/footer-contact";
+import Buttonwithbg from "@/src/components/ui/button-with-bg";
+import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
+import Footercontact from "@/src/components/ui/footer-contact";
 const data = [
   {
     icon: "/assets/img/svg/education.svg",

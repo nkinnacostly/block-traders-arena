@@ -1,12 +1,15 @@
-import Buttonwithbg from "@/app/src/components/ui/button-with-bg";
-import Buttonwithoutbg from "@/app/src/components/ui/button-without-bg";
+import Buttonwithbg from "@/src/components/ui/button-with-bg";
+import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/assets/img/png/logo.png";
 import Down from "@/public/assets/img/svg/down.svg";
+import { useRouter } from "next/navigation";
 
 function Navbar() {
+  const router = useRouter();
+
   return (
     <div className="items-center justify-center hidden w-full lg:flex">
       <div className="flex items-center justify-between w-full ">
@@ -40,8 +43,14 @@ function Navbar() {
           </Link>
         </div>
         <div className="flex items-center justify-center space-x-3">
-          <Buttonwithoutbg Btntext={"Sign in"} className={"text-white"} />
-          <Buttonwithbg btnText={"Create account"} />
+          <Buttonwithoutbg Btntext={"Sign in"} className={"text-white"}
+              onClick={(() => router.push("/auth/login"))}
+          
+          />
+          <Buttonwithbg btnText={"Create account"}
+              onClick={(() => router.push("/auth/sign-up"))}
+          
+          />
         </div>
       </div>
     </div>

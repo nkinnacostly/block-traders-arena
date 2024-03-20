@@ -1,9 +1,11 @@
 "use client";
+import { useUserStore } from "@/src/store/user-store";
 import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-function PasswordInput({ inputText, setIsValid }) {
-  const [password, setPassword] = useState("");
+function PasswordInput({ inputText, setIsValid, name, onChange }) {
+
   const [showPassword, setShowPassword] = useState(false);
+  const { email, userName, password, setEmail, setUserName, setPassword } = useUserStore();
 
   // const handlePasswordChange = (event) => {
   //   setPassword(event.target.value);
@@ -12,18 +14,18 @@ function PasswordInput({ inputText, setIsValid }) {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  const handleChange = (event) => {
-    const { value } = event.target;
-    setPassword(value);
+  // const handleChange = (event) => {
+  //   const { value } = event.target;
+  //   setPassword(value);
 
-    setIsValid({
-      length: value.length >= 8,
-      uppercase: /[A-Z]/.test(value),
-      lowercase: /[a-z]/.test(value),
-      number: /\d/.test(value),
-      specialChar: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(value),
-    });
-  };
+  //   setIsValid({
+  //     length: value.length >= 8,
+  //     uppercase: /[A-Z]/.test(value),
+  //     lowercase: /[a-z]/.test(value),
+  //     number: /\d/.test(value),
+  //     specialChar: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(value),
+  //   });
+  // };
 
   return (
     <div className="flex flex-col items-start justify-center w-full mb-5">
@@ -49,7 +51,9 @@ function PasswordInput({ inputText, setIsValid }) {
         placeholder="Password"
         type={showPassword ? "text" : "password"}
         value={password}
-        onChange={handleChange}
+        onChange={onChange}
+        name={name}
+
       />
     </div>
   );

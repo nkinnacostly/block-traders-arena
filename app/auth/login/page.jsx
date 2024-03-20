@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import TextInput from "@/app/src/components/dashboard/input/textInput";
-import LoginHeader from "@/app/src/components/dashboard/loginHeader/loginHeader";
-import PasswordInput from "@/app/src/components/dashboard/input/passwordInput";
-import Button from "@/app/src/components/dashboard/button/button";
+import TextInput from "@/src/components/dashboard/input/textInput";
+import LoginHeader from "@/src/components/dashboard/loginHeader/loginHeader";
+import PasswordInput from "@/src/components/dashboard/input/passwordInput";
+import Button from "@/src/components/dashboard/button/button";
 function Login() {
   return (
     <div className="h-full w-full  flex flex-col items-start px-10">

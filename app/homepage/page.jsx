@@ -1,4 +1,4 @@
-import Topheader from "@/app/src/components/screens/top-header/top-header";
+import Topheader from "@/src/components/screens/top-header/top-header";
 import Image from "next/image";
 import Grad from "@/public/assets/img/svg/grad.svg";
 import Fund from "@/public/assets/img/svg/fund.svg";
@@ -8,13 +8,13 @@ import Think from "@/public/assets/img/svg/think.svg";
 import Stocks from "@/public/assets/img/png/stocks.png";
 import Money from "@/public/assets/img/png/money.png";
 import Exchange from "@/public/assets/img/png/exchange.png";
-import Card from "@/app/src/components/cards/card";
-import Textwithcolor from "@/app/src/components/ui/text-with-color";
-import Checkwithtext from "@/app/src/components/ui/check-with-text";
-import Video from "@/app/src/components/ui/video";
-import TestimonialsCard from "@/app/src/components/ui/test-card";
-import { Testimonials } from "@/app/src/mock/data";
-import Account from "@/app/src/components/ui/account";
+import Card from "@/src/components/cards/card";
+import Textwithcolor from "@/src/components/ui/text-with-color";
+import Checkwithtext from "@/src/components/ui/check-with-text";
+import Video from "@/src/components/ui/video";
+import TestimonialsCard from "@/src/components/ui/test-card";
+import { Testimonials } from "@/src/mock/data";
+import Account from "@/src/components/ui/account";
 const data = [
   {
     icon: "/assets/img/svg/education.svg",

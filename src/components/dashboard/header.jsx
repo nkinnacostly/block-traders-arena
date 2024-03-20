@@ -1,5 +1,5 @@
-import Buttonwithbg from "@/app/src/components/ui/button-with-bg";
-import Buttonwithoutbg from "@/app/src/components/ui/button-without-bg";
+import Buttonwithbg from "@/src/components/ui/button-with-bg";
+import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";

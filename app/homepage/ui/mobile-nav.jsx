@@ -6,8 +6,8 @@ import { PiSquaresFourFill } from "react-icons/pi";
 import { motion } from "framer-motion";
 import { FaSortDown } from "react-icons/fa";
 import Link from "next/link";
-import Buttonwithoutbg from "@/app/src/components/ui/button-without-bg";
-import Buttonwithbg from "@/app/src/components/ui/button-with-bg";
+import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
+import Buttonwithbg from "@/src/components/ui/button-with-bg";
 import Down from "@/public/assets/img/svg/down.svg";
 
 function MobileNav() {

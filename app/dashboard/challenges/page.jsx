@@ -1,5 +1,5 @@
-import DashboardChallenges from "@/app/src/components/dashboard/challenges";
-import AllDashboardCourses from "@/app/src/components/dashboard/courses";
+import DashboardChallenges from "@/src/components/dashboard/challenges";
+import AllDashboardCourses from "@/src/components/dashboard/courses";
 import React from "react";
 
 function Challenges() {

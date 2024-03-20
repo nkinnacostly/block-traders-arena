@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "@/app/homepage/ui/nav-bar";
+
 import Image from "next/image";
 import React from "react";
 import Textwithcolor from "../../ui/text-with-color";
@@ -8,6 +8,7 @@ import Buttonwithbg from "../../ui/button-with-bg";
 import Buttonwithoutbg from "../../ui/button-without-bg";
 import { useRouter } from "next/navigation";
 import MobileNav from "@/app/homepage/ui/mobile-nav";
+import Navbar from "@/app/homepage/ui/nav-bar";
 
 function Topheader({
   backgroundImage,
@@ -54,12 +55,12 @@ function Topheader({
             <Buttonwithbg
               btnText={"Get Started"}
               className={"h-[70px] w-full lg:w-[226.67px]"}
-              onClick={() => router.push("/auth/login")}
+              onClick={(() => router.push("/auth/login"))}
             />
             <Buttonwithoutbg
               Btntext={"Start Learning"}
               className={"h-[70px] w-full lg:w-[226.67px] text-white"}
-              onClick={() => router.push("/auth/sign-up")}
+              onClick={(() => router.push("/auth/sign-up"))}
             />
           </div>
         </div>

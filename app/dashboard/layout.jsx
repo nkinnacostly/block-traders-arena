@@ -1,7 +1,7 @@
 import React from "react";
-import DashboardHeader from "../src/components/dashboard/header";
-import DashboardSidebar from "../src/components/dashboard/sidebar";
-import DashboardFooter from "../src/components/dashboard/footer";
+import DashboardHeader from "../../components/dashboard/header";
+import DashboardSidebar from "../../components/dashboard/sidebar";
+import DashboardFooter from "../../components/dashboard/footer";
 
 function DashboardLayout({ children }) {
   return (
