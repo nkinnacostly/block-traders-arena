@@ -1,10 +1,10 @@
-import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-// import Navbar from "./homepage/ui/layout/nav-bar";
-import Footer from "./homepage/ui/footer";
-import Topheader from "@/src/components/screens/top-header/top-header";
-import { Toaster } from "react-hot-toast";
+
+import { Poppins } from "next/font/google";
 import Providers from "../src/utils/provider";
+import ThemeProviderWrapper from "@/src/components/theme-provider";
+// import Navbar from "./homepage/ui/layout/nav-bar";
+import { Toaster } from "@/src/components/ui/toaster";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,15 +22,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
-        {/* <Topheader /> */}
-        {/* <Navbar /> */}
-        <Providers>
-
-        {children}
-        </Providers>
-
-        {/* <Footer /> */}
-        <Toaster position="top-right" reverseOrder={false} />
+        <ThemeProviderWrapper>
+          <Providers>{children}</Providers>
+          <Toaster />
+        </ThemeProviderWrapper>
       </body>
     </html>
   );

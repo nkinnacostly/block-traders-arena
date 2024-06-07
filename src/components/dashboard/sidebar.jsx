@@ -1,14 +1,14 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { MdDashboard } from "react-icons/md";
 import { GiProgression } from "react-icons/gi";
-import { TbTargetArrow } from "react-icons/tb";
-import { IoMdSettings } from "react-icons/io";
 import { GoBook } from "react-icons/go";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { IoMdSettings } from "react-icons/io";
+import { MdDashboard } from "react-icons/md";
+import React from "react";
+import { TbTargetArrow } from "react-icons/tb";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 function DashboardSidebar() {
   const router = useRouter();
@@ -42,7 +42,7 @@ function DashboardSidebar() {
     },
   ];
   return (
-    <div className="flex flex-col w-full h-full px-5 space-y-3 bg-white rounded-xl">
+    <div className="flex flex-col w-full h-full px-5 space-y-3 border-2 py-5 rounded-xl">
       <div className="flex items-center justify-center">
         <div className="items-center w-20 h-20 border-2 rounded-full ">
           <Image

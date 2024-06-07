@@ -1,12 +1,16 @@
 "use client";
-import { useUserStore } from "@/src/store/user-store";
+
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import React, { useState } from "react";
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-function PasswordInput({ inputText, setIsValid, name, onChange }) {
 
+import { useTheme } from "next-themes";
+import { useUserStore } from "@/src/store/user-store";
+
+function PasswordInput({ inputText, name, onChange }) {
   const [showPassword, setShowPassword] = useState(false);
-  const { email, userName, password, setEmail, setUserName, setPassword } = useUserStore();
-
+  const { password } = useUserStore();
+  const { theme } = useTheme();
+  // console.log("This is current Theme Color" + theme);
   // const handlePasswordChange = (event) => {
   //   setPassword(event.target.value);
   // };
@@ -28,7 +32,7 @@ function PasswordInput({ inputText, setIsValid, name, onChange }) {
   // };
 
   return (
-    <div className="flex flex-col items-start justify-center w-full mb-5">
+    <div className={`flex flex-col items-start justify-center w-full mb-5`}>
       <div className="flex w-full justify-between items-center ">
         <p className="text-[16px] font-[400] text-[#1E1E1E] p-2">{inputText}</p>
         <div
@@ -47,13 +51,14 @@ function PasswordInput({ inputText, setIsValid, name, onChange }) {
       </div>
 
       <input
-        className="w-full h-[56px] rounded-[12px] border-2 pl-6 focus:outline-none"
+        className={`w-full h-[56px] rounded-[12px] border-2 pl-6 focus:outline-none ${
+          theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+        }`}
         placeholder="Password"
         type={showPassword ? "text" : "password"}
         value={password}
         onChange={onChange}
         name={name}
-
       />
     </div>
   );

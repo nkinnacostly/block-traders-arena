@@ -1,11 +1,10 @@
+import DashboardHeader from "@/src/components/dashboard/header";
+import DashboardSidebar from "@/src/components/dashboard/sidebar";
 import React from "react";
-import DashboardHeader from "../../components/dashboard/header";
-import DashboardSidebar from "../../components/dashboard/sidebar";
-import DashboardFooter from "../../components/dashboard/footer";
 
 function DashboardLayout({ children }) {
   return (
-    <div className="w-full h-[100vh] bg-black container">
+    <div className=" h-[100vh]  m-auto w-[80%]">
       <div className="h-[100px] p-3 hidden lg:block">
         <DashboardHeader />
         <hr className="w-full border" />
@@ -14,8 +13,8 @@ function DashboardLayout({ children }) {
         <div className="hidden lg:block w-[250px]  h-full p-3 ">
           <DashboardSidebar />
         </div>
-        <div className="w-full lg:w-[calc(100%-250px)] h-full  bg-black p-3">
-          <div className="bg-white rounded-[20px] h-full overflow-y-scroll p-3 shadow-xl ">
+        <div className="w-full lg:w-[calc(100%-250px)] h-full   p-3">
+          <div className=" rounded-[20px] h-full overflow-y-scroll p-3 shadow-xl ">
             {children}
           </div>
         </div>

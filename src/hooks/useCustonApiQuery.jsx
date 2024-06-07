@@ -1,19 +1,20 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
-import { useCallback } from 'react';
+import { useMutation, useQuery } from "@tanstack/react-query";
+
+import axios from "axios";
+import { useCallback } from "react";
 
 // Set the base URL from an environment variable or configure it directly here
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 // Define your API fetching function using Axios
-async function fetchApiData({ method, url, data }) {
-  const response = await axios({ method, url, data });
-  return response.data;
-}
+// async function fetchApiData({ method, url, data }) {
+//   const response = await axios({ method, url, data });
+//   return response.data;
+// }
 
 // Custom hook for handling API requests
 function useApiRequest() {
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   // Function to fetch data from API
   const fetchData = async (url) => {
@@ -26,11 +27,11 @@ function useApiRequest() {
   };
 
   // Function to handle mutation (POST, PUT, DELETE, etc.)
-  const mutateData = async ({ method, url, data, headers }) => {
+  const mutateData = async ({ method, url, data }) => {
     try {
-      const response = await axios({ method, url, data,headers});
+      const response = await axios({ method, url, data });
       // Invalidate relevant queries after successful mutation
-      queryClient.invalidateQueries(url);
+      // queryClient.invalidateQueries(url);
       return response.data;
     } catch (error) {
       throw new Error(`Failed to ${method} data to ${url}: ${error.message}`);
@@ -39,18 +40,18 @@ function useApiRequest() {
 
   // Custom hook for GET requests using React Query
   const useGetRequest = (url) => {
-    return useQuery({queryKey:url, queryFn:() => fetchData(url)});
+    return useQuery({ queryKey: url, queryFn: () => fetchData(url) });
   };
 
   // Custom hook for mutation requests using React Query
   const useMutationRequest = () => {
-    
     const mutationFn = useCallback(mutateData, []); // Memoize the mutation function
-    return useMutation({mutationFn});
+
+    return useMutation({ mutationFn });
   };
 
   return {
-    useGetRequest, 
+    useGetRequest,
     useMutationRequest,
   };
 }

@@ -1,19 +1,21 @@
 "use client";
-import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
+
 import React, { useState } from "react";
+
+import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
 
 function Settings() {
   return (
-    <div className="flex gap-5 flex-col lg:flex-row  justify-evenly">
-      <div className="flex flex-col items-center justify-center space-y-5 ">
-        <div className="h-[355px] w-full rounded-xl shadow-xl flex items-center justify-center flex-col space-y-5">
+    <div className="flex gap-5 flex-col lg:flex-row  justify-evenly  p-4">
+      <div className="flex flex-col items-center  space-y-5 ">
+        <div className="h-[355px] w-full rounded-xl shadow-xl flex items-center justify-center flex-col space-y-5 border-2">
           <div className="rounded-full h-[220px] w-[220px] flex items-center justify-center flex-col border-2">
             Hello Image
           </div>
-          <Buttonwithoutbg Btntext={"Get Started"} className={"text-black"} />
+          <Buttonwithoutbg Btntext={"Get Started"} className={""} />
         </div>
-        <div className="flex flex-col items-start justify-start w-full p-5 space-y-5 shadow-xl rounded-xl">
-          <p className=" text-black text-xl font-medium mt-[2rem] text-start">
+        <div className="flex flex-col items-start justify-start w-full p-5 space-y-5 shadow-xl rounded-xl border-2">
+          <p className="  text-xl font-medium mt-[2rem] text-start">
             Notification Preferences
           </p>
           <div className="flex items-start justify-start w-full p-4 space-x-3 border-b-2">
@@ -29,8 +31,8 @@ function Settings() {
             <ToggleSwitch />
           </div>
         </div>
-        <div className="flex flex-col items-start justify-start w-full p-4 space-y-5 shadow-xl rounded-xl">
-          <p className=" text-black text-xl font-medium mt-[2rem] text-start">
+        <div className="flex flex-col items-start justify-start w-full p-4 space-y-5 shadow-xl rounded-xl border-2">
+          <p className="  text-xl font-medium mt-[2rem] text-start">
             Security and Privacy
           </p>
           <div className="flex flex-col items-start justify-start w-full p-4 border-b-2">
@@ -48,8 +50,8 @@ function Settings() {
             {/* <ToggleSwitch /> */}
           </div>
         </div>
-        <div className="flex flex-col items-start justify-start w-full p-4 space-y-5 shadow-xl rounded-xl">
-          <p className=" text-black text-xl font-medium mt-[2rem] text-start">
+        <div className="flex flex-col items-start justify-start w-full p-4 space-y-5 shadow-xl rounded-xl border-2">
+          <p className="  text-xl font-medium mt-[2rem] text-start">
             Language and Region
           </p>
           <div className="flex flex-col items-start justify-start w-full p-4 border-b-2">
@@ -69,9 +71,9 @@ function Settings() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-start justify-start">
-        <div className="flex flex-col items-start justify-start w-full lg:w-[534px] p-5 space-y-5 shadow-xl rounded-xl">
-          <p className=" text-black text-xl font-medium mt-[2rem] text-start">
+      <div className="flex flex-col items-start justify-start space-y-5">
+        <div className="flex flex-col items-start justify-start w-full lg:w-[534px] p-5 space-y-5 shadow-xl rounded-xl border-2">
+          <p className="  text-xl font-medium mt-[2rem] text-start">
             Notification Preferences
           </p>
           <div className="flex items-start flex-col lg:flex-row justify-between w-full p-4 space-y-3 lg:space-y-0 lg:space-x-3 border-b-2">
@@ -103,12 +105,12 @@ function Settings() {
           <div className="flex items-center justify-center w-full p-4 border-b-2 ">
             <Buttonwithoutbg
               Btntext={"Edit Contact Information"}
-              className={"text-black "}
+              className={" "}
             />
           </div>
         </div>
-        <div className="flex flex-col items-start justify-start w-full p-5 space-y-5 shadow-xl rounded-xl">
-          <p className=" text-black text-xl font-medium mt-[2rem] text-start">
+        <div className="flex flex-col items-start justify-start w-full p-5 space-y-5 shadow-xl rounded-xl border-2">
+          <p className="  text-xl font-medium mt-[2rem] text-start">
             Accesibility
           </p>
           <div className="flex items-start justify-start w-full p-4 space-x-3 border-b-2">
@@ -120,8 +122,8 @@ function Settings() {
             <ToggleSwitch />
           </div>
         </div>
-        <div className="flex flex-col items-start justify-start w-full lg:w-[534px] p-5 space-y-5 shadow-xl rounded-xl">
-          <p className=" text-black text-xl font-medium mt-[2rem] text-start">
+        <div className="flex flex-col items-start justify-start w-full lg:w-[534px] p-5 space-y-5 shadow-xl rounded-xl border-2">
+          <p className="  text-xl font-medium mt-[2rem] text-start">
             Feedback and Help
           </p>
 
@@ -134,10 +136,8 @@ function Settings() {
             {/* <p>snrdev@gmail.com</p> */}
           </div>
         </div>
-        <div className="flex flex-col items-start justify-start w-full p-5 space-y-5 shadow-xl rounded-xl">
-          <p className=" text-black text-xl font-medium mt-[2rem] text-start">
-            Account
-          </p>
+        <div className="flex flex-col items-start justify-start w-full p-5 space-y-5 shadow-xl rounded-xl border-2">
+          <p className="  text-xl font-medium mt-[2rem] text-start">Account</p>
           <div className="flex items-start justify-start w-full p-4 space-x-3 border-b-2">
             <p>Deactivate Account</p>
             <ToggleSwitch />

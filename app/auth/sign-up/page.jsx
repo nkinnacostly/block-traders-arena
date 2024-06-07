@@ -1,13 +1,22 @@
+/* eslint-disable no-useless-escape */
 "use client";
+
 import React, { useState } from "react";
-import Image from "next/image";
+
+import { AnimatePage } from "@/src/components/animations/page";
+import Button from "@/src/components/dashboard/button/button";
 import { FaCircle } from "react-icons/fa";
-import TextInput from "@/src/components/dashboard/input/textInput";
 import LoginHeader from "@/src/components/dashboard/loginHeader/loginHeader";
 import PasswordInput from "@/src/components/dashboard/input/passwordInput";
-import Button from "@/src/components/dashboard/button/button";
-import { useUserStore } from "@/src/store/user-store";
+import TextInput from "@/src/components/dashboard/input/textInput";
+import { storage } from "@/src/utils/storage";
+import { toast } from "sonner";
 import useApiRequest from "@/src/hooks/useCustonApiQuery";
+import { useRouter } from "next/navigation";
+import { useUserStore } from "@/src/store/user-store";
+import { z } from "zod";
+
+// console.log(toast, "This is toast");
 
 function SignUp() {
   const {
@@ -20,8 +29,13 @@ function SignUp() {
     notification_status,
     setNotification,
   } = useUserStore();
-  const { useGetRequest, useMutationRequest } = useApiRequest(); // Destructure the custom hook
-  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+  const { useMutationRequest } = useApiRequest(); // Destructure the custom hook
+  // const { theme } = useTheme();
+  const router = useRouter();
+  const isAnyInputEmpty = () => {
+    return !email || !username || !password;
+  };
+
   const [isValid, setIsValid] = useState({
     length: false,
     uppercase: false,
@@ -29,11 +43,14 @@ function SignUp() {
     number: false,
     specialChar: false,
   });
-  // const [signUpData, setSignUpData] = useState({
-  //   email:'',
-  //   userName:'',
-  //   password:'',
-  // })
+  const SignUpSchema = z.object({
+    email: z
+      .string()
+      .regex(/^\S+@\S+\.\S+$/)
+      .email(),
+    username: z.string().min(3),
+    password: z.string().min(8),
+  });
 
   const handleUserInputs = (e) => {
     const name = e.target.name;
@@ -44,46 +61,56 @@ function SignUp() {
       setUserName(value);
     } else if (name === "password") {
       setPassword(value);
+      setIsValid({
+        length: value.length >= 8,
+        uppercase: /[A-Z]/.test(value),
+        lowercase: /[a-z]/.test(value),
+        number: /\d/.test(value),
+        specialChar: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(value),
+      });
     } else if (name === "notification") {
       setNotification(1);
     }
-    // setSignUpData({
-    //   ...loginDetails,
-    //   [name]: value,
-    // });
-    setIsValid({
-      length: value.length >= 8,
-      uppercase: /[A-Z]/.test(value),
-      lowercase: /[a-z]/.test(value),
-      number: /\d/.test(value),
-      specialChar: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(value),
-    });
   };
-  const mutation = useMutationRequest();
-// console.log(mutation,"This is mutation")
+  const { mutateAsync, isPending } = useMutationRequest();
+
   const handleSubmit = async () => {
+    const errorMap = {
+      "string.email": "Invalid email address",
+      "string.min": "Must be at least {{min}} characters",
+    };
     try {
-      // Perform the mutation (POST request in this case)
-      // alert("Hello")
-      await mutation.mutateAsync({
-        method: "POST",
-        url: "/sign-up",
-        headers: {
-          'X-CSRF-TOKEN': csrfToken,
-      },
-        data: {email,password,username,notification_status},
-      });
+      SignUpSchema.parse({ email, password, username }, { errorMap });
+      await mutateAsync(
+        {
+          method: "POST",
+          url: "/sign-up",
+          data: { email, password, username, notification_status },
+        },
+        {
+          onSuccess: (data) => {
+            toast.success(data.message);
+            storage.localStorage.set("user", data.user);
+            storage.localStorage.set("__session", data.data?.token);
+            router.push("/auth/login");
+          },
+          onError: (error) => {
+            toast.error(error.message);
+            // console.log(error, "This is error");
+          },
+        }
+      );
+      // {
+      //   mutation.isSuccess(console.log("active"));
+      // }
     } catch (error) {
       // console.error("Error adding data:", error.message);
-      console.log(error)
+      // console.log(error.error);
     }
   };
-  // const handleClick = () => {
-  //   mutation.mutate({ 'email': email, 'password':password, 'userName':userName, 'password':password });
-  // };
-  // console.log(email,userName,password, notification,"This are values from zustand")
-  // if (mutation.isLoading) return 'Loading...';
-  //   if (mutation.isError) return 'An error has occurred: ' + mutation.error.message;
+
+  // console.log(isValid, "This is valid");
+  // mutation.isSuccess(console.log("Mutation successful"));
   return (
     <div className="h-full w-full  flex flex-col items-start px-10 ">
       <LoginHeader />
@@ -177,17 +204,25 @@ function SignUp() {
       </p>
       <Button
         btnText={"Sign Up"}
-        className={`${isValid ? "bg-yellow-300" : "bg-white "} `}
+        className={"disabled:bg-gray-400 bg-yellow-400"}
         onClick={handleSubmit}
+        disabled={isAnyInputEmpty() || isPending}
+        loading={isPending}
       />
       <div className="flex items-center justify-center w-full">
         <p className="text-[16px] font-[400] text-[#1E1E1E] p-2">
           Already have an account?{" "}
-          <span className="underline cursor-pointer text-[#EE1D52]">Login</span>{" "}
+          <span
+            className="underline cursor-pointer text-[#EE1D52]"
+            onClick={() => router.push("/auth/login")}
+          >
+            Login
+          </span>{" "}
         </p>
       </div>
     </div>
   );
 }
 
-export default SignUp;
+export default AnimatePage(SignUp);
+// export const Component = AnimatePage(SignUp);

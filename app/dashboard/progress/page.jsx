@@ -1,14 +1,15 @@
-import React from "react";
+// import { AnimatePage } from "@/src/components/animations/page";
+import { CoursesInProgress } from "../courses/page";
 import { GiAlarmClock } from "react-icons/gi";
 import Image from "next/image";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
-import { CoursesInProgress } from "../courses/page";
+import React from "react";
 
 function ProgressPage() {
   return (
-    <div className="flex flex-col items-center justify-center w-full space-y-5 ">
-      <div className="flex items-center flex-col lg:flex-row justify-center">
-        <div className=" w-full lg:w-[264px] rounded-xl shadow-xl p-4 h-[412px]">
+    <div className="flex flex-col items-center justify-center w-full space-y-5 border-2 border-red-500 p-4">
+      <div className="flex items-center flex-col space-x-5 lg:flex-row justify-center  w-full">
+        <div className=" w-full lg:w-[264px] rounded-xl shadow-xl p-4 h-full border-2 border-pink-400">
           <h5 className="text-[20px]  font-[500] mb-8">Learning Statistics</h5>
           <div className="shadow-md rounded-xl h-[289px] flex flex-col  justify-evenly p-2">
             <div className="flex items-center justify-between">
@@ -47,7 +48,7 @@ function ProgressPage() {
             </div>
           </div>
         </div>
-        <div className="w-full lg:w-[calc(100%-264px)]   lg:h-[412px] shadow-xl rounded-xl overflow-y-scroll p-4">
+        <div className="w-full lg:w-[calc(100%-264px)]  shadow-xl rounded-xl  p-4 border-2 border-blue-600">
           <h5 className="text-[20px]  font-[500] mb-3">Courses Completed</h5>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <CoursesCompleted />
@@ -56,15 +57,15 @@ function ProgressPage() {
         </div>
       </div>
       <div className="shadow-xl rounded-xl p-4 ">
-      <h5 className="text-[20px] font-[500] mb-3 ">Courses In-Progress</h5>
+        <h5 className="text-[20px] font-[500] mb-3 ">Courses In-Progress</h5>
 
-      <div className="grid w-full grid-cols-1 lg:grid-cols-3 gap-2  shadow-xl rounded-xl">
-        <CoursesInProgress />
-        <CoursesInProgress />
-        <CoursesInProgress />
-        {/* <CoursesInProgress />
+        <div className="grid w-full grid-cols-1 lg:grid-cols-3 gap-2  shadow-xl rounded-xl">
+          <CoursesInProgress />
+          <CoursesInProgress />
+          <CoursesInProgress />
+          {/* <CoursesInProgress />
         <CoursesInProgress /> */}
-      </div>
+        </div>
       </div>
       <div className="grid w-full grid-cols-2 lg:grid-cols-5 gap-2 p-4 shadow-xl rounded-xl">
         <div className="border-2 rounded-xl">
