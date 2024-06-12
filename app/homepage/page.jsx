@@ -1,20 +1,20 @@
-import Topheader from "@/src/components/screens/top-header/top-header";
-import Image from "next/image";
-import Grad from "@/public/assets/img/svg/grad.svg";
-import Fund from "@/public/assets/img/svg/fund.svg";
-import Progress from "@/public/assets/img/svg/progress.svg";
-import Tap from "@/public/assets/img/svg/tap.svg";
-import Think from "@/public/assets/img/svg/think.svg";
-import Stocks from "@/public/assets/img/png/stocks.png";
-import Money from "@/public/assets/img/png/money.png";
-import Exchange from "@/public/assets/img/png/exchange.png";
-import Card from "@/src/components/cards/card";
-import Textwithcolor from "@/src/components/ui/text-with-color";
-import Checkwithtext from "@/src/components/ui/check-with-text";
-import Video from "@/src/components/ui/video";
-import TestimonialsCard from "@/src/components/ui/test-card";
-import { Testimonials } from "@/src/mock/data";
 import Account from "@/src/components/ui/account";
+import Card from "@/src/components/cards/card";
+import Checkwithtext from "@/src/components/ui/check-with-text";
+import Exchange from "@/public/assets/img/png/exchange.png";
+import Fund from "@/public/assets/img/svg/fund.svg";
+import Grad from "@/public/assets/img/svg/grad.svg";
+import Image from "next/image";
+import Money from "@/public/assets/img/png/money.png";
+import Progress from "@/public/assets/img/svg/progress.svg";
+import Stocks from "@/public/assets/img/png/stocks.png";
+import Tap from "@/public/assets/img/svg/tap.svg";
+import { Testimonials } from "@/src/mock/data";
+import TestimonialsCard from "@/src/components/ui/test-card";
+import Textwithcolor from "@/src/components/ui/text-with-color";
+import Think from "@/public/assets/img/svg/think.svg";
+import Topheader from "@/src/components/screens/top-header/top-header";
+import Video from "@/src/components/ui/video";
 const data = [
   {
     icon: "/assets/img/svg/education.svg",
@@ -209,7 +209,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="hidden lg:block">
+      <div className="hidden lg:block bg-white">
         <div className="w-full h-[312px] relative">
           <div className="w-[187px] h-16 px-[30px] py-5 left-[641px] top-[189px] absolute bg-black rounded-lg justify-center items-center gap-2.5 inline-flex">
             <div className="text-base font-medium text-center text-white capitalize">
@@ -229,7 +229,7 @@ export default function Home() {
         </div>
       </div>
       <Account />
-      <div className="hidden border-2 border-red-500 lg:block">
+      <div className="hidden  lg:block">
         <div className="w-full h-[312px] relative bg-[#D4AF37]">
           <div className="w-[187px] mt-8 h-16 px-[30px] py-5 left-[641px] top-[189px] absolute bg-black rounded-lg justify-center items-center gap-2.5 inline-flex">
             <div className="text-base font-medium text-center text-white capitalize">

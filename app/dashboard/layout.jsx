@@ -4,7 +4,7 @@ import React from "react";
 
 function DashboardLayout({ children }) {
   return (
-    <div className=" h-[100vh]  m-auto w-[80%]">
+    <div className=" h-[100vh] container mx-auto">
       <div className="h-[100px] p-3 hidden lg:block">
         <DashboardHeader />
         <hr className="w-full border" />

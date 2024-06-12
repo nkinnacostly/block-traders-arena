@@ -4,16 +4,16 @@
 import React, { useState } from "react";
 
 import { AnimatePage } from "@/src/components/animations/page";
-import Button from "@/src/components/dashboard/button/button";
+import Button from "@/src/components/ui/button/button";
 import { FaCircle } from "react-icons/fa";
 import LoginHeader from "@/src/components/dashboard/loginHeader/loginHeader";
-import PasswordInput from "@/src/components/dashboard/input/passwordInput";
-import TextInput from "@/src/components/dashboard/input/textInput";
+import PasswordInput from "@/src/components/ui/input/passwordInput";
+import TextInput from "@/src/components/ui/input/textInput";
 import { storage } from "@/src/utils/storage";
 import { toast } from "sonner";
 import useApiRequest from "@/src/hooks/useCustonApiQuery";
 import { useRouter } from "next/navigation";
-import { useUserStore } from "@/src/store/user-store";
+import { useUserStore } from "@/src/store/store";
 import { z } from "zod";
 
 // console.log(toast, "This is toast");
@@ -89,6 +89,7 @@ function SignUp() {
         },
         {
           onSuccess: (data) => {
+            // console.log(data, "This is my data");
             toast.success(data.message);
             storage.localStorage.set("user", data.user);
             storage.localStorage.set("__session", data.data?.token);
@@ -96,6 +97,8 @@ function SignUp() {
           },
           onError: (error) => {
             toast.error(error.message);
+            console.log(error, "This is my data error");
+
             // console.log(error, "This is error");
           },
         }
@@ -135,7 +138,7 @@ function SignUp() {
       <div className="grid grid-cols-2 gap-5">
         <div
           className={`${
-            isValid.length ? "text-[#05390aed]" : "text-[#1E1E1E99]"
+            isValid.length && "text-green-500"
           } flex items-center space-x-2  truncate sliding-text`}
         >
           <span>
@@ -145,7 +148,7 @@ function SignUp() {
         </div>
         <div
           className={`${
-            isValid.uppercase ? "text-[#05390aed]" : "text-[#1E1E1E99]"
+            isValid.uppercase && "text-green-500"
           } flex items-center space-x-2 truncate sliding-text`}
         >
           <span>
@@ -155,7 +158,7 @@ function SignUp() {
         </div>
         <div
           className={`${
-            isValid.lowercase ? "text-[#05390aed]" : "text-[#1E1E1E99]"
+            isValid.lowercase && "text-green-500"
           } flex items-center space-x-2  truncate sliding-text`}
         >
           <span>
@@ -165,7 +168,7 @@ function SignUp() {
         </div>
         <div
           className={`${
-            isValid.specialChar ? "text-[#05390aed]" : "text-[#1E1E1E99]"
+            isValid.specialChar && "text-green-500"
           } flex items-center space-x-2 `}
         >
           <span>
@@ -175,7 +178,7 @@ function SignUp() {
         </div>
         <div
           className={`${
-            isValid.number ? "text-[#05390aed]" : "text-[#1E1E1E99]"
+            isValid.number && "text-green-500"
           } flex items-center space-x-2 `}
         >
           <span>
@@ -191,12 +194,12 @@ function SignUp() {
           name="notification"
           onChange={handleUserInputs}
         />
-        <p className="text-[16px] font-[400] text-[#1E1E1E]">
+        <p className="text-[16px] font-[400] ">
           I want to receive emails about the product, feature updates, events,
           and marketing promotions.
         </p>
       </div>
-      <p className="text-[16px] font-[400] text-[#1E1E1E] p-2 mt-2">
+      <p className="text-[16px] font-[400]  p-2 mt-2">
         {" "}
         By creating an account, you agree to the{" "}
         <span className="underline cursor-pointer">Terms of use</span> and{" "}
@@ -210,7 +213,7 @@ function SignUp() {
         loading={isPending}
       />
       <div className="flex items-center justify-center w-full">
-        <p className="text-[16px] font-[400] text-[#1E1E1E] p-2">
+        <p className="text-[16px] font-[400]  p-2">
           Already have an account?{" "}
           <span
             className="underline cursor-pointer text-[#EE1D52]"

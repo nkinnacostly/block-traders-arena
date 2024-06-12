@@ -1,17 +1,19 @@
 "use client";
-import NumbersCard from "@/src/components/cards/numbersCard";
-import Topheader from "@/src/components/screens/top-header/top-header";
-import Image from "next/image";
+
 import {
-  VideoWithButtons,
   VideoWithButton,
+  VideoWithButtons,
 } from "@/src/components/ui/video-with-button";
-import React from "react";
+
 import Footercontact from "@/src/components/ui/footer-contact";
+import Image from "next/image";
+import NumbersCard from "@/src/components/cards/numbersCard";
+import React from "react";
+import Topheader from "@/src/components/screens/top-header/top-header";
 
 function Education() {
   return (
-    <div className="relative ">
+    <div className=" ">
       <Topheader
         backgroundImage={"/assets/img/png/ed-bg.png"}
         colouredText={"Knowledge Hub"}
@@ -21,13 +23,12 @@ function Education() {
         check1={"Get educated on better trading"}
         check2={"Take on the market with monitored funding "}
         check3={"Your rollover made easier"}
-        className={"relative "}
       />
       <div
-        className="w-full px-[2rem] xl:px-[5rem]  h-[100vh] 2xl:h-[50vh] bg-no-repeat bg-cover bg-center"
+        className=" p-6 bg-repeat bg-cover"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <div className=" bg-black h-[1500px] lg:[2000px] lg:left-[6.5rem] overflow-scroll xl:overscroll-none p-6 rounded-[20px]  flex items-start left-0  justify-center flex-col absolute top-[45rem] 2xl:left-[13rem] lg:right-[6.5rem] lg:w-[80%] lg:px-[2rem] xl:right-[7.5rem] py-10">
+        <div className=" bg-black p-6 rounded-[20px]">
           <div className="w-full h-full">
             <div className="mb-5">
               <p className=" h-[57px] text-white text-[40px] font-medium">
@@ -65,14 +66,7 @@ function Education() {
           </div>
         </div>
       </div>
-      <div
-        className="w-full h-[50vh] lg:h-[100vh] bg-no-repeat  2xl:h-20  bg-cover bg-center"
-        style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
-      ></div>
-      <div
-        className="w-full bg-center bg-no-repeat bg-cover "
-        style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
-      ></div>
+
       <div
         className="w-full bg-center bg-no-repeat bg-cover"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
@@ -96,7 +90,7 @@ function Education() {
             </span>
           </div>
 
-          <div className="flex flex-col items-center justify-center lg:items-start">
+          <div className="flex flex-col items-center justify-center lg:items-start py-6">
             <p className="text-xl font-medium text-center text-black lg:text-start">
               Get access to trades with grown equity and great spreads.
             </p>

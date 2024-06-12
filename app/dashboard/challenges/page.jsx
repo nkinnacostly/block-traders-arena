@@ -1,5 +1,5 @@
 import AllDashboardCourses from "@/src/components/dashboard/courses";
-import { AnimatePage } from "@/src/components/animations/page";
+// import { AnimatePage } from "@/src/components/animations/page";
 import DashboardChallenges from "@/src/components/dashboard/challenges";
 import React from "react";
 
@@ -31,4 +31,4 @@ function Challenges() {
   );
 }
 
-export default AnimatePage(Challenges);
+export default Challenges;

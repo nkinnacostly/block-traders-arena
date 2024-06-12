@@ -1,11 +1,11 @@
-import React from "react";
-import Buttonwithbg from "./button-with-bg";
-import Textwithcolor from "./text-with-color";
-import Image from "next/image";
-import Envelop from "@/public/assets/img/svg/Envelope.svg";
-import Telephone from "@/public/assets/img/svg/Telephone.svg";
 import Address from "@/public/assets/img/svg/address.svg";
-import Send from "@/public/assets/img/svg/send.svg";
+import Buttonwithbg from "./button-with-bg";
+import Envelop from "@/public/assets/img/svg/Envelope.svg";
+import Image from "next/image";
+import React from "react";
+import Telephone from "@/public/assets/img/svg/Telephone.svg";
+import Textwithcolor from "./text-with-color";
+// import Send from "@/public/assets/img/svg/send.svg";
 function Footercontact() {
   return (
     <div>
@@ -46,7 +46,7 @@ function Footercontact() {
             <p className="text-xl font-medium text-amber-400 ">
               I’m interested in...
             </p>
-            <div className="grid w-full grid-cols-2 gap-8 mt-4">
+            <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mt-4">
               <Buttonwithbg btnText={"Trading"} className={"h-[62px]"} />
               <div className=" h-[62px] p-4 rounded-lg border-2 border-stone-900 border-opacity-60 justify-start items-start gap-2.5 inline-flex">
                 <p className="text-xl font-medium text-center grow shrink basis-0 text-stone-900 text-opacity-60 ">
@@ -54,22 +54,22 @@ function Footercontact() {
                 </p>
               </div>
             </div>
-            <div className="w-[89px] h-[62px] p-4 rounded-lg border-2 border-stone-900 border-opacity-60 justify-start items-start gap-2.5 inline-flex mt-4">
+            <div className=" p-4 rounded-lg border-2 border-stone-900 border-opacity-60 justify-start items-start gap-2.5 inline-flex mt-4">
               <p className="text-xl font-medium text-center grow shrink basis-0 text-stone-900 text-opacity-60 ">
                 Other
               </p>
             </div>
             <div>
               <input
-                className="w-full h-[50px] border-b border-stone-900 focus:border-amber-400 outline-none mb-[4rem] mt-[3rem]"
+                className="w-full h-[50px] border-b border-stone-900 focus:border-amber-400 outline-none mb-[4rem] mt-[3rem] px-3"
                 placeholder="Your Email"
               />
               <input
-                className="w-full h-[50px] border-b border-stone-900 focus:border-amber-400 outline-none mb-[4rem]"
+                className="w-full h-[50px] border-b border-stone-900 focus:border-amber-400 outline-none mb-[4rem] px-3"
                 placeholder="Your Email"
               />
               <input
-                className="w-full h-[50px] border-b border-stone-900 focus:border-amber-400 outline-none "
+                className="w-full h-[50px] border-b border-stone-900 focus:border-amber-400 outline-none px-3"
                 placeholder="Your Email"
               />
             </div>

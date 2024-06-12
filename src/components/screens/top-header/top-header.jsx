@@ -1,14 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import React from "react";
-import Textwithcolor from "../../ui/text-with-color";
-import Check from "@/public/assets/img/svg/check.svg";
 import Buttonwithbg from "../../ui/button-with-bg";
 import Buttonwithoutbg from "../../ui/button-without-bg";
+import Check from "@/public/assets/img/svg/check.svg";
+import Image from "next/image";
+import MobileNav from "@/app/homepage/components/mobile-nav";
+import Navbar from "@/app/homepage/components/nav-bar";
+import React from "react";
+import Textwithcolor from "../../ui/text-with-color";
 import { useRouter } from "next/navigation";
-import MobileNav from "@/app/homepage/ui/mobile-nav";
-import Navbar from "@/app/homepage/ui/nav-bar";
 
 function Topheader({
   backgroundImage,
@@ -25,7 +25,7 @@ function Topheader({
       <MobileNav />
 
       <div
-        className={` px-[2rem] xl:px-[5rem]  lg:pt-[3rem] bg-cover bg-no-repeat h-[100vh] ${className}`}
+        className={` px-[2rem] xl:px-[5rem]  lg:pt-[3rem] bg-cover bg-no-repeat h-[85vh] ${className}`}
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <Navbar />
@@ -55,12 +55,12 @@ function Topheader({
             <Buttonwithbg
               btnText={"Get Started"}
               className={"h-[70px] w-full lg:w-[226.67px]"}
-              onClick={(() => router.push("/auth/login"))}
+              onClick={() => router.push("/auth/login")}
             />
             <Buttonwithoutbg
               Btntext={"Start Learning"}
               className={"h-[70px] w-full lg:w-[226.67px] text-white"}
-              onClick={(() => router.push("/auth/sign-up"))}
+              onClick={() => router.push("/auth/sign-up")}
             />
           </div>
         </div>

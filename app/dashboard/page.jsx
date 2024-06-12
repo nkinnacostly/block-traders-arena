@@ -9,7 +9,9 @@ import { AnimatePage } from "@/src/components/animations/page";
 import BarChart from "@/src/components/dashboard/chart/barChart";
 import Buttonwithbg from "@/src/components/ui/button-with-bg";
 import DashboardChallenges from "@/src/components/dashboard/challenges";
-import DatePicker from "react-datepicker";
+import { DatePickerCalendar } from "./components/calendar";
+// import DatePicker from "react-datepicker";
+import { DialogComponent } from "./components/dialog-component";
 import { FaCircleCheck } from "react-icons/fa6";
 import { GiHourglass } from "react-icons/gi";
 import { GiProgression } from "react-icons/gi";
@@ -54,7 +56,7 @@ const courseContent = [
   },
 ];
 function Dashboard() {
-  const [selectedDate, setSelectedDate] = useState(null);
+  // const [selectedDate, setSelectedDate] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [description, setDescription] = useState("");
   const [meetings, setMeetings] = useState([]);
@@ -65,17 +67,17 @@ function Dashboard() {
   //   start: startOfMonth(now),
   //   end: endOfMonth(now),
   // });
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    setModalIsOpen(true);
-  };
+  // const handleDateChange = (date) => {
+  //   setSelectedDate(date);
+  //   setModalIsOpen(true);
+  // };
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
 
   const handleAddMeeting = () => {
-    setMeetings([...meetings, { date: selectedDate, description }]);
+    setMeetings([...meetings, { description }]);
     setDescription("");
     setModalIsOpen(false);
   };
@@ -92,6 +94,7 @@ function Dashboard() {
 
   return (
     <>
+      <DialogComponent />
       <div>
         <h5 className="text-[24px]  font-[500]">Overview</h5>
       </div>
@@ -141,12 +144,13 @@ function Dashboard() {
             <h5 className="text-[24px]  font-[500] m-4">Schedule</h5>
 
             <div className="flex items-start justify-center w-full">
-              <DatePicker
+              {/* <DatePicker
                 selected={selectedDate}
                 onChange={handleDateChange}
                 // className=""
                 inline
-              />
+              /> */}
+              <DatePickerCalendar />
             </div>
             {/* {dates.map((date, index) => (
               <div key={index}>{format(date, "dd/MM/yyyy")}</div>

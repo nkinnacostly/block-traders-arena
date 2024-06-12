@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+
+// import Buttonwithbg from "./button-with-bg";
+// import Buttonwithoutbg from "./button-without-bg";
 import Image from "next/image";
-import Buttonwithbg from "./button-with-bg";
-import Buttonwithoutbg from "./button-without-bg";
+import React from "react";
 
 export function VideoWithButton() {
   return (
@@ -69,7 +70,7 @@ export function VideoWithButtons() {
             Introduction to Trading Basics for Beginners: Exploring the World of
             Financial Markets
           </p>
-          <div className="border-2 flex items-center justify-between mt-[1rem]">
+          <div className=" flex items-center justify-between mt-[1rem]">
             <div className="flex items-center justify-center space-x-2">
               <Image
                 src={"/assets/img/svg/clock.svg"}

@@ -1,9 +1,9 @@
-import Footer from "./ui/footer";
+import Footer from "./components/footer";
 import React from "react";
 
 function HomeLayout({ children }) {
   return (
-    <div className="m-auto w-[80%]">
+    <div className="mx-auto container">
       {children}
       <div className="w-full bg-black">
         <Footer />

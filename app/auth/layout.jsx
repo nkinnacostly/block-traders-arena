@@ -1,10 +1,10 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
 function AuthLayout({ children }) {
   return (
-    <div className="w-full h-[100vh]  bg-white flex flex-col lg:flex-row container">
-      <div className="bg-white w-full lg:w-[50%] h-full  ">
+    <div className="w-full h-[100vh]   flex flex-col lg:flex-row container mx-auto">
+      <div className=" w-full lg:w-[50%] h-full  ">
         <div className="h-[10%]">
           <Image
             src={"/assets/img/svg/ellipse.svg"}

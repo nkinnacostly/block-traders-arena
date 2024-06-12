@@ -1,9 +1,9 @@
-import React from "react";
 import Home from "./homepage/page";
+import React from "react";
 
 function Page() {
   return (
-    <div className="container">
+    <div className="container mx-auto">
       <Home />
     </div>
   );

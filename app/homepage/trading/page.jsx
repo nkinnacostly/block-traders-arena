@@ -1,14 +1,15 @@
 "use client";
-import NumbersCard from "@/src/components/cards/numbersCard";
-import Topheader from "@/src/components/screens/top-header/top-header";
-import Image from "next/image";
-import {
-  VideoWithButtons,
-  VideoWithButton,
-} from "@/src/components/ui/video-with-button";
-import React from "react";
-import Footercontact from "@/src/components/ui/footer-contact";
+
 import Buttonwithbg from "@/src/components/ui/button-with-bg";
+import Footercontact from "@/src/components/ui/footer-contact";
+import Image from "next/image";
+import NumbersCard from "@/src/components/cards/numbersCard";
+// import {
+//   VideoWithButtons,
+//   VideoWithButton,
+// } from "@/src/components/ui/video-with-button";
+import React from "react";
+import Topheader from "@/src/components/screens/top-header/top-header";
 
 function Trading() {
   return (
@@ -22,13 +23,13 @@ function Trading() {
         check1={"Get educated on better trading"}
         check2={"Take on the market with monitored funding "}
         check3={"Your rollover made easier"}
-        className={"relative z-10"}
+        className={" z-10"}
       />
       <div
-        className="w-full px-[2rem] xl:px-[5rem]  h-[100vh] bg-no-repeat bg-cover bg-center"
+        className=" p-6 bg-repeat bg-cover"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <div className=" bg-black rounded-[20px]  p-5 lg:p-0 lg:[2000px] left-0 overflow-y-scroll xl:overscroll-none flex items-start z-10 justify-center flex-col absolute top-[46rem] 2xl:right-[13rem] lg:right-[6.5rem]  lg:px-[2rem] xl:left-[7.5rem] py-10">
+        <div className="rounded-[20px] bg-black p-6">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 place-content-center">
             <div className="">
               <Image
@@ -120,19 +121,7 @@ function Trading() {
         </div>
       </div>
       <div
-        className="w-full h-[100vh]  lg:h-[60vh]  2xl:h-[30vh] bg-no-repeat bg-cover bg-center"
-        style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
-      ></div>
-      <div
-        className="w-full h-[40vh]  lg:h-[60vh]  2xl:h-[30vh] bg-no-repeat bg-cover bg-center"
-        style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
-      ></div>
-      {/* <div
-        className="w-full  lg:h-[60vh]  2xl:h-[50vh] bg-no-repeat bg-cover bg-center"
-        style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
-      ></div> */}
-      <div
-        className="w-full 2xl:h-[50vh]  xl:h-[60vh] bg-center bg-no-repeat bg-cover px-[2rem]"
+        className="w-full 2xl:h-[50vh]  xl:h-[60vh] bg-center bg-no-repeat bg-cover px-[2rem] py-6"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
         <div className="flex flex-col items-center justify-center w-full ">
