@@ -9,8 +9,9 @@ function TextInput({
   register,
   valueAsNumber,
   error,
-  value,
+  // value,
   disabled,
+  defaultValue,
 }) {
   return (
     <div className="flex flex-col items-start justify-center w-full mb-5">
@@ -22,9 +23,9 @@ function TextInput({
         onChange={onChange}
         name={name}
         type={type}
-        value={value}
         {...register(name, { valueAsNumber })}
         disabled={disabled}
+        defaultValue={defaultValue}
       />
       {error && <span className="text-red-500">{error.message}</span>}
     </div>

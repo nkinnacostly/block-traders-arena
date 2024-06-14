@@ -61,15 +61,15 @@ function Footercontact() {
             </div>
             <div>
               <input
-                className="w-full h-[50px] border-b border-stone-900 focus:border-amber-400 outline-none mb-[4rem] mt-[3rem] px-3"
+                className="w-full h-[50px]  border-b bg-white border-stone-900 focus:border-amber-400 outline-none mb-[4rem] mt-[3rem] px-3"
                 placeholder="Your Email"
               />
               <input
-                className="w-full h-[50px] border-b border-stone-900 focus:border-amber-400 outline-none mb-[4rem] px-3"
+                className="w-full h-[50px] border-b bg-white border-stone-900 focus:border-amber-400 outline-none mb-[4rem] px-3"
                 placeholder="Your Email"
               />
               <input
-                className="w-full h-[50px] border-b border-stone-900 focus:border-amber-400 outline-none px-3"
+                className="w-full h-[50px] border-b bg-white border-stone-900 focus:border-amber-400 outline-none px-3"
                 placeholder="Your Email"
               />
             </div>

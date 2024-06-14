@@ -13,3 +13,7 @@ export const settingSchema = z.object({
   //     .min(8, { message: "Password is too short" })
   //     .max(20, { message: "Password is too long" }),
 });
+
+export const notificationSchema = z.object({
+  enabled: z.coerce.string().transform((val) => (val === "on" ? true : false)),
+});

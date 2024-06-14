@@ -3,7 +3,7 @@ import React from "react";
 
 function AuthLayout({ children }) {
   return (
-    <div className="w-full h-[100vh]   flex flex-col lg:flex-row container mx-auto">
+    <div className="w-full h-[100vh]   flex flex-col lg:flex-row container !p-0">
       <div className=" w-full lg:w-[50%] h-full  ">
         <div className="h-[10%]">
           <Image

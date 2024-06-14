@@ -8,11 +8,17 @@ export const useUserStore = create(
     (set) => ({
       loggedInUserDetails: {},
       setLoggedInUserDetails: (loggedInUserDetails) =>
-        set(() => ({ loggedInUserDetails: loggedInUserDetails })),
+        set(() => ({
+          loggedInUserDetails: loggedInUserDetails,
+        })),
     }),
     {
       name: "user-data", // name of the item in the storage (must be unique)
       storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+    },
+    {
+      // ...
+      skipHydration: true,
     }
   )
 );

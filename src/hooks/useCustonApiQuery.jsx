@@ -1,31 +1,31 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import axios from "axios";
+import { storage } from "../utils/storage";
 import { toast } from "sonner";
 import { useCallback } from "react";
-import { useUserStore } from "../store/store";
 
-// Set the base URL from an environment variable or configure it directly here
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-// Define your API fetching function using Axios
-// async function fetchApiData({ method, url, data }) {
-//   const response = await axios({ method, url, data });
-//   return response.data;
-// }
 
 // Custom hook for handling API requests
 function useApiRequest() {
   // const queryClient = useQueryClient();
-  const { loggedInUserDetails } = useUserStore();
-  const { token } = loggedInUserDetails;
+
+  const token = storage.cookieStorage.get("__session");
+
   // Function to fetch data from API
   const fetchData = async (url) => {
     try {
-      const response = await axios.get(url);
-      return response.data;
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      return response;
     } catch (error) {
-      throw new Error(`Failed to fetch data from ${url}: ${error.message}`);
+      // throw new Error(`Failed to fetch data from ${url}: ${error.message}`);
+      console.log("Request Error:", error);
     }
   };
 
@@ -42,8 +42,6 @@ function useApiRequest() {
           "Content-Type": "application/json",
         },
       });
-      // Invalidate relevant queries after successful mutation
-      // queryClient.invalidateQueries(url);
       return response.data;
     } catch (error) {
       toast.error(`${error.response.data.error}`);
@@ -54,8 +52,12 @@ function useApiRequest() {
   };
 
   // Custom hook for GET requests using React Query
-  const useGetRequest = (url) => {
-    return useQuery({ queryKey: url, queryFn: () => fetchData(url) });
+  const useGetRequest = (url, reqKey) => {
+    return useQuery({
+      queryKey: reqKey,
+      queryFn: () => fetchData(url),
+      // enabled: !url,
+    });
   };
 
   // Custom hook for mutation requests using React Query

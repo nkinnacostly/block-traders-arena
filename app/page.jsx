@@ -3,7 +3,7 @@ import React from "react";
 
 function Page() {
   return (
-    <div className="container mx-auto">
+    <div className="container  !p-0">
       <Home />
     </div>
   );

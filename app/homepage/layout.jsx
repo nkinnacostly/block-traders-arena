@@ -3,7 +3,7 @@ import React from "react";
 
 function HomeLayout({ children }) {
   return (
-    <div className="mx-auto container">
+    <div className=" container !p-0">
       {children}
       <div className="w-full bg-black">
         <Footer />
