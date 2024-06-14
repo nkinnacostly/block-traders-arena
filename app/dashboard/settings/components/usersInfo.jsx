@@ -15,8 +15,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function UsersInfo() {
   const { loggedInUserDetails } = useUserStore();
-  // const [usersInfo, setUsersInfo] = useState();
-
   const { useMutationRequest } = useApiRequest();
   const { mutateAsync, isPending } = useMutationRequest();
   const { error } = useGetUserInfo();
@@ -31,7 +29,6 @@ export default function UsersInfo() {
     resolver: zodResolver(settingSchema),
     defaultValues: {
       id: loggedInUserDetails?.id,
-
       email: loggedInUserDetails?.email,
     },
   });
@@ -64,20 +61,15 @@ export default function UsersInfo() {
               queryKey: ["users-info"],
             });
             toast.success("Profile Updates Successfully");
-            // router.push("/dashboard");
           },
           onError: (error) => {
-            // toast.error(error.message);
             console.log(error, "This is error");
           },
         }
       );
-      // {
-      //   mutation.isSuccess(console.log("active"));
-      // }
     } catch (error) {
       // console.error("Error adding data:", error.message);
-      // console.log(error.error);
+      toast.error(error);
     }
   };
   {

@@ -15,5 +15,13 @@ export const settingSchema = z.object({
 });
 
 export const notificationSchema = z.object({
-  enabled: z.coerce.string().transform((val) => (val === "on" ? true : false)),
+  notification_email: z.coerce
+    .string()
+    .transform((val) => (val === "on" ? true : false)),
+  notification_sms: z.coerce
+    .string()
+    .transform((val) => (val === "on" ? true : false)),
+  notification_push: z.coerce
+    .string()
+    .transform((val) => (val === "on" ? true : false)),
 });
