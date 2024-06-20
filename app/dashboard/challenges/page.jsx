@@ -1,6 +1,6 @@
-import AllDashboardCourses from "@/src/components/dashboard/courses";
+import AllDashboardCourses from "@/components/dashboard/courses";
 // import { AnimatePage } from "@/src/components/animations/page";
-import DashboardChallenges from "@/src/components/dashboard/challenges";
+import DashboardChallenges from "@/components/dashboard/challenges";
 import React from "react";
 
 function Challenges() {

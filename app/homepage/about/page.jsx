@@ -1,4 +1,4 @@
-import Card from "@/src/components/cards/card";
+import Card from "@/components/cards/card";
 // import Image from "next/image";
 // import Textwithcolor from "@/src/components/ui/text-with-color";
 // import Envelop from "@/public/assets/img/svg/Envelope.svg";
@@ -7,8 +7,8 @@ import Card from "@/src/components/cards/card";
 // import Send from "@/public/assets/img/svg/send.svg";
 // import Buttonwithbg from "@/src/components/ui/button-with-bg";
 // import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
-import Footercontact from "@/src/components/ui/footer-contact";
-import NumbersCard from "@/src/components/cards/numbersCard";
+import Footercontact from "@/components/ui/footer-contact";
+import NumbersCard from "@/components/cards/numbersCard";
 import React from "react";
 import Topheader from "@/src/components/screens/top-header/top-header";
 const data = [

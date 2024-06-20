@@ -1,6 +1,6 @@
-import React from "react";
 import Buttonwithbg from "../ui/button-with-bg";
 import Image from "next/image";
+import React from "react";
 
 function DashboardChallenges() {
   return (

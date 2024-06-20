@@ -1,4 +1,4 @@
-import Buttonwithbg from "@/src/components/ui/button-with-bg";
+import Buttonwithbg from "@/components/ui/button-with-bg";
 // import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
 import Down from "@/public/assets/img/svg/down.svg";
 import Image from "next/image";

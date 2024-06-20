@@ -2,15 +2,15 @@
 
 import React, { useEffect } from "react";
 
-import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
-import TextInput from "@/src/components/ui/input/textInput";
-import { settingSchema } from "@/src/schemas/settings";
+import Buttonwithoutbg from "@/components/ui/button-without-bg";
+import TextInput from "@/components/input/textInput";
+import { settingSchema } from "@/schemas/settings";
 import { toast } from "sonner";
-import useApiRequest from "@/src/hooks/useCustonApiQuery";
+import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useForm } from "react-hook-form";
-import useGetUserInfo from "@/src/hooks/useGetUserInfo";
+import useGetUserInfo from "@/hooks/useGetUserInfo";
 import { useQueryClient } from "@tanstack/react-query";
-import { useUserStore } from "@/src/store/store";
+import { useUserStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function UsersInfo() {

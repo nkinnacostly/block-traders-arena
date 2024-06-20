@@ -1,6 +1,6 @@
-import Account from "@/src/components/ui/account";
-import Card from "@/src/components/cards/card";
-import Checkwithtext from "@/src/components/ui/check-with-text";
+import Account from "@/components/ui/account";
+import Card from "@/components/cards/card";
+import Checkwithtext from "@/components/ui/check-with-text";
 import Exchange from "@/public/assets/img/png/exchange.png";
 import Fund from "@/public/assets/img/svg/fund.svg";
 import Grad from "@/public/assets/img/svg/grad.svg";
@@ -9,12 +9,12 @@ import Money from "@/public/assets/img/png/money.png";
 import Progress from "@/public/assets/img/svg/progress.svg";
 import Stocks from "@/public/assets/img/png/stocks.png";
 import Tap from "@/public/assets/img/svg/tap.svg";
-import { Testimonials } from "@/src/mock/data";
-import TestimonialsCard from "@/src/components/ui/test-card";
-import Textwithcolor from "@/src/components/ui/text-with-color";
+import { Testimonials } from "@/mock/data";
+import TestimonialsCard from "@/components/ui/test-card";
+import Textwithcolor from "@/components/ui/text-with-color";
 import Think from "@/public/assets/img/svg/think.svg";
 import Topheader from "@/src/components/screens/top-header/top-header";
-import Video from "@/src/components/ui/video";
+import Video from "@/components/ui/video";
 const data = [
   {
     icon: "/assets/img/svg/education.svg",

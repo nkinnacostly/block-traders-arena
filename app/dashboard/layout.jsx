@@ -1,5 +1,5 @@
-import DashboardHeader from "@/src/components/dashboard/header";
-import DashboardSidebar from "@/src/components/dashboard/sidebar";
+import DashboardHeader from "@/components/dashboard/header";
+import DashboardSidebar from "@/components/dashboard/sidebar";
 import React from "react";
 
 function DashboardLayout({ children }) {

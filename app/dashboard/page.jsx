@@ -3,12 +3,12 @@
 // import { eachDayOfInterval, startOfMonth, endOfMonth, format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { AnimatePage } from "@/src/components/animations/page";
-import BarChart from "@/src/components/dashboard/chart/barChart";
-import Buttonwithbg from "@/src/components/ui/button-with-bg";
-import DashboardChallenges from "@/src/components/dashboard/challenges";
+import { AnimatePage } from "@/components/animations/page";
+import BarChart from "@/components/dashboard/chart/barChart";
+import Buttonwithbg from "@/components/ui/button-with-bg";
+import DashboardChallenges from "@/components/dashboard/challenges";
 import { DatePickerCalendar } from "./components/calendar";
 // import DatePicker from "react-datepicker";
 import { DialogComponent } from "./components/dialog-component";
@@ -20,6 +20,8 @@ import Link from "next/link";
 import Modal from "react-modal";
 import { RiAwardFill } from "react-icons/ri";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { useUserStore } from "@/store/store";
 
 // import { useTheme } from "next-themes";
 
@@ -57,6 +59,10 @@ const courseContent = [
 ];
 function Dashboard() {
   // const [selectedDate, setSelectedDate] = useState(null);
+  const router = useRouter();
+  const { loggedInUserDetails } = useUserStore();
+  // const { user } = loggedInUserDetails;
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [description, setDescription] = useState("");
   const [meetings, setMeetings] = useState([]);
@@ -71,6 +77,14 @@ function Dashboard() {
   //   setSelectedDate(date);
   //   setModalIsOpen(true);
   // };
+
+  useEffect(() => {
+    // <DialogComponent />;
+    // alert("yooo");
+    if (loggedInUserDetails?.first_name === null) {
+      router.push("/dashboard/settings");
+    }
+  }, [loggedInUserDetails?.first_name, router]);
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);

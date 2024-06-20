@@ -1,18 +1,18 @@
 "use client";
 
-import { AnimatePage } from "@/src/components/animations/page";
-import Button from "@/src/components/ui/button/button";
-import LoginHeader from "@/src/components/dashboard/loginHeader/loginHeader";
-import PasswordInput from "@/src/components/ui/input/passwordInput";
+import { AnimatePage } from "@/components/animations/page";
+import Button from "@/components/button/button";
+import LoginHeader from "@/components/dashboard/loginHeader/loginHeader";
+import PasswordInput from "@/components/input/passwordInput";
 import React from "react";
-import TextInput from "@/src/components/ui/input/textInput";
-import { profileSchema } from "@/src/schemas/login";
-import { storage } from "@/src/utils/storage";
+import TextInput from "@/components/input/textInput";
+import { profileSchema } from "@/schemas/login";
+import { storage } from "@/utils/storage";
 import { toast } from "sonner";
-import useApiRequest from "@/src/hooks/useCustonApiQuery";
+import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useUserStore } from "@/src/store/store";
+import { useUserStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 function Login() {

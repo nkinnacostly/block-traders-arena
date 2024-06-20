@@ -4,7 +4,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import React, { useState } from "react";
 
 // import { useTheme } from "next-themes";
-import { useUserStore } from "@/src/store/store";
+import { useUserStore } from "@/store/store";
 
 function PasswordInput({
   inputText,

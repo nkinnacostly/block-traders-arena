@@ -3,11 +3,11 @@
 import {
   VideoWithButton,
   VideoWithButtons,
-} from "@/src/components/ui/video-with-button";
+} from "@/components/ui/video-with-button";
 
-import Footercontact from "@/src/components/ui/footer-contact";
+import Footercontact from "@/components/ui/footer-contact";
 import Image from "next/image";
-import NumbersCard from "@/src/components/cards/numbersCard";
+import NumbersCard from "@/components/cards/numbersCard";
 import React from "react";
 import Topheader from "@/src/components/screens/top-header/top-header";
 

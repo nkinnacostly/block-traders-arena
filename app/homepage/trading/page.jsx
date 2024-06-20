@@ -1,9 +1,9 @@
 "use client";
 
-import Buttonwithbg from "@/src/components/ui/button-with-bg";
-import Footercontact from "@/src/components/ui/footer-contact";
+import Buttonwithbg from "@/components/ui/button-with-bg";
+import Footercontact from "@/components/ui/footer-contact";
 import Image from "next/image";
-import NumbersCard from "@/src/components/cards/numbersCard";
+import NumbersCard from "@/components/cards/numbersCard";
 // import {
 //   VideoWithButtons,
 //   VideoWithButton,

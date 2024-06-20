@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 // import { Button } from "@/components/ui/button";
-import { useDialog } from "@/src/store/store";
+import { useDialog } from "@/store/store";
 
 export function DialogComponent() {
   const { isOpen, onClose } = useDialog();

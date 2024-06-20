@@ -1,10 +1,10 @@
 import "./globals.css";
 
 import { Poppins } from "next/font/google";
-import Providers from "../src/utils/provider";
-import ThemeProviderWrapper from "@/src/components/theme-provider";
+import Providers from "../utils/provider";
+import ThemeProviderWrapper from "@/theme-provider";
 // import Navbar from "./homepage/ui/layout/nav-bar";
-import { Toaster } from "@/src/components/ui/toaster";
+import { Toaster } from "@/components/ui/toaster";
 
 const poppins = Poppins({
   subsets: ["latin"],

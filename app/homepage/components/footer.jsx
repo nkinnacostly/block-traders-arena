@@ -1,8 +1,8 @@
-import React from "react";
+import Buttonwithbg from "@/components/ui/button-with-bg";
+import Buttonwithoutbg from "@/components/ui/button-without-bg";
 import Image from "next/image";
 import Logo from "@/public/assets/img/png/logo.png";
-import Buttonwithbg from "@/src/components/ui/button-with-bg";
-import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
+import React from "react";
 
 function HomepageFooter() {
   return (

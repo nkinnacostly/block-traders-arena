@@ -3,17 +3,17 @@
 
 import React, { useState } from "react";
 
-import { AnimatePage } from "@/src/components/animations/page";
-import Button from "@/src/components/ui/button/button";
+import { AnimatePage } from "@/components/animations/page";
+import Button from "@/components/button/button";
 import { FaCircle } from "react-icons/fa";
-import LoginHeader from "@/src/components/dashboard/loginHeader/loginHeader";
-import PasswordInput from "@/src/components/ui/input/passwordInput";
-import TextInput from "@/src/components/ui/input/textInput";
-import { storage } from "@/src/utils/storage";
+import LoginHeader from "@/components/dashboard/loginHeader/loginHeader";
+import PasswordInput from "@/components/input/passwordInput";
+import TextInput from "@/components/input/textInput";
+import { storage } from "@/utils/storage";
 import { toast } from "sonner";
-import useApiRequest from "@/src/hooks/useCustonApiQuery";
+import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useRouter } from "next/navigation";
-import { useUserStore } from "@/src/store/store";
+import { useUserStore } from "@/store/store";
 import { z } from "zod";
 
 // console.log(toast, "This is toast");
