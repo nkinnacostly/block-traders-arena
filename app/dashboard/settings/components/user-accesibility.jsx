@@ -1,3 +1,5 @@
+"use client";
+
 import { Label } from "@/components/ui/label";
 import React from "react";
 import { Switch } from "@/components/ui/switch";

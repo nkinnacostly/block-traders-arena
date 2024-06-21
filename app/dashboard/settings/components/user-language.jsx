@@ -1,3 +1,4 @@
+"use client";
 function UserLanguage() {
   return (
     <div className="flex flex-col items-start justify-start w-full p-4 space-y-5 shadow-xl rounded-xl border-2">

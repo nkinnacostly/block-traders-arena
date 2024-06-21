@@ -1,16 +1,20 @@
 import "./globals.css";
 
-import { Poppins } from "next/font/google";
-import Providers from "../utils/provider";
-import ThemeProviderWrapper from "@/theme-provider";
-// import Navbar from "./homepage/ui/layout/nav-bar";
-import { Toaster } from "@/components/ui/toaster";
+import { Inter, Manrope } from "next/font/google";
 
-const poppins = Poppins({
+import NextTopLoader from "nextjs-toploader";
+import Providers from "@/utils/provider";
+import ThemeProviderWrapper from "@/theme-provider";
+import { Toaster } from "react-hot-toast";
+
+// import Navbar from "./homepage/ui/layout/nav-bar";
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const manrope = Manrope({
   subsets: ["latin"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-ibm-plex-serif",
 });
 
 export const metadata = {
@@ -21,7 +25,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={`${inter.variable} ${manrope.variable}`}>
+        <NextTopLoader color="#fff" />
         <ThemeProviderWrapper>
           <Providers>{children}</Providers>
           <Toaster />
