@@ -22,7 +22,7 @@ export default function UserProfilePic() {
   const {
     control,
     handleSubmit,
-    reset,
+    setValue,
     register,
     // formState: { errors },
   } = useForm({
@@ -35,9 +35,8 @@ export default function UserProfilePic() {
 
   useEffect(() => {
     if (loggedInUserDetails) {
-      reset({
-        id: loggedInUserDetails?.id,
-      });
+      setValue("id", loggedInUserDetails?.id);
+      setValue("image", loggedInUserDetails?.image_url);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedInUserDetails]);
@@ -97,7 +96,11 @@ export default function UserProfilePic() {
                         {value ? (
                           <div className="w-full h-full relative">
                             <Image
-                              src={value}
+                              src={
+                                loggedInUserDetails?.image_url === null
+                                  ? value
+                                  : loggedInUserDetails?.image_url
+                              }
                               alt="profile-image"
                               //   width={100}
                               // objectFit=""

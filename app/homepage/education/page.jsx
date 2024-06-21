@@ -9,7 +9,7 @@ import Footercontact from "@/components/ui/footer-contact";
 import Image from "next/image";
 import NumbersCard from "@/components/cards/numbersCard";
 import React from "react";
-import Topheader from "@/src/components/screens/top-header/top-header";
+import Topheader from "@/components/screens/top-header/top-header";
 
 function Education() {
   return (

@@ -9,7 +9,7 @@ import NumbersCard from "@/components/cards/numbersCard";
 //   VideoWithButton,
 // } from "@/src/components/ui/video-with-button";
 import React from "react";
-import Topheader from "@/src/components/screens/top-header/top-header";
+import Topheader from "@/components/screens/top-header/top-header";
 
 function Trading() {
   return (

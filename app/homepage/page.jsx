@@ -13,7 +13,7 @@ import { Testimonials } from "@/mock/data";
 import TestimonialsCard from "@/components/ui/test-card";
 import Textwithcolor from "@/components/ui/text-with-color";
 import Think from "@/public/assets/img/svg/think.svg";
-import Topheader from "@/src/components/screens/top-header/top-header";
+import Topheader from "@/components/screens/top-header/top-header";
 import Video from "@/components/ui/video";
 const data = [
   {

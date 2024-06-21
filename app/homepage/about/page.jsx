@@ -10,7 +10,7 @@ import Card from "@/components/cards/card";
 import Footercontact from "@/components/ui/footer-contact";
 import NumbersCard from "@/components/cards/numbersCard";
 import React from "react";
-import Topheader from "@/src/components/screens/top-header/top-header";
+import Topheader from "@/components/screens/top-header/top-header";
 const data = [
   {
     icon: "/assets/img/svg/education.svg",
