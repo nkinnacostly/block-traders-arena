@@ -58,7 +58,9 @@ function DashboardSidebar() {
         {sideLinks.map((links, index) => (
           <div
             className={`flex items-center justify-start  rounded-lg px-3 cursor-pointer  ${
-              pathname === links?.link ? "bg-[#1E1E1E99] text-white" : ""
+              pathname === links?.link
+                ? "bg-[#1E1E1E99] border border-green-300"
+                : ""
             }`}
             key={index}
             onClick={() => router.push(`${links?.link}`)}
@@ -66,7 +68,7 @@ function DashboardSidebar() {
             {/* <MdDashboard size={20} /> */}
             <p
               className={`flex items-start justify-start ${
-                pathname === links?.link ? " text-black" : ""
+                pathname === links?.link ? " " : ""
               }`}
             >
               {links.icon}

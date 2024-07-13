@@ -1,5 +1,3 @@
-"use client";
-
 import Buttonwithbg from "@/components/ui/button-with-bg";
 import Footercontact from "@/components/ui/footer-contact";
 import Image from "next/image";

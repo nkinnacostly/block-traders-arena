@@ -9,12 +9,15 @@ import { FaCircle } from "react-icons/fa";
 import LoginHeader from "@/components/dashboard/loginHeader/loginHeader";
 import PasswordInput from "@/components/input/passwordInput";
 import TextInput from "@/components/input/textInput";
+import { profileSchema } from "@/schemas/login";
 import { storage } from "@/utils/storage";
 import { toast } from "sonner";
 import useApiRequest from "@/hooks/useCustonApiQuery";
+import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/store";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 // console.log(toast, "This is toast");
 
@@ -32,6 +35,18 @@ function SignUp() {
   const { useMutationRequest } = useApiRequest(); // Destructure the custom hook
   // const { theme } = useTheme();
   const router = useRouter();
+
+  const {
+    register,
+    // handleSubmit,
+    formState: { errors, isDirty },
+  } = useForm({
+    resolver: zodResolver(profileSchema),
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
   const isAnyInputEmpty = () => {
     return !email || !username || !password;
   };
@@ -93,7 +108,7 @@ function SignUp() {
             toast.success(data.message);
             storage.localStorage.set("user", data.user);
             storage.localStorage.set("__session", data.data?.token);
-            router.push("/auth/login");
+            router.push("/login");
           },
           onError: (error) => {
             toast.error(error.message);
@@ -122,18 +137,21 @@ function SignUp() {
         placeholder={"Enter your Email Address"}
         onChange={handleUserInputs}
         name={"email"}
+        register={register}
       />
       <TextInput
         inputText={"Username"}
         placeholder={"Enter Username"}
         onChange={handleUserInputs}
         name={"username"}
+        register={register}
       />
       <PasswordInput
         inputText={"Password"}
         setIsValid={setIsValid}
         onChange={handleUserInputs}
         name={"password"}
+        register={register}
       />
       <div className="grid grid-cols-2 gap-5">
         <div
@@ -217,7 +235,7 @@ function SignUp() {
           Already have an account?{" "}
           <span
             className="underline cursor-pointer text-[#EE1D52]"
-            onClick={() => router.push("/auth/login")}
+            onClick={() => router.push("/login")}
           >
             Login
           </span>{" "}

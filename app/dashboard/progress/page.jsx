@@ -1,5 +1,4 @@
-// import { AnimatePage } from "@/src/components/animations/page";
-import { CoursesInProgress } from "../courses/page";
+import { CoursesInProgress } from "../courses/components/course-in-progress";
 import { GiAlarmClock } from "react-icons/gi";
 import Image from "next/image";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";

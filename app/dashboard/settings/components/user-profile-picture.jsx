@@ -15,7 +15,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function UserProfilePic() {
   const { loggedInUserDetails } = useUserStore();
-
   const maxNumber = 1;
   const { useMutationRequest } = useApiRequest();
   const { mutateAsync, isPending } = useMutationRequest();
@@ -42,6 +41,7 @@ export default function UserProfilePic() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedInUserDetails]);
+
   const onSubmit = async (userData) => {
     try {
       await mutateAsync(

@@ -62,11 +62,11 @@ function MobileNav() {
               <Buttonwithoutbg
                 Btntext={"Sign in"}
                 className={"text-black"}
-                onClick={() => router.push("/auth/login")}
+                onClick={() => router.push("/login")}
               />
               <Buttonwithbg
                 btnText={"Create account"}
-                onClick={() => router.push("/auth/sign-up")}
+                onClick={() => router.push("/sign-up")}
               />
             </div>
           </nav>

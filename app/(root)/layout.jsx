@@ -1,7 +1,7 @@
-import Footer from "./components/footer";
+import Footer from "../../components/footer";
 import React from "react";
 
-function HomeLayout({ children }) {
+function RootLayout({ children }) {
   return (
     <div className=" container !p-0">
       {children}
@@ -12,4 +12,4 @@ function HomeLayout({ children }) {
   );
 }
 
-export default HomeLayout;
+export default RootLayout;

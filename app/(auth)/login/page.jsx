@@ -47,7 +47,7 @@ function Login() {
             storage.cookieStorage.set("user", data.user);
             storage.cookieStorage.set("__session", data?.token);
 
-            setLoggedInUserDetails(data);
+            setLoggedInUserDetails(data?.user);
             toast.success("Login Successful");
             router.push("/dashboard");
           },
@@ -108,7 +108,7 @@ function Login() {
           Do not have an account?{" "}
           <span
             className="underline cursor-pointer text-[#EE1D52]"
-            onClick={() => router.push("/auth/sign-up")}
+            onClick={() => router.push("/sign-up")}
           >
             Sign up
           </span>{" "}

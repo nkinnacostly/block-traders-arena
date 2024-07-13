@@ -1,6 +1,5 @@
-import { createJSONStorage, persist } from "zustand/middleware";
-
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 // Define your store
 export const useUserStore = create(
@@ -14,7 +13,7 @@ export const useUserStore = create(
     }),
     {
       name: "user-data", // name of the item in the storage (must be unique)
-      storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+      // storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
     },
     {
       // ...
