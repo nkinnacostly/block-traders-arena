@@ -39,12 +39,12 @@ function SignUp() {
   const {
     register,
     // handleSubmit,
-    formState: { errors, isDirty },
+    // formState: { errors, isDirty }, 
   } = useForm({
     resolver: zodResolver(profileSchema),
     defaultValues: {
       username: "",
-      password: "",
+      password: "", 
     },
   });
   const isAnyInputEmpty = () => {
