@@ -1,4 +1,5 @@
-import Buttonwithbg from "@/components/ui/button-with-bg";
+import { Button } from "@/components/ui/button";
+// import Buttonwithbg from "@/components/ui/button-with-bg";
 import Footercontact from "@/components/ui/footer-contact";
 import Image from "next/image";
 import NumbersCard from "@/components/cards/numbersCard";
@@ -53,7 +54,9 @@ function Trading() {
                 and skill up before enjoying the benefits of our intermediate
                 account{" "}
               </p>
-              <Buttonwithbg btnText={"Start here"} className={"mt-3"} />
+              <Button size="xl" className="mt-4">
+                Start Here
+              </Button>
             </div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 place-content-center mt-[4rem] relative">
@@ -78,7 +81,9 @@ function Trading() {
                 professional analysis and updates. <br />
                 <br /> Intermediate provides more.
               </p>
-              <Buttonwithbg btnText={"Start here"} className={"mt-3"} />
+              <Button size="xl" className="mt-4">
+                Start Here
+              </Button>
             </div>
             <div>
               <Image
@@ -113,7 +118,10 @@ function Trading() {
                 funding. Getting to half a million dollars is very possible with
                 the expert account
               </p>
-              <Buttonwithbg btnText={"Start here"} className={"mt-3"} />
+              {/* <Buttonwithbg btnText={"Start here"} className={"mt-3"} /> */}
+              <Button size="xl" className="mt-4">
+                Start Here
+              </Button>
             </div>
           </div>
         </div>
@@ -260,7 +268,7 @@ function Trading() {
         className="w-full bg-center bg-no-repeat bg-cover pt-5 lg:pt-[8rem]"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
-        <div className="flex lg:justify-between justify-center px-[2rem] flex-col lg:flex-row lg:px-[5rem]  pb-[4rem] ">
+        <div className="flex lg:justify-between justify-center px-[2rem] flex-col lg:flex-row lg:px-[5rem]  pb-[4rem] pt-[4rem]">
           <div className="">
             <span className="text-black text-[40px] font-bold ">Copy</span>
             <span className="text-black text-[40px] font-semibold "> </span>
@@ -269,15 +277,18 @@ function Trading() {
             <span className="text-black text-[40px] font-bold ">Traders</span>
           </div>
 
-          <div className="mt-5">
+          <div className="mt-5 space-y-4">
             <p className="text-xl font-medium text-black ">
               Get access to trades with grown equity and great spreads.
             </p>
-            <div className=" h-16 px-[30px] py-5 bg-black rounded-lg justify-center items-center gap-2.5 inline-flex mt-5 cursor-pointer">
+            {/* <div className=" h-16 px-[30px] py-5 bg-black rounded-lg justify-center items-center gap-2.5 inline-flex mt-5 cursor-pointer">
               <p className="text-base font-medium text-center text-white capitalize">
                 Copy trades
               </p>
-            </div>
+            </div> */}
+            <Button className="bg-black text-white" size="xl">
+              Copy Trade
+            </Button>
           </div>
         </div>
 

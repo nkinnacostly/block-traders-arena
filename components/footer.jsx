@@ -1,5 +1,4 @@
-import Buttonwithbg from "@/components/ui/button-with-bg";
-import Buttonwithoutbg from "@/components/ui/button-without-bg";
+import { Button } from "./ui/button";
 import Image from "next/image";
 import Logo from "@/public/assets/img/png/logo.png";
 import React from "react";
@@ -63,8 +62,12 @@ function HomepageFooter() {
       <div className="flex flex-col items-center justify-between p-5 space-y-8 lg:flex-row lg:space-y-0">
         <Image src={Logo} height={100} width={100} alt="logo" />
         <div className="flex items-center justify-center space-x-2">
-          <Buttonwithbg btnText={"Get Educated"} />
-          <Buttonwithoutbg Btntext={"Start Trading"} className={"text-white"} />
+          {/* <Buttonwithbg btnText={"Get Educated"} />
+          <ithoutbg Btntext={"Start Trading"} className={"text-white"} /> */}
+          <Button variant="outline" size="lg">
+            Get Educated
+          </Button>
+          <Button size="lg">Start Trading</Button>
         </div>
       </div>
     </>

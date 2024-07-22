@@ -1,14 +1,14 @@
 "use client";
 
-import Buttonwithbg from "../../ui/button-with-bg";
-import Buttonwithoutbg from "../../ui/button-without-bg";
 import Check from "@/public/assets/img/svg/check.svg";
 import Image from "next/image";
+import Link from "next/link";
 import MobileNav from "@/components/mobile-nav";
 import Navbar from "@/components/nav-bar";
 import React from "react";
 import Textwithcolor from "../../ui/text-with-color";
-import { useRouter } from "next/navigation";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 function Topheader({
   backgroundImage,
@@ -19,7 +19,6 @@ function Topheader({
   otherText,
   className,
 }) {
-  const router = useRouter();
   return (
     <>
       <MobileNav />
@@ -52,16 +51,20 @@ function Topheader({
             </div>
           </div>
           <div className="lg:flex items-center justify-center lg:justify-start lg:space-x-8 mt-[4rem]  w-full space-y-8 lg:space-y-0">
-            <Buttonwithbg
-              btnText={"Get Started"}
-              className={"h-[70px] w-full lg:w-[226.67px]"}
-              onClick={() => router.push("/login")}
-            />
-            <Buttonwithoutbg
-              Btntext={"Start Learning"}
-              className={"h-[70px] w-full lg:w-[226.67px] text-white"}
-              onClick={() => router.push("/sign-up")}
-            />
+            <Link
+              className={cn(buttonVariants({ size: "xl", variant: "outline" }))}
+              href={"/login"}
+            >
+              Get Started
+            </Link>
+
+            <Link
+              className={cn(buttonVariants({ size: "xl" }))}
+              href={"/sign-up"}
+            >
+              Start Learning
+              {/* Create campaign <PlusCircledIcon /> */}
+            </Link>
           </div>
         </div>
       </div>

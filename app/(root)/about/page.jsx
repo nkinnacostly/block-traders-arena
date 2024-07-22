@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Card from "@/components/cards/card";
 // import Image from "next/image";
 // import Textwithcolor from "@/src/components/ui/text-with-color";
@@ -59,7 +60,7 @@ function AboutPage() {
                 Block Traders Academy
               </span>
             </div>
-            <p className="text-xl font-normal text-white text-opacity-90 lg:text-start 2xl:text-center">
+            <p className="text-xl font-normal text-white text-opacity-90 lg:text-start 2xl:text-start">
               Block Traders Academy was created because we believed that trading
               was too interesting to be reserved for a select few.
               <br />
@@ -149,15 +150,14 @@ function AboutPage() {
             <span className="text-black text-[40px] font-bold ">Traders</span>
           </div>
 
-          <div className="mt-5">
+          <div className="mt-5 space-y-4">
             <p className="text-xl font-medium text-black ">
               Get access to trades with grown equity and great spreads.
             </p>
-            <div className=" h-16 px-[30px] py-5 bg-black rounded-lg justify-center items-center gap-2.5 inline-flex mt-5 cursor-pointer">
-              <p className="text-base font-medium text-center text-white capitalize">
-                Copy trades
-              </p>
-            </div>
+
+            <Button className="bg-black text-white" size="xl">
+              Copy Trade
+            </Button>
           </div>
         </div>
         <div className="border-2 px-[2rem] w-full bg-black  xl:px-[5rem] py-[3rem]">

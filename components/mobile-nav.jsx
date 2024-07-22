@@ -2,21 +2,19 @@
 
 import React, { useState } from "react";
 
-import Buttonwithbg from "@/components/ui/button-with-bg";
-import Buttonwithoutbg from "@/components/ui/button-without-bg";
 // import Down from "@/public/assets/img/svg/down.svg";
 import { FaSortDown } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/assets/img/png/logo.png";
 import { PiSquaresFourFill } from "react-icons/pi";
-import { useRouter } from "next/navigation";
+import { buttonVariants } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 // import { motion } from "framer-motion";
 
 function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -59,15 +57,22 @@ function MobileNav() {
               </Link>
             </div>
             <div className="flex items-center justify-center flex-col space-y-5 mt-3">
-              <Buttonwithoutbg
-                Btntext={"Sign in"}
-                className={"text-black"}
-                onClick={() => router.push("/login")}
-              />
-              <Buttonwithbg
-                btnText={"Create account"}
-                onClick={() => router.push("/sign-up")}
-              />
+              <Link
+                className={cn(
+                  buttonVariants({ size: "lg", variant: "outline" })
+                )}
+                href={"/login"}
+              >
+                Sign in
+              </Link>
+
+              <Link
+                className={cn(buttonVariants({ size: "lg" }))}
+                href={"/sign-up"}
+              >
+                Create Account
+                {/* Create campaign <PlusCircledIcon /> */}
+              </Link>
             </div>
           </nav>
         </div>

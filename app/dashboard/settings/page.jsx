@@ -1,3 +1,4 @@
+// import { AnimatePage } from "@/components/animations/page";
 import React from "react";
 import UserAccesibility from "./components/user-accesibility";
 import UserAccountStatus from "./components/user-account-status";
@@ -28,3 +29,4 @@ function Settings() {
 }
 
 export default Settings;
+// export const Component = AnimatePage(Settings);

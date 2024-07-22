@@ -3,11 +3,17 @@
 // import { eachDayOfInterval, startOfMonth, endOfMonth, format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
+import {
+  GetBadges,
+  GetCoursesCompleted,
+  GetCoursesDuration,
+  GetCoursesInProgress,
+} from "./services";
 import React, { useEffect, useState } from "react";
 
 import { AnimatePage } from "@/components/animations/page";
 import BarChart from "@/components/dashboard/chart/barChart";
-import Buttonwithbg from "@/components/ui/button-with-bg";
+// import Buttonwithbg from "@/components/ui/button-with-bg";
 import DashboardChallenges from "@/components/dashboard/challenges";
 import { DatePickerCalendar } from "./components/calendar";
 // import DatePicker from "react-datepicker";
@@ -17,55 +23,32 @@ import { GiHourglass } from "react-icons/gi";
 import { GiProgression } from "react-icons/gi";
 import { IoRefreshCircleSharp } from "react-icons/io5";
 import Link from "next/link";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import { RiAwardFill } from "react-icons/ri";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/store";
 
 // import { useTheme } from "next-themes";
 
-const courseContent = [
-  {
-    number: "4",
-    icon: <FaCircleCheck size={20} />,
-    tittle: "Completed Courses",
-    bgColor: "#D4AF37",
-  },
-  {
-    number: "12",
-    icon: <IoRefreshCircleSharp size={30} />,
-    tittle: "Courses-in-Progress",
-    // bgColor: "#000000",
-  },
-  {
-    number: "4d11h",
-    icon: <GiHourglass size={20} />,
-    tittle: "Activity Hours",
-    bgColor: "#D4AF37",
-  },
-  {
-    number: "4",
-    icon: <GiProgression size={20} />,
-    tittle: "Learners Level",
-    bgColor: "#D4AF37",
-  },
-  {
-    number: "4",
-    icon: <RiAwardFill size={20} />,
-    tittle: "Badges Earned",
-    bgColor: "#D4AF37",
-  },
-];
 function Dashboard() {
   // const [selectedDate, setSelectedDate] = useState(null);
   const router = useRouter();
   const { loggedInUserDetails } = useUserStore();
   // const { user } = loggedInUserDetails;
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [description, setDescription] = useState("");
-  const [meetings, setMeetings] = useState([]);
+  const { data, isLoading: inProgressLoading } = GetCoursesInProgress();
+  const { completed: completedData, isLoading: completedLoading } =
+    GetCoursesCompleted();
+  const { duration: coursesDuration } = GetCoursesDuration();
+  const { badges: courseBadges } = GetBadges();
+  console.log(completedData, "This is data completed");
+  console.log(courseBadges, "This is data data");
+  console.log(coursesDuration, "This is data data");
+
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [description, setDescription] = useState("");
+  const [meetings] = useState([]);
   // const { theme } = useTheme();
   // console.log(theme, "This is theme");
   // const now = new Date();
@@ -86,15 +69,50 @@ function Dashboard() {
     }
   }, [loggedInUserDetails?.first_name, router]);
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  };
+  if (inProgressLoading || completedLoading) {
+    return <div>Loading...</div>;
+  }
+  const courseContent = [
+    {
+      number: completedData?.courses,
+      icon: <FaCircleCheck size={20} />,
+      tittle: "Completed Courses",
+      bgColor: "#D4AF37",
+    },
+    {
+      number: data?.courses,
+      icon: <IoRefreshCircleSharp size={30} />,
+      tittle: "Courses-in-Progress",
+      // bgColor: "#000000",
+    },
+    {
+      number: coursesDuration?.total_duration,
+      icon: <GiHourglass size={20} />,
+      tittle: "Activity Hours",
+      bgColor: "#D4AF37",
+    },
+    {
+      number: "4",
+      icon: <GiProgression size={20} />,
+      tittle: "Learners Level",
+      bgColor: "#D4AF37",
+    },
+    {
+      number: courseBadges?.courses,
+      icon: <RiAwardFill size={20} />,
+      tittle: "Badges Earned",
+      bgColor: "#D4AF37",
+    },
+  ];
+  // const handleDescriptionChange = (event) => {
+  //   setDescription(event.target.value);
+  // };
 
-  const handleAddMeeting = () => {
-    setMeetings([...meetings, { description }]);
-    setDescription("");
-    setModalIsOpen(false);
-  };
+  // const handleAddMeeting = () => {
+  //   setMeetings([...meetings, { description }]);
+  //   setDescription("");
+  //   setModalIsOpen(false);
+  // };
   const appsContainer = {
     hidden: { opacity: 0 },
     show: {
@@ -112,9 +130,9 @@ function Dashboard() {
       <div>
         <h5 className="text-[24px]  font-[500]">Overview</h5>
       </div>
-      <motion.div
+      <div
         variants={appsContainer}
-        initial="hidden"
+        initial="show"
         animate="show"
         className="grid grid-cols-2 gap-4 lg:grid-cols-4"
       >
@@ -141,14 +159,14 @@ function Dashboard() {
             </div>
           </div>
         ))}
-      </motion.div>
+      </div>
       <div className="flex flex-col items-center justify-center gap-3 mt-4 lg:flex-row">
         <div className=" w-full lg:w-[337px] border-2 rounded-xl shadow-md p-4 h-[405px]">
           <h5 className="text-[24px]  font-[500]">Overview</h5>
 
           <BarChart />
         </div>
-        <motion.div
+        <div
           initial="hidden"
           animate="show"
           variants={appsContainer}
@@ -170,7 +188,7 @@ function Dashboard() {
               <div key={index}>{format(date, "dd/MM/yyyy")}</div>
             ))} */}
 
-            <Modal isOpen={modalIsOpen} className={""}>
+            {/* <Modal isOpen={modalIsOpen} className={""}>
               <div className="flex flex-col items-center justify-center h-full">
                 <h5 className="text-[24px]  font-[500] mb-4">New Meeting</h5>
                 <input
@@ -187,14 +205,8 @@ function Dashboard() {
                   placeholder="Meeting description"
                   className="w-[80%] p-4 focus:outline-none pl-4 border border-[#D4AF37] rounded-lg"
                 />
-                {/* <button>Add Meeting</button> */}
-                <Buttonwithbg
-                  btnText={"Add Meeting"}
-                  className={"w-[167px] mt-4"}
-                  onClick={handleAddMeeting}
-                />
               </div>
-            </Modal>
+            </Modal> */}
           </div>
           <div className="mt-5 overflow-y-scroll">
             {meetings.map((meeting, index) => (
@@ -207,7 +219,7 @@ function Dashboard() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
       <div className="w-full p-4 mt-8 border-2 mb-4 shadow-lg rounded-xl">
         <h5 className="text-[24px]  font-[500] mb-8">Live Classes</h5>
@@ -251,6 +263,7 @@ function Dashboard() {
 }
 
 export default AnimatePage(Dashboard);
+// export const Component = AnimatePage(Dashboard);
 
 // box-shadow: 0px 8px 4px 0px #00000040;
 //

@@ -4,14 +4,15 @@ import { GiProgression } from "react-icons/gi";
 import { GoBook } from "react-icons/go";
 import Image from "next/image";
 import { IoMdSettings } from "react-icons/io";
+// import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { MdDashboard } from "react-icons/md";
 import React from "react";
 import { TbTargetArrow } from "react-icons/tb";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 
 function DashboardSidebar() {
-  const router = useRouter();
+  // const router = useRouter();
   const pathname = usePathname();
   // console.log(pathname, "This is pathname");
   const sideLinks = [
@@ -56,14 +57,15 @@ function DashboardSidebar() {
       </div>
       <>
         {sideLinks.map((links, index) => (
-          <div
+          <Link
             className={`flex items-center justify-start  rounded-lg px-3 cursor-pointer  ${
               pathname === links?.link
                 ? "bg-[#1E1E1E99] border border-green-300"
                 : ""
             }`}
             key={index}
-            onClick={() => router.push(`${links?.link}`)}
+            // onClick={() => router.push(`${links?.link}`)}
+            href={links.link}
           >
             {/* <MdDashboard size={20} /> */}
             <p
@@ -75,7 +77,7 @@ function DashboardSidebar() {
             </p>
 
             <p className="text-[16px] font-[400]  p-2">{links.tittle}</p>
-          </div>
+          </Link>
         ))}
       </>
     </div>

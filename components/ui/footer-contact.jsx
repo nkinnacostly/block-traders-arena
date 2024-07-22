@@ -1,5 +1,6 @@
 import Address from "@/public/assets/img/svg/address.svg";
-import Buttonwithbg from "./button-with-bg";
+import { Button } from "./button";
+// import Buttonwithbg from "./button-with-bg";
 import Envelop from "@/public/assets/img/svg/Envelope.svg";
 import Image from "next/image";
 import React from "react";
@@ -47,18 +48,31 @@ function Footercontact() {
               I’m interested in...
             </p>
             <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mt-4">
-              <Buttonwithbg btnText={"Trading"} className={"h-[62px]"} />
-              <div className=" h-[62px] p-4 rounded-lg border-2 border-stone-900 border-opacity-60 justify-start items-start gap-2.5 inline-flex">
+              {/* <Buttonwithbg btnText={"Trading"} className={"h-[62px]"} /> */}
+              {/* <Button variant="outline" size="lg">
+                Sign In
+              </Button> */}
+              <Button size="lg">Trading</Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-stone-900 border-opacity-60 text-stone-900"
+              >
+                Learning
+              </Button>
+              {/* <div className=" h-[62px] p-4 rounded-lg border-2 border-stone-900 border-opacity-60 text-stone-900 justify-start items-start gap-2.5 inline-flex">
                 <p className="text-xl font-medium text-center grow shrink basis-0 text-stone-900 text-opacity-60 ">
                   Learning
                 </p>
-              </div>
+              </div> */}
             </div>
-            <div className=" p-4 rounded-lg border-2 border-stone-900 border-opacity-60 justify-start items-start gap-2.5 inline-flex mt-4">
-              <p className="text-xl font-medium text-center grow shrink basis-0 text-stone-900 text-opacity-60 ">
-                Other
-              </p>
-            </div>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-stone-900 border-opacity-60 text-stone-900 mt-4"
+            >
+              Other
+            </Button>
             <div>
               <input
                 className="w-full h-[50px]  border-b bg-white border-stone-900 focus:border-amber-400 outline-none mb-[4rem] mt-[3rem] px-3"

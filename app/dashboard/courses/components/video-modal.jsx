@@ -18,12 +18,14 @@ import { getYouTubeVideoId } from "@/utils/get-youtube-url";
 import { useState } from "react";
 
 export function WatchVideo({ children, data }) {
-  const path = getYouTubeVideoId(data?.path);
+  const match = getYouTubeVideoId(data?.path);
+  console.log(match);
+  console.log(data);
   const [showButton, setShowButton] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   let videoCode;
-  if (path) {
-    videoCode = path;
+  if (match) {
+    videoCode = match;
   }
   const checkElapsedTime = (e) => {
     console.log(e.target.playerInfo.playerState);

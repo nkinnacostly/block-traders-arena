@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { WatchVideo } from "./video-modal";
+import { toast } from "sonner";
 import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useUserStore } from "@/store/store";
 
@@ -14,7 +15,7 @@ export function CoursesVideos() {
   const url = `/all-videos`;
   const reqKey = ["users-videos"];
   const { useGetRequest } = useApiRequest();
-  const { data, isLoading } = useGetRequest(url, reqKey);
+  const { data, isLoading, isError } = useGetRequest(url, reqKey);
 
   const videos = React.useMemo(
     () => data?.data?.videos || [],
@@ -24,6 +25,9 @@ export function CoursesVideos() {
     ...item,
     image: `/assets/${item.id}.jpeg`, // Adjust the path and extension as needed
   }));
+  {
+    isError ? toast.error("Opps Something Went Wrong") : "";
+  }
   return (
     <>
       {isLoading && (

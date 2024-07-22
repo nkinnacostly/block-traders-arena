@@ -1,4 +1,4 @@
-import Buttonwithbg from "@/components/ui/button-with-bg";
+// import Buttonwithbg from "@/components/ui/button-with-bg";
 // import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
 import Down from "@/public/assets/img/svg/down.svg";
 import Image from "next/image";
@@ -36,7 +36,7 @@ function DashboardHeader() {
           </div>
           <div className="flex items-center justify-center space-x-5">
             {/* <Buttonwithoutbg Btntext={"Sign in"} /> */}
-            <Buttonwithbg btnText={"Create account"} />
+            {/* <Buttonwithbg btnText={"Create account"} /> */}
             <div className="w-20 h-20 border-2 rounded-full">
               <Image
                 src={"/assets/img/png/chef.png"}

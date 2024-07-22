@@ -1,110 +1,71 @@
 /* eslint-disable no-useless-escape */
 "use client";
 
-import React, { useState } from "react";
-
 import { AnimatePage } from "@/components/animations/page";
 import Button from "@/components/button/button";
-import { FaCircle } from "react-icons/fa";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import Link from "next/link";
+// import { FaCircle } from "react-icons/fa";
 import LoginHeader from "@/components/dashboard/loginHeader/loginHeader";
 import PasswordInput from "@/components/input/passwordInput";
+import React from "react";
+import { SignUpSchema } from "@/schemas/sign-in";
 import TextInput from "@/components/input/textInput";
-import { profileSchema } from "@/schemas/login";
 import { storage } from "@/utils/storage";
 import { toast } from "sonner";
 import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useUserStore } from "@/store/store";
-import { z } from "zod";
+// import { useUserStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // console.log(toast, "This is toast");
 
 function SignUp() {
-  const {
-    email,
-    username,
-    password,
-    setEmail,
-    setUserName,
-    setPassword,
-    notification_status,
-    setNotification,
-  } = useUserStore();
+  // const {
+  //   email,
+  //   username,
+  //   password,
+  //   setEmail,
+  //   setUserName,
+  //   setPassword,
+  //   notification_status,
+  //   setNotification,
+  // } = useUserStore();
   const { useMutationRequest } = useApiRequest(); // Destructure the custom hook
-  // const { theme } = useTheme();
   const router = useRouter();
 
   const {
     register,
-    // handleSubmit,
-    // formState: { errors, isDirty }, 
+    handleSubmit,
+    watch,
+    setValue,
+    getValues,
+    formState: { errors, isDirty },
   } = useForm({
-    resolver: zodResolver(profileSchema),
+    resolver: zodResolver(SignUpSchema),
     defaultValues: {
+      email: "",
       username: "",
-      password: "", 
+      password: "",
+      notification_status: Number(0),
+      paid: 0,
     },
   });
-  const isAnyInputEmpty = () => {
-    return !email || !username || !password;
-  };
 
-  const [isValid, setIsValid] = useState({
-    length: false,
-    uppercase: false,
-    lowercase: false,
-    number: false,
-    specialChar: false,
-  });
-  const SignUpSchema = z.object({
-    email: z
-      .string()
-      .regex(/^\S+@\S+\.\S+$/)
-      .email(),
-    username: z.string().min(3),
-    password: z.string().min(8),
-  });
-
-  const handleUserInputs = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "username") {
-      setUserName(value);
-    } else if (name === "password") {
-      setPassword(value);
-      setIsValid({
-        length: value.length >= 8,
-        uppercase: /[A-Z]/.test(value),
-        lowercase: /[a-z]/.test(value),
-        number: /\d/.test(value),
-        specialChar: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(value),
-      });
-    } else if (name === "notification") {
-      setNotification(1);
-    }
-  };
   const { mutateAsync, isPending } = useMutationRequest();
 
-  const handleSubmit = async () => {
-    const errorMap = {
-      "string.email": "Invalid email address",
-      "string.min": "Must be at least {{min}} characters",
-    };
+  const onSubmit = async (userData) => {
     try {
-      SignUpSchema.parse({ email, password, username }, { errorMap });
       await mutateAsync(
         {
           method: "POST",
           url: "/sign-up",
-          data: { email, password, username, notification_status },
+          data: userData,
         },
         {
           onSuccess: (data) => {
-            // console.log(data, "This is my data");
             toast.success(data.message);
             storage.localStorage.set("user", data.user);
             storage.localStorage.set("__session", data.data?.token);
@@ -113,132 +74,147 @@ function SignUp() {
           onError: (error) => {
             toast.error(error.message);
             console.log(error, "This is my data error");
-
-            // console.log(error, "This is error");
           },
         }
       );
-      // {
-      //   mutation.isSuccess(console.log("active"));
-      // }
     } catch (error) {
       // console.error("Error adding data:", error.message);
       // console.log(error.error);
     }
   };
-
-  // console.log(isValid, "This is valid");
-  // mutation.isSuccess(console.log("Mutation successful"));
+  const values = getValues();
+  console.log(values);
+  const handleCheckedChange = (name, value) => {
+    if (name === "notification_status") {
+      setValue(name, Number(value));
+    }
+  };
   return (
     <div className="h-full w-full  flex flex-col items-start px-10 ">
       <LoginHeader />
-      <TextInput
-        inputText={"Email"}
-        placeholder={"Enter your Email Address"}
-        onChange={handleUserInputs}
-        name={"email"}
-        register={register}
-      />
-      <TextInput
-        inputText={"Username"}
-        placeholder={"Enter Username"}
-        onChange={handleUserInputs}
-        name={"username"}
-        register={register}
-      />
-      <PasswordInput
-        inputText={"Password"}
-        setIsValid={setIsValid}
-        onChange={handleUserInputs}
-        name={"password"}
-        register={register}
-      />
-      <div className="grid grid-cols-2 gap-5">
-        <div
-          className={`${
-            isValid.length && "text-green-500"
-          } flex items-center space-x-2  truncate sliding-text`}
-        >
-          <span>
-            <FaCircle size={8} />
-          </span>
-          <span>Use 8 or more characters</span>
-        </div>
-        <div
-          className={`${
-            isValid.uppercase && "text-green-500"
-          } flex items-center space-x-2 truncate sliding-text`}
-        >
-          <span>
-            <FaCircle size={8} />
-          </span>
-          <span>One Uppercase character</span>
-        </div>
-        <div
-          className={`${
-            isValid.lowercase && "text-green-500"
-          } flex items-center space-x-2  truncate sliding-text`}
-        >
-          <span>
-            <FaCircle size={8} />
-          </span>
-          <span>One lowercase character</span>
-        </div>
-        <div
-          className={`${
-            isValid.specialChar && "text-green-500"
-          } flex items-center space-x-2 `}
-        >
-          <span>
-            <FaCircle size={8} />
-          </span>
-          <span>One special character</span>
-        </div>
-        <div
-          className={`${
-            isValid.number && "text-green-500"
-          } flex items-center space-x-2 `}
-        >
-          <span>
-            <FaCircle size={8} />
-          </span>
-          <span>One Number</span>
-        </div>
-      </div>
-      <div className="flex items-center space-x-4 mt-5">
-        <input
-          type="checkbox"
-          className="w-5 h-5 rounded-sm"
-          name="notification"
-          onChange={handleUserInputs}
+      <form action="post" onSubmit={handleSubmit(onSubmit)}>
+        <TextInput
+          inputText={"Email"}
+          placeholder={"Enter your Email Address"}
+          // onChange={handleUserInputs}
+          type="text"
+          name={"email"}
+          register={register}
+          error={errors.email}
         />
-        <p className="text-[16px] font-[400] ">
-          I want to receive emails about the product, feature updates, events,
-          and marketing promotions.
+        <TextInput
+          inputText={"Username"}
+          placeholder={"Enter Username"}
+          // onChange={handleUserInputs}
+          error={errors.username}
+          type="text"
+          name={"username"}
+          register={register}
+        />
+        <PasswordInput
+          inputText={"Password"}
+          // setIsValid={setIsValid}
+          error={errors.password}
+          name={"password"}
+          register={register}
+        />
+        {/* <div className="grid grid-cols-2 gap-5">
+          <div
+            className={`${
+              isValid.length && "text-green-500"
+            } flex items-center space-x-2  truncate sliding-text`}
+          >
+            <span>
+              <FaCircle size={8} />
+            </span>
+            <span>Use 8 or more characters</span>
+          </div>
+          <div
+            className={`${
+              isValid.uppercase && "text-green-500"
+            } flex items-center space-x-2 truncate sliding-text`}
+          >
+            <span>
+              <FaCircle size={8} />
+            </span>
+            <span>One Uppercase character</span>
+          </div>
+          <div
+            className={`${
+              isValid.lowercase && "text-green-500"
+            } flex items-center space-x-2  truncate sliding-text`}
+          >
+            <span>
+              <FaCircle size={8} />
+            </span>
+            <span>One lowercase character</span>
+          </div>
+          <div
+            className={`${
+              isValid.specialChar && "text-green-500"
+            } flex items-center space-x-2 `}
+          >
+            <span>
+              <FaCircle size={8} />
+            </span>
+            <span>One special character</span>
+          </div>
+          <div
+            className={`${
+              isValid.number && "text-green-500"
+            } flex items-center space-x-2 `}
+          >
+            <span>
+              <FaCircle size={8} />
+            </span>
+            <span>One Number</span>
+          </div>
+        </div> */}
+        <div className="flex items-center space-x-2">
+          <Checkbox
+            checked={watch("notification_status")}
+            name="notification_status"
+            onCheckedChange={
+              (value) => handleCheckedChange("notification_status", value)
+              // setValue("notification_status", Number(value)),
+              // console.log(value, "This is value")
+            }
+          />
+          <Label
+            htmlFor="terms"
+            className="text-[16px] font-[400]  leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            I want to receive emails about the product, feature updates, events,
+            and marketing promotions.
+          </Label>
+        </div>
+        <p className="text-[16px] font-[400]  p-2 mt-2">
+          {" "}
+          By creating an account, you agree to the{" "}
+          <span className="underline cursor-pointer">
+            Terms of use
+          </span> and{" "}
+          <span className="underline cursor-pointer">Privacy Policy</span>.
         </p>
-      </div>
-      <p className="text-[16px] font-[400]  p-2 mt-2">
-        {" "}
-        By creating an account, you agree to the{" "}
-        <span className="underline cursor-pointer">Terms of use</span> and{" "}
-        <span className="underline cursor-pointer">Privacy Policy</span>.
-      </p>
-      <Button
-        btnText={"Sign Up"}
-        className={"disabled:bg-gray-400 bg-yellow-400"}
-        onClick={handleSubmit}
-        disabled={isAnyInputEmpty() || isPending}
-        loading={isPending}
-      />
+        <Button
+          btnText={"Sign Up"}
+          className={"disabled:bg-gray-400 bg-yellow-400"}
+          onClick={handleSubmit}
+          disabled={!isDirty || isPending}
+          loading={isPending}
+        />
+      </form>
+
       <div className="flex items-center justify-center w-full">
         <p className="text-[16px] font-[400]  p-2">
           Already have an account?{" "}
-          <span
+          <Link
             className="underline cursor-pointer text-[#EE1D52]"
-            onClick={() => router.push("/login")}
+            // onClick={() => router.push("/login")}
+            href={"/login"}
           >
             Login
-          </span>{" "}
+          </Link>{" "}
         </p>
       </div>
     </div>

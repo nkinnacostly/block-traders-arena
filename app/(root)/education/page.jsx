@@ -3,6 +3,7 @@ import {
   VideoWithButtons,
 } from "@/components/ui/video-with-button";
 
+import { Button } from "@/components/ui/button";
 import Footercontact from "@/components/ui/footer-contact";
 import Image from "next/image";
 import NumbersCard from "@/components/cards/numbersCard";
@@ -92,11 +93,14 @@ function Education() {
             <p className="text-xl font-medium text-center text-black lg:text-start">
               Get access to trades with grown equity and great spreads.
             </p>
-            <div className=" h-16 px-[30px] py-5 bg-black rounded-lg  gap-2.5  mt-5 cursor-pointer">
+            {/* <div className=" h-16 px-[30px] py-5 bg-black rounded-lg  gap-2.5  mt-5 cursor-pointer">
               <p className="text-base font-medium text-white capitalize">
                 Copy trades
               </p>
-            </div>
+            </div> */}
+            <Button className="bg-black text-white" size="xl">
+              Copy Trade
+            </Button>
           </div>
         </div>
 

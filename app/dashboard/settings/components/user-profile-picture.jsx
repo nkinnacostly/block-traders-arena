@@ -3,7 +3,7 @@
 import { Controller, useForm } from "react-hook-form";
 import React, { useEffect } from "react";
 
-import Buttonwithoutbg from "@/components/ui/button-without-bg";
+// import Buttonwithoutbg from "@/components/ui/button-without-bg";
 import Image from "next/image";
 import { ImageSchema } from "@/schemas/settings";
 import ImageUploading from "react-images-uploading";
@@ -139,12 +139,12 @@ export default function UserProfilePic() {
           {...register("id")}
           value={loggedInUserDetails?.id}
         />
-        <Buttonwithoutbg
+        {/* <Buttonwithoutbg
           Btntext={"Upload"}
           className={""}
           loading={isPending}
           disabled={isPending}
-        />
+        /> */}
       </div>
     </form>
   );

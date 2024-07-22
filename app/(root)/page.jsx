@@ -1,4 +1,5 @@
 import Account from "@/components/ui/account";
+import { Button } from "@/components/ui/button";
 import Card from "@/components/cards/card";
 import Checkwithtext from "@/components/ui/check-with-text";
 import Exchange from "@/public/assets/img/png/exchange.png";
@@ -210,21 +211,21 @@ export default function Home() {
         </div>
       </div>
       <div className="hidden lg:block bg-white">
-        <div className="w-full h-[312px] relative">
-          <div className="w-[187px] h-16 px-[30px] py-5 left-[641px] top-[189px] absolute bg-black rounded-lg justify-center items-center gap-2.5 inline-flex">
-            <div className="text-base font-medium text-center text-white capitalize">
-              Copy trades
-            </div>
-          </div>
-          <div className=" left-[636px] top-[122px] absolute text-black text-xl font-medium ">
-            Get access to trades with grown equity and great spreads.
-          </div>
-          <div className="w-[515px] left-[86px] top-[115px] absolute text-center">
+        <div className="w-full h-[312px] flex items-center justify-between px-[5rem]">
+          <div className=" ">
             <span className="text-black text-[40px] font-bold ">Copy</span>
             <span className="text-black text-[40px] font-semibold "> </span>
             <span className="text-black text-[40px] font-semibold ">Block</span>
             <span className="text-black text-[40px] font-semibold "> </span>
             <span className="text-black text-[40px] font-bold ">Traders</span>
+          </div>
+          <div className="space-y-4">
+            <div className="  text-black text-xl font-medium ">
+              Get access to trades with grown equity and great spreads.
+            </div>
+            <Button className="bg-black text-white" size="xl">
+              Copy Trade
+            </Button>
           </div>
         </div>
       </div>

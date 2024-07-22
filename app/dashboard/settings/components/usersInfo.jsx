@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 
-import Buttonwithoutbg from "@/components/ui/button-without-bg";
+// import Buttonwithoutbg from "@/components/ui/button-without-bg";
 import TextInput from "@/components/input/textInput";
 import { settingSchema } from "@/schemas/settings";
 import { toast } from "sonner";
@@ -16,14 +16,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 export default function UsersInfo() {
   const { loggedInUserDetails } = useUserStore();
   const { useMutationRequest } = useApiRequest();
-  const { mutateAsync, isPending } = useMutationRequest();
+  const { mutateAsync } = useMutationRequest();
   const { error } = useGetUserInfo();
   const queryClient = useQueryClient();
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { errors },
     reset,
   } = useForm({
     resolver: zodResolver(settingSchema),
@@ -150,12 +150,12 @@ export default function UsersInfo() {
           <p>{loggedInUserDetails?.learners_level}</p>
         </div>
         <div className="flex items-center justify-center w-full p-4 border-b-2 ">
-          <Buttonwithoutbg
+          {/* <Buttonwithoutbg
             Btntext={"Edit Contact Information"}
             className={" "}
             disabled={!isDirty || isPending}
             loading={isPending}
-          />
+          /> */}
         </div>
       </div>
     </form>
