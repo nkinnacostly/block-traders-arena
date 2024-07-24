@@ -1,7 +1,8 @@
-// hooks/useStatistics.js
+import { useStatsStore, useUserStore } from "@/store/store";
 
+// hooks/useStatistics.js
+import React from "react";
 import useApiRequest from "@/hooks/useCustonApiQuery";
-import { useUserStore } from "@/store/store";
 
 export const GetCoursesInProgress = () => {
   const { loggedInUserDetails } = useUserStore();
@@ -14,11 +15,20 @@ export const GetCoursesInProgress = () => {
 };
 export const GetCoursesCompleted = () => {
   const { loggedInUserDetails } = useUserStore();
+  const { setStatistics, statistics } = useStatsStore();
   const { useGetRequest } = useApiRequest();
   const url = `/courses/completed?user_id=${loggedInUserDetails?.id}`;
   const reqKey = ["courses-completed"];
-  const { data, error, isLoading } = useGetRequest(url, reqKey);
-
+  const { data, error, isLoading, isSuccess } = useGetRequest(url, reqKey);
+  // {
+  //   data ? setStatistics(data?.data) : "";
+  // }
+  React.useEffect(() => {
+    if (isSuccess && data?.data) {
+      setStatistics(data.data);
+    }
+  }, [data?.data, isSuccess, setStatistics]);
+  console.log("statistics", statistics);
   return { completed: data?.data, error, isLoading };
 };
 export const GetCoursesDuration = () => {

@@ -8,7 +8,7 @@ import {
   GetCoursesCompleted,
   GetCoursesDuration,
   GetCoursesInProgress,
-} from "./services";
+} from "./services/services";
 import React, { useEffect, useState } from "react";
 
 import { AnimatePage } from "@/components/animations/page";
@@ -42,9 +42,6 @@ function Dashboard() {
     GetCoursesCompleted();
   const { duration: coursesDuration } = GetCoursesDuration();
   const { badges: courseBadges } = GetBadges();
-  console.log(completedData, "This is data completed");
-  console.log(courseBadges, "This is data data");
-  console.log(coursesDuration, "This is data data");
 
   // const [modalIsOpen, setModalIsOpen] = useState(false);
   // const [description, setDescription] = useState("");
@@ -74,13 +71,13 @@ function Dashboard() {
   }
   const courseContent = [
     {
-      number: completedData?.courses,
+      number: completedData?.count,
       icon: <FaCircleCheck size={20} />,
       tittle: "Completed Courses",
       bgColor: "#D4AF37",
     },
     {
-      number: data?.courses,
+      number: data?.count,
       icon: <IoRefreshCircleSharp size={30} />,
       tittle: "Courses-in-Progress",
       // bgColor: "#000000",
@@ -98,7 +95,7 @@ function Dashboard() {
       bgColor: "#D4AF37",
     },
     {
-      number: courseBadges?.courses,
+      number: courseBadges?.count,
       icon: <RiAwardFill size={20} />,
       tittle: "Badges Earned",
       bgColor: "#D4AF37",

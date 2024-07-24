@@ -8,19 +8,19 @@ import PasswordInput from "@/components/input/passwordInput";
 import React from "react";
 import TextInput from "@/components/input/textInput";
 import { profileSchema } from "@/schemas/login";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import { storage } from "@/utils/storage";
 import { toast } from "sonner";
 import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useForm } from "react-hook-form";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 function Login() {
   const { useMutationRequest } = useApiRequest(); // Destructure the custom hook
   const { mutateAsync, isPending } = useMutationRequest();
-  // const router = useRouter();
+  const router = useRouter();
 
   const { setLoggedInUserDetails } = useUserStore();
   const {
@@ -48,8 +48,8 @@ function Login() {
             storage.cookieStorage.set("user", data.user);
             storage.cookieStorage.set("__session", data?.token);
             setLoggedInUserDetails(data?.user);
+            router.push("/dashboard");
             toast.success("Login Successful");
-            redirect("/dashboard");
           },
           onError: (error) => {
             toast.error(error.message);

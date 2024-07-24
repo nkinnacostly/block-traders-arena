@@ -10,6 +10,10 @@ import { useUserStore } from "@/store/store";
 
 export function CoursesVideos() {
   const { loggedInUserDetails } = useUserStore();
+  const [inProgress, setInProgress] = React.useState({
+    user_id: loggedInUserDetails?.id,
+    course_id: "",
+  });
   console.log("loggedInUserDetails:", loggedInUserDetails);
 
   const url = `/all-videos`;
@@ -68,7 +72,11 @@ export function CoursesVideos() {
 
                   <div className="flex items-center justify-center w-full mt-8 mb-8">
                     {isAccessible ? (
-                      <WatchVideo data={video}>
+                      <WatchVideo
+                        data={video}
+                        setInProgress={setInProgress}
+                        inProgress={inProgress}
+                      >
                         <button className="px-5 py-2.5 bg-amber-400 rounded-lg text-center text-base font-medium capitalize">
                           Watch video
                         </button>

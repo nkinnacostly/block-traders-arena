@@ -13,14 +13,17 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
+import { SubmitCourse } from "../services/courses-service";
+// import { SubmitCourse } from "../services/courses-service";
 import YouTube from "react-youtube";
 import { getYouTubeVideoId } from "@/utils/get-youtube-url";
 import { useState } from "react";
 
-export function WatchVideo({ children, data }) {
+export function WatchVideo({ children, data, setInProgress, inProgress }) {
   const match = getYouTubeVideoId(data?.path);
-  console.log(match);
-  console.log(data);
+  const { onSubmit, completed } = SubmitCourse();
+  // console.log(match);
+  // console.log(data);
   const [showButton, setShowButton] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   let videoCode;
@@ -43,10 +46,18 @@ export function WatchVideo({ children, data }) {
     },
   };
 
-  const handleExerciseComplete = () => console.log("Do something");
-  const handleVideoReady = () => {
+  const handleExerciseComplete = async () => {
+    await completed(inProgress);
+  };
+  const handleVideoReady = async () => {
+    setInProgress({
+      ...inProgress,
+      course_id: data?.id,
+    });
+    await onSubmit(inProgress);
     setIsLoading(false);
   };
+  // console.log(inProgress, "In progress");
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>

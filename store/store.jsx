@@ -30,3 +30,23 @@ export const useDialog = create((set) => ({
   data: {},
   setData: (data) => set({ data: { data } }),
 }));
+
+export const useStatsStore = create(
+  persist(
+    (set) => ({
+      statistics: {},
+      setStatistics: (statistics) =>
+        set(() => ({
+          statistics: statistics,
+        })),
+    }),
+    {
+      name: "user-stats", // name of the item in the storage (must be unique)
+      // storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+    },
+    {
+      // ...
+      skipHydration: true,
+    }
+  )
+);

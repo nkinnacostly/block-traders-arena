@@ -17,7 +17,7 @@ export default function UserProfilePic() {
   const { loggedInUserDetails } = useUserStore();
   const maxNumber = 1;
   const { useMutationRequest } = useApiRequest();
-  const { mutateAsync, isPending } = useMutationRequest();
+  const { mutateAsync } = useMutationRequest();
   const queryClient = useQueryClient();
 
   const {
