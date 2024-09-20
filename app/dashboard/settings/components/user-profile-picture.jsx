@@ -12,12 +12,13 @@ import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useQueryClient } from "@tanstack/react-query";
 import { useUserStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
 
 export default function UserProfilePic() {
   const { loggedInUserDetails } = useUserStore();
   const maxNumber = 1;
   const { useMutationRequest } = useApiRequest();
-  const { mutateAsync } = useMutationRequest();
+  const { mutateAsync, isPending } = useMutationRequest();
   const queryClient = useQueryClient();
 
   const {
@@ -139,12 +140,9 @@ export default function UserProfilePic() {
           {...register("id")}
           value={loggedInUserDetails?.id}
         />
-        {/* <Buttonwithoutbg
-          Btntext={"Upload"}
-          className={""}
-          loading={isPending}
-          disabled={isPending}
-        /> */}
+        <Button className={""} loading={isPending} disabled={isPending}>
+          Upload
+        </Button>
       </div>
     </form>
   );

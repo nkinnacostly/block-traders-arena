@@ -12,18 +12,19 @@ import useGetUserInfo from "@/hooks/useGetUserInfo";
 import { useQueryClient } from "@tanstack/react-query";
 import { useUserStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@/components/ui/button";
 
 export default function UsersInfo() {
   const { loggedInUserDetails } = useUserStore();
   const { useMutationRequest } = useApiRequest();
-  const { mutateAsync } = useMutationRequest();
+  const { mutateAsync, isPending } = useMutationRequest();
   const { error } = useGetUserInfo();
   const queryClient = useQueryClient();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty },
     reset,
   } = useForm({
     resolver: zodResolver(settingSchema),
@@ -72,9 +73,7 @@ export default function UsersInfo() {
       toast.error(error);
     }
   };
-  {
-    error ? toast.error(error) : "";
-  }
+  if (error) return <>{toast.error("Something Went Wrong")}</>;
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col items-start justify-start w-full lg:w-[534px] p-5 space-y-5 shadow-xl rounded-xl border-2">
@@ -150,6 +149,9 @@ export default function UsersInfo() {
           <p>{loggedInUserDetails?.learners_level}</p>
         </div>
         <div className="flex items-center justify-center w-full p-4 border-b-2 ">
+          <Button disabled={!isDirty || isPending} loading={isPending}>
+            Save
+          </Button>
           {/* <Buttonwithoutbg
             Btntext={"Edit Contact Information"}
             className={" "}
