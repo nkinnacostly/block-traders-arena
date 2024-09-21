@@ -6,18 +6,18 @@ import React, { useEffect } from "react";
 import TextInput from "@/components/input/textInput";
 import { settingSchema } from "@/schemas/settings";
 import { toast } from "sonner";
-import useApiRequest from "@/hooks/useCustonApiQuery";
+
 import { useForm } from "react-hook-form";
 import useGetUserInfo from "@/hooks/useGetUserInfo";
 import { useQueryClient } from "@tanstack/react-query";
 import { useUserStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
+import { useUpdateUserInfo } from "../service/update-user-info-service";
 
 export default function UsersInfo() {
   const { loggedInUserDetails } = useUserStore();
-  const { useMutationRequest } = useApiRequest();
-  const { mutateAsync, isPending } = useMutationRequest();
+  const { mutateAsync, isPending } = useUpdateUserInfo();
   const { error } = useGetUserInfo();
   const queryClient = useQueryClient();
 
@@ -50,27 +50,14 @@ export default function UsersInfo() {
 
   const onSubmit = async (userData) => {
     try {
-      await mutateAsync(
-        {
-          method: "POST",
-          url: "/update_name",
-          data: userData,
-        },
-        {
-          onSuccess: () => {
-            queryClient.refetchQueries({
-              queryKey: ["users-info"],
-            });
-            toast.success("Profile Updates Successfully");
-          },
-          onError: (error) => {
-            console.log(error, "This is error");
-          },
-        }
-      );
+      const response = await mutateAsync(userData);
+      if (response) {
+        toast.success(`User Profile Updated`);
+        queryClient.invalidateQueries({ queryKey: [' "users-info"'] });
+      }
     } catch (error) {
-      // console.error("Error adding data:", error.message);
-      toast.error(error);
+      console.error("Login failed:", error.error);
+      toast.error(`${error.error}`);
     }
   };
   if (error) return <>{toast.error("Something Went Wrong")}</>;

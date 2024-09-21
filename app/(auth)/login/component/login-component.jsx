@@ -9,17 +9,17 @@ import React from "react";
 import TextInput from "@/components/input/textInput";
 import { profileSchema } from "@/schemas/login";
 // import { redirect } from "next/navigation";
-import { storage } from "@/utils/storage";
+import { storeItemToSessionStorage } from "@/utils/storage";
 import { toast } from "sonner";
-import useApiRequest from "@/hooks/useCustonApiQuery";
+
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import Cookies from "js-cookie";
+import { useCreateStore } from "../service/login-service";
 function LoginComponent() {
-  const { useMutationRequest } = useApiRequest(); // Destructure the custom hook
-  const { mutateAsync, isPending } = useMutationRequest();
+  const { mutateAsync, isPending } = useCreateStore();
   const router = useRouter();
 
   const { setLoggedInUserDetails } = useUserStore();
@@ -37,29 +37,17 @@ function LoginComponent() {
 
   const onSubmit = async (userData) => {
     try {
-      await mutateAsync(
-        {
-          method: "POST",
-          url: "/login",
-          data: userData,
-        },
-        {
-          onSuccess: (data) => {
-            storage.sessionStorage.set("user", data.user);
-            storage.cookieStorage.set("__session", data?.token);
-            setLoggedInUserDetails(data?.user);
-            router.push("/dashboard");
-            toast.success("Login Successful");
-          },
-          onError: (error) => {
-            toast.error(error.message);
-            // console.log(error, "This is error");
-          },
-        }
-      );
+      const response = await mutateAsync(userData);
+      if (response) {
+        toast.success(`Login Successfull`);
+        Cookies.set("__session", response?.token);
+        storeItemToSessionStorage({ key: "__session", value: response?.token });
+        setLoggedInUserDetails(response.user);
+        router.push("/dashboard");
+      }
     } catch (error) {
-      // console.error("Error adding data:", error.message);
-      // console.log(error.error);
+      console.error("Login failed:", error.error);
+      toast.error(`${error.error}`);
     }
   };
 

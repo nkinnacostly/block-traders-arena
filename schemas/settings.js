@@ -13,7 +13,7 @@ export const settingSchema = z.object({
   first_name: z.string(),
   last_name: z.string(),
   email: z.string().email(),
-  phone: z.string(),
+  phone: z.string({ message: "Number is Required" }),
   block_path: z.string(),
 });
 

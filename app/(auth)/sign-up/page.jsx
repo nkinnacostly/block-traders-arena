@@ -12,7 +12,7 @@ import PasswordInput from "@/components/input/passwordInput";
 import React from "react";
 import { SignUpSchema } from "@/schemas/sign-in";
 import TextInput from "@/components/input/textInput";
-import { storage } from "@/utils/storage";
+import { storeItemToSessionStorage } from "@/utils/storage";
 import { toast } from "sonner";
 import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useForm } from "react-hook-form";
@@ -67,8 +67,8 @@ function SignUp() {
         {
           onSuccess: (data) => {
             toast.success(data.message);
-            storage.localStorage.set("user", data.user);
-            storage.localStorage.set("__session", data.data?.token);
+            storeItemToSessionStorage("user", data.user);
+            storeItemToSessionStorage("__session", data.data?.token);
             router.push("/login");
           },
           onError: (error) => {

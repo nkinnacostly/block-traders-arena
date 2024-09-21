@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import axios from "axios";
-import { storage } from "../utils/storage";
+import { getSessionStorageItem } from "../utils/storage";
 // import { toast } from "sonner";
 import { useCallback } from "react";
 
@@ -11,7 +11,7 @@ axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 function useApiRequest() {
   // const queryClient = useQueryClient();
 
-  const token = storage.cookieStorage.get("__session");
+  const token = getSessionStorageItem({ key: "__session" });
 
   // Function to fetch data from API
   const fetchData = async (url) => {
@@ -47,7 +47,7 @@ function useApiRequest() {
       // toast.error(`${error.response.data.error}`);
 
       // throw new Error(`${error}`);
-      console.log(error.response.data);
+      return error?.response?.data;
     }
   };
 

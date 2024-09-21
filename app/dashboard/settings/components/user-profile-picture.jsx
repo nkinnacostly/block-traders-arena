@@ -100,9 +100,10 @@ export default function UserProfilePic() {
                           <div className="w-full h-full relative">
                             <Image
                               src={
-                                loggedInUserDetails?.image_url === null
-                                  ? value
-                                  : loggedInUserDetails?.image_url
+                                ""
+                                // loggedInUserDetails?.image_url !== null
+                                //   ? value
+                                //   : loggedInUserDetails?.image_url
                               }
                               alt="profile-image"
                               //   width={100}
