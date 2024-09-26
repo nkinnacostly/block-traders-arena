@@ -10,10 +10,7 @@ function Courses() {
     <div className="w-full">
       <SearchCourses />
       <div className="w-full p-4 mt-4  border-2 shadow-lg rounded-xl">
-        <h5 className="text-[24px]  font-[500] mb-8">All Courses</h5>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-          <CoursesVideos />
-        </div>
+        <CoursesVideos />
       </div>
       {/* <div className="w-full p-4 mt-4 border-2 shadow-lg rounded-xl">
         <h5 className="text-[24px]  font-[500] mb-8">Live Classes</h5>
