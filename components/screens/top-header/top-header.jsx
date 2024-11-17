@@ -24,7 +24,7 @@ function Topheader({
       <MobileNav />
 
       <div
-        className={` px-[2rem] xl:px-[5rem]  lg:pt-[3rem] bg-cover bg-no-repeat h-[85vh] ${className}`}
+        className={` px-[2rem] xl:px-[5rem]  lg:pt-[2rem] bg-cover bg-no-repeat h-[95vh] ${className}`}
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <Navbar />

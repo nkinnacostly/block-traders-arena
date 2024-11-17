@@ -19,7 +19,9 @@ export function CoursesVideos() {
     user_id: loggedInUserDetails?.id,
     course_id: "",
   });
-  const url = `/all-videos`;
+  console.log(loggedInUserDetails);
+  // const url = `/all-videos`;
+  const url = `/api/get-level-2/`;
   const reqKey = ["users-videos"];
   const { useGetRequest } = useApiRequest();
   const { data, isLoading, isError } = useGetRequest(url, reqKey);

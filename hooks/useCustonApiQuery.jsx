@@ -2,13 +2,21 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 
 import axios from "axios";
 import { getSessionStorageItem } from "../utils/storage";
+import { useUserStore } from "@/store/store";
 // import { toast } from "sonner";
 import { useCallback } from "react";
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+// axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL_2;
 
 // Custom hook for handling API requests
 function useApiRequest() {
+  const { loggedInUserDetails } = useUserStore();
+  // console.log(loggedInUserDetails);
+  axios.defaults.baseURL =
+    loggedInUserDetails?.block_level === "1"
+      ? process.env.NEXT_PUBLIC_API_BASE_URL
+      : process.env.NEXT_PUBLIC_API_BASE_URL_2;
+
   // const queryClient = useQueryClient();
 
   const token = getSessionStorageItem({ key: "__session" });
