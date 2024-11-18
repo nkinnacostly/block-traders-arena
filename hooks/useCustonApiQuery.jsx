@@ -11,13 +11,10 @@ import { useCallback } from "react";
 // Custom hook for handling API requests
 function useApiRequest() {
   const { loggedInUserDetails } = useUserStore();
-  // console.log(loggedInUserDetails);
   axios.defaults.baseURL =
     loggedInUserDetails?.block_level === "1"
-      ? process.env.NEXT_PUBLIC_API_BASE_URL
+      ? process.env.NEXT_PUBLIC_API_BASE_URL_2
       : process.env.NEXT_PUBLIC_API_BASE_URL_2;
-
-  // const queryClient = useQueryClient();
 
   const token = getSessionStorageItem({ key: "__session" });
 
@@ -64,6 +61,8 @@ function useApiRequest() {
     return useQuery({
       queryKey: reqKey,
       queryFn: () => fetchData(url),
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
       // enabled: !url,
     });
   };
