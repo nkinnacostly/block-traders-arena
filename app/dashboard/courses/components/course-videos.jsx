@@ -29,6 +29,7 @@ export function CoursesVideos() {
   });
   console.log(loggedInUserDetails);
 
+
   const url = `/all-videos`;
   const url2 = `/api/get-level-2`;
   // const url =
