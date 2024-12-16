@@ -50,3 +50,14 @@ export const useStatsStore = create(
     }
   )
 );
+export const useVideoStore = create((set) => ({
+  watchedVideos: 0,
+  incrementWatchedVideos: () =>
+    set((state) => ({
+      watchedVideos: state.watchedVideos + 1,
+    })),
+  resetWatchedVideos: () =>
+    set(() => ({
+      watchedVideos: 0,
+    })),
+}));

@@ -7,6 +7,7 @@
     "dev": "next dev -H 127.0.0.1",
     "build": "next build",
     "start": "next start",
+    "proxy": "http://localhost:5000",
     "lint": "next lint"
   },
   "dependencies": {
@@ -35,6 +36,7 @@
     "framer-motion": "^11.0.3",
     "js-cookie": "^3.0.5",
     "next": "14.2.12",
+    "next-cloudinary": "^6.16.0",
     "next-themes": "^0.3.0",
     "nextjs-toploader": "^1.6.12",
     "react": "^18.3.1",
