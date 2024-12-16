@@ -10,9 +10,14 @@ import { MdDashboard } from "react-icons/md";
 import React from "react";
 import { TbTargetArrow } from "react-icons/tb";
 import { usePathname } from "next/navigation";
+import { useUserStore } from "@/store/store";
+import { useVideoStore } from "@/store/store";
 
 function DashboardSidebar() {
+  const { loggedInUserDetails } = useUserStore();
+  const { watchedVideos } = useVideoStore();
   // const router = useRouter();
+  const isLevel1 = loggedInUserDetails?.block_level === "1";
   const pathname = usePathname();
   // console.log(pathname, "This is pathname");
   const sideLinks = [
@@ -35,6 +40,7 @@ function DashboardSidebar() {
       icon: <TbTargetArrow />,
       tittle: "Challenges",
       link: "/dashboard/challenges",
+      disabled: watchedVideos !== 3 || isLevel1,
     },
     {
       icon: <IoMdSettings />,
@@ -58,23 +64,15 @@ function DashboardSidebar() {
       <>
         {sideLinks.map((links, index) => (
           <Link
-            className={`flex items-center justify-start  rounded-lg px-3 cursor-pointer  ${
+            className={`flex items-center justify-start rounded-lg px-3 cursor-pointer ${
               pathname === links?.link
                 ? "bg-[#1E1E1E99] border border-green-300"
                 : ""
-            }`}
+            } ${links.disabled ? "pointer-events-none opacity-50" : ""}`} // Disable the link if it's not accessible
             key={index}
-            // onClick={() => router.push(`${links?.link}`)}
-            href={links.link}
+            href={links.disabled ? "#" : links.link} // Prevent navigation if disabled
           >
-            {/* <MdDashboard size={20} /> */}
-            <p
-              className={`flex items-start justify-start ${
-                pathname === links?.link ? " " : ""
-              }`}
-            >
-              {links.icon}
-            </p>
+            <p className={`flex items-start justify-start`}>{links.icon}</p>
 
             <p className="text-[16px] font-[400]  p-2">{links.tittle}</p>
           </Link>

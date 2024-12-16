@@ -1,30 +1,63 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { WatchVideo } from "./video-modal";
-
+import { useRouter } from "next/navigation";
 import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useUserStore } from "@/store/store";
+import { useVideoStore } from "@/store/store";
 import { Button } from "@/components/ui/button";
 import { useInitiatePayment } from "../services/initialize-payment";
 import useToggle from "@/hooks/use-toggle";
 import PaymentDialog from "./payment-dialog";
+import useFetchLevel2 from "@/hooks/usefetchlevel2";
+import { ChallengeModal } from "./ChallengeModal";
 
 export function CoursesVideos() {
+  const router = useRouter();
   const { loggedInUserDetails } = useUserStore();
+  const { watchedVideos, incrementWatchedVideos } = useVideoStore();
   const [isVisible, toggleVisibility] = useToggle(false);
   const [paymentData, setPaymentData] = useState({});
+  // const [watchedVideos, setWatchedVideos] = useState(0);
+  const [isModalOpen, setModalOpen] = useState(false);
   const [inProgress, setInProgress] = React.useState({
     user_id: loggedInUserDetails?.id,
     course_id: "",
   });
   console.log(loggedInUserDetails);
-  // const url = `/all-videos`;
-  const url = `/api/get-level-2`;
+
+
+  const url = `/all-videos`;
+  const url2 = `/api/get-level-2`;
+  // const url =
+  //   loggedInUserDetails?.block_level === "1"
+  //     ? "/all-videos"
+  //     : "/api/get-level-2";
+
   const reqKey = ["users-videos"];
+  const reqKey2 = ["level2-videos"];
+  const isLevel1 = loggedInUserDetails?.block_level === "1";
+
   const { useGetRequest } = useApiRequest();
-  const { data, isLoading, isError } = useGetRequest(url, reqKey);
+  const { useGetRequest2 } = useFetchLevel2();
+  const {
+    data: level1Data,
+    isLoading: isLoadingLevel1,
+    isError: isErrorLevel1,
+  } = useGetRequest(url, reqKey, { enabled: isLevel1 });
+  const {
+    data: level2Data,
+    isLoading: isLoadingLevel2,
+    isError: isErrorLevel2,
+  } = useGetRequest2(url2, reqKey2, { enabled: !isLevel1 });
+
+  const data = isLevel1 ? level1Data : level2Data;
+  const isLoading = isLevel1 ? isLoadingLevel1 : isLoadingLevel2;
+  const isError = isLevel1 ? isErrorLevel1 : isErrorLevel2;
+
   const { mutateAsync, isPending } = useInitiatePayment(
     loggedInUserDetails?.uuid
   );
@@ -42,6 +75,7 @@ export function CoursesVideos() {
       //  toast.error(`${error.error}`);
     }
   };
+  console.log(data);
   const videos = React.useMemo(
     () => data?.data?.videos || [],
     [data?.data?.videos]
@@ -50,6 +84,28 @@ export function CoursesVideos() {
     ...item,
     image: `/assets/${item.id}.jpeg`,
   }));
+
+  const handleVideoWatched = () => {
+    if (!isLevel1) {
+      incrementWatchedVideos();
+    }
+  };
+
+  React.useEffect(() => {
+    if (watchedVideos === 3 && !isLevel1) {
+      setModalOpen(true); // Open modal
+    }
+  }, [watchedVideos, isLevel1]);
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const navigateToChallenge = () => {
+    setModalOpen(false);
+    router.push("/dashboard/challenges");
+  };
+
   if (isError)
     return (
       <p className="text-red-500 font-bold">
@@ -110,6 +166,7 @@ export function CoursesVideos() {
                           data={video}
                           setInProgress={setInProgress}
                           inProgress={inProgress}
+                          onWatched={handleVideoWatched}
                         >
                           <button className="px-5 py-2.5 bg-amber-400 rounded-lg text-center text-base font-medium capitalize">
                             Watch video
@@ -141,10 +198,17 @@ export function CoursesVideos() {
           );
         })}
       </div>
+
       <PaymentDialog
         openChange={isVisible}
         handleOpenChange={toggleVisibility}
         data={paymentData}
+      />
+
+      <ChallengeModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onNavigate={navigateToChallenge}
       />
     </div>
   );

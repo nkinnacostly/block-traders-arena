@@ -15,11 +15,14 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SubmitCourse } from "../services/courses-service";
 // import { SubmitCourse } from "../services/courses-service";
+// import { CldVideoPlayer } from "next-cloudinary";
 import YouTube from "react-youtube";
 import { getYouTubeVideoId } from "@/utils/get-youtube-url";
+import { useUserStore } from "@/store/store";
 import { useState } from "react";
 
 export function WatchVideo({ children, data, setInProgress, inProgress }) {
+  const { loggedInUserDetails } = useUserStore();
   const match = getYouTubeVideoId(data?.path);
   const { onSubmit, completed } = SubmitCourse();
   // console.log(match);
@@ -69,13 +72,17 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
         <Separator />
         {isLoading && <Skeleton className="h-4 w-full" />}
         <div className="w-full flex items-center justify-center">
-          <YouTube
-            videoId={videoCode}
-            containerClassName="w-full"
-            onStateChange={(e) => checkElapsedTime(e)}
-            opts={opts}
-            onReady={handleVideoReady}
-          />
+          {loggedInUserDetails?.block_level === "1" ? (
+            <YouTube
+              videoId={videoCode}
+              containerClassName="w-full"
+              onStateChange={(e) => checkElapsedTime(e)}
+              opts={opts}
+              onReady={handleVideoReady}
+            />
+          ) : (
+            <video src={data?.path} controls autoPlay={false} />
+          )}
         </div>
         <Separator />
 
