@@ -38,7 +38,7 @@ export function CoursesVideos() {
 
   const reqKey = ["users-videos"];
   const reqKey2 = ["level2-videos"];
-  const isLevel1 = loggedInUserDetails?.block_level === "1";
+  const isLevel1 = loggedInUserDetails?.learners_level === "1";
 
   const { useGetRequest } = useApiRequest();
   const { useGetRequest2 } = useFetchLevel2();

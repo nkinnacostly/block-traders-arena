@@ -17,7 +17,7 @@ function DashboardSidebar() {
   const { loggedInUserDetails } = useUserStore();
   const { watchedVideos } = useVideoStore();
   // const router = useRouter();
-  const isLevel1 = loggedInUserDetails?.block_level === "1";
+  const isLevel1 = loggedInUserDetails?.learners_level === "1";
   const pathname = usePathname();
   // console.log(pathname, "This is pathname");
   const sideLinks = [
