@@ -48,7 +48,7 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
       autoplay: 0,
     },
   };
-
+  console.log(loggedInUserDetails?.block_level, "Block level");
   const handleExerciseComplete = async () => {
     await completed(inProgress);
   };
@@ -72,7 +72,7 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
         <Separator />
         {isLoading && <Skeleton className="h-4 w-full" />}
         <div className="w-full flex items-center justify-center">
-          {loggedInUserDetails?.block_level === "1" ? (
+          {loggedInUserDetails?.block_level === 1 ? (
             <YouTube
               videoId={videoCode}
               containerClassName="w-full"
