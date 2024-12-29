@@ -48,7 +48,7 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
       autoplay: 0,
     },
   };
-  console.log(loggedInUserDetails?.block_level, "Block level");
+  // console.log(loggedInUserDetails?.block_level, "Block level");
   const handleExerciseComplete = async () => {
     await completed(inProgress);
   };
