@@ -119,8 +119,10 @@ interface ChartTooltipContentProps
   hideLabel?: boolean;
   hideIndicator?: boolean;
   label?: string;
+  // eslint-disable-next-line no-unused-vars
   labelFormatter?: (value: string) => React.ReactNode;
   labelClassName?: string;
+  // eslint-disable-next-line no-unused-vars
   formatter?: (value: number, name: string) => React.ReactNode;
   color?: string;
   nameKey?: string;
