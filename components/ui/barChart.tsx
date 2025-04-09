@@ -69,7 +69,7 @@ const BarChart: React.FC = () => {
       legend: {
         show: true,
         position: "bottom" as const,
-        width: "50px",
+        width: 50,
       },
     }),
     []
