@@ -1,6 +1,6 @@
-import React from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
-import {CircleAlertIcon} from 'lucide-react';
+import React from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { CircleAlertIcon } from "lucide-react";
 
 export function TimeoutAlert({
   message,
@@ -35,13 +35,13 @@ export function TimeoutAlert({
           initial={{
             height: 0,
           }}
-          animate={{height: 'auto'}}
-          exit={{height: 0}}
+          animate={{ height: "auto" }}
+          exit={{ height: 0 }}
           transition={{
             duration: 0.05,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
-          className="overflow-hidden"
+          style={{ overflow: "hidden" }}
         >
           <div className="flex items-center gap-1 rounded-lg bg-rose-50 p-3 text-body-small text-rose-500">
             <CircleAlertIcon className="size-4 text-rose-500" />
