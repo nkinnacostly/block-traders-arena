@@ -6,11 +6,11 @@ import { DayPicker, DayPickerProps } from "react-day-picker";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-interface CalendarProps extends DayPickerProps {
+type CalendarProps = DayPickerProps & {
   className?: string;
   classNames?: Record<string, string>;
   showOutsideDays?: boolean;
-}
+};
 
 const Calendar: React.FC<CalendarProps> = ({
   className,
