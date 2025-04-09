@@ -7,79 +7,101 @@ import { IoMdSettings } from "react-icons/io";
 // import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { MdDashboard } from "react-icons/md";
-import React from "react";
+import React, { memo, useMemo } from "react";
 import { TbTargetArrow } from "react-icons/tb";
 import { usePathname } from "next/navigation";
 import { useUserStore } from "@/store/store";
 import { useVideoStore } from "@/store/store";
 
-function DashboardSidebar() {
+const SidebarLink = memo(({ icon, title, link, isActive, disabled }) => (
+  <Link
+    className={`
+      flex items-center justify-start rounded-lg px-3 cursor-pointer
+      ${isActive ? "bg-[#1E1E1E99] border border-green-300" : ""}
+      ${disabled ? "pointer-events-none opacity-50" : ""}
+      hover:bg-[#1E1E1E66] transition-colors
+    `}
+    href={disabled ? "#" : link}
+  >
+    <span className="flex items-center justify-center w-6">{icon}</span>
+    <span className="text-[16px] font-[400] p-2">{title}</span>
+  </Link>
+));
+
+SidebarLink.displayName = "SidebarLink";
+
+const DashboardSidebar = () => {
   const { loggedInUserDetails } = useUserStore();
   const { watchedVideos } = useVideoStore();
   // const router = useRouter();
   const isLevel1 = loggedInUserDetails?.learners_level === "1";
   const pathname = usePathname();
   // console.log(pathname, "This is pathname");
-  const sideLinks = [
-    {
-      icon: <MdDashboard />,
-      tittle: "Dashboard",
-      link: "/dashboard",
-    },
-    {
-      icon: <GoBook />,
-      tittle: "Courses",
-      link: "/dashboard/courses",
-    },
-    {
-      icon: <GiProgression />,
-      tittle: "Progress",
-      link: "/dashboard/progress",
-    },
-    {
-      icon: <TbTargetArrow />,
-      tittle: "Challenges",
-      link: "/dashboard/challenges",
-      disabled: watchedVideos !== 3 || isLevel1,
-    },
-    {
-      icon: <IoMdSettings />,
-      tittle: "Settings",
-      link: "/dashboard/settings",
-    },
-  ];
+  const sideLinks = useMemo(
+    () => [
+      {
+        icon: <MdDashboard />,
+        title: "Overview",
+        link: "/dashboard",
+      },
+      {
+        icon: <GoBook />,
+        title: "Jounal Trades",
+        link: "/dashboard/courses",
+      },
+      {
+        icon: <GiProgression />,
+        title: "Progress",
+        link: "/dashboard/progress",
+      },
+      {
+        icon: <TbTargetArrow />,
+        title: "Copy Trades",
+        link: "/dashboard/copy-trade",
+      },
+      {
+        icon: <TbTargetArrow />,
+        title: "Refer and Earn",
+        link: "/dashboard/challenges",
+        disabled: watchedVideos !== 3 || isLevel1,
+      },
+      {
+        icon: <IoMdSettings />,
+        title: "Settings",
+        link: "/dashboard/settings",
+      },
+    ],
+    [watchedVideos, isLevel1]
+  );
+
   return (
     <div className="flex flex-col w-full h-full px-5 space-y-3 border-2 py-5 rounded-xl">
       <div className="flex items-center justify-center">
-        <div className="items-center w-20 h-20 border-2 rounded-full ">
+        <div className="relative w-20 h-20 border-2 rounded-full overflow-hidden">
           <Image
-            src={"/assets/img/png/chef.png"}
-            width={100}
-            height={100}
-            className="w-full h-full rounded-full"
-            alt="prof-img"
+            src="/assets/img/png/chef.png"
+            fill
+            className="object-cover"
+            alt="Profile"
+            sizes="80px"
+            priority
           />
         </div>
       </div>
-      <>
-        {sideLinks.map((links, index) => (
-          <Link
-            className={`flex items-center justify-start rounded-lg px-3 cursor-pointer ${
-              pathname === links?.link
-                ? "bg-[#1E1E1E99] border border-green-300"
-                : ""
-            } ${links.disabled ? "pointer-events-none opacity-50" : ""}`} // Disable the link if it's not accessible
-            key={index}
-            href={links.disabled ? "#" : links.link} // Prevent navigation if disabled
-          >
-            <p className={`flex items-start justify-start`}>{links.icon}</p>
-
-            <p className="text-[16px] font-[400]  p-2">{links.tittle}</p>
-          </Link>
+      <nav className="space-y-2">
+        {sideLinks.map((link) => (
+          <SidebarLink
+            key={link.link}
+            icon={link.icon}
+            title={link.title}
+            link={link.link}
+            isActive={pathname === link.link}
+            disabled={link.disabled}
+          />
         ))}
-      </>
+      </nav>
     </div>
   );
-}
+};
 
-export default DashboardSidebar;
+export default memo(DashboardSidebar);

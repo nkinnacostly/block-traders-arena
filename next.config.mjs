@@ -12,7 +12,19 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ["res.cloudinary.com", "youtu.be"],
+    // remotePatterns: ["res.cloudinary.com", "youtu.be"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "youtu.be",
+        pathname: "**",
+      },
+    ],
   },
 };
 

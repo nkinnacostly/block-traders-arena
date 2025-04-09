@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback, memo } from "react";
 
 // import Down from "@/public/assets/img/svg/down.svg";
 import { FaSortDown } from "react-icons/fa";
@@ -13,71 +13,80 @@ import { cn } from "@/lib/utils";
 
 // import { motion } from "framer-motion";
 
-function MobileNav() {
+const NavLink = memo(({ href, children, className = "" }) => (
+  <Link href={href} className={className}>
+    {children}
+  </Link>
+));
+
+NavLink.displayName = "NavLink";
+
+const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
   return (
     <div className="lg:hidden xl:hidden 2xl:hidden">
-      <div className=" bg-[#f9eeb2] px-[2rem] py-3 flex items-center justify-between lg:hidden xl:hidden 2xl:hidden">
+      <div className="bg-[#f9eeb2] px-[2rem] py-3 flex items-center justify-between">
         <div>
-          <Image src={Logo} height={50} width={50} alt="logo" />
+          <Image src={Logo} height={50} width={50} alt="logo" priority />
         </div>
-        <div>
-          <PiSquaresFourFill size={45} onClick={toggleMenu} />
-        </div>
+        <button
+          onClick={toggleMenu}
+          className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+          aria-label="Toggle menu"
+        >
+          <PiSquaresFourFill size={45} />
+        </button>
       </div>
-      {isOpen ? (
-        <div className="border-2 py-4 my-4 ">
-          <div className="overlay" onClick={() => setIsOpen(!isOpen)}></div>
-          <nav className="menu">
-            <div className="flex items-center flex-col space-y-5">
-              <Link href={"/"} className="">
-                Home
-              </Link>
-              <Link href={"/homepage/about"} className="">
-                About Us
-              </Link>
-              <Link
-                href={"/homepage/education"}
-                className="flex items-center   justify-center space-x-3"
+
+      {isOpen && (
+        <div className="border-2 py-4 my-4">
+          <div className="fixed inset-0 bg-black/20 z-40" onClick={closeMenu} />
+          <nav className="relative z-50 bg-white rounded-lg shadow-lg">
+            <div className="flex items-center flex-col space-y-5 p-4">
+              <NavLink href="/">Home</NavLink>
+              <NavLink href="/homepage/about">About Us</NavLink>
+              <NavLink
+                href="/homepage/education"
+                className="flex items-center justify-center space-x-3"
               >
                 <p>Education Arena</p>
-
                 <FaSortDown size={30} className="mb-3" />
-              </Link>
-              <Link
-                href={"/homepage/trading"}
-                className="flex items-center  justify-center space-x-3"
+              </NavLink>
+              <NavLink
+                href="/homepage/trading"
+                className="flex items-center justify-center space-x-3"
               >
                 <p>Trading Arena</p>
                 <FaSortDown size={30} className="mb-3" />
-              </Link>
+              </NavLink>
             </div>
-            <div className="flex items-center justify-center flex-col space-y-5 mt-3">
-              <Link
+            <div className="flex items-center justify-center flex-col space-y-5 mt-3 p-4">
+              <NavLink
                 className={cn(
                   buttonVariants({ size: "lg", variant: "outline" })
                 )}
-                href={"/login"}
+                href="/login"
               >
                 Sign in
-              </Link>
-
-              <Link
+              </NavLink>
+              <NavLink
                 className={cn(buttonVariants({ size: "lg" }))}
-                href={"/sign-up"}
+                href="/sign-up"
               >
                 Create Account
-                {/* Create campaign <PlusCircledIcon /> */}
-              </Link>
+              </NavLink>
             </div>
           </nav>
         </div>
-      ) : (
-        ""
       )}
       {/* <motion.div
         className={`menu ${isOpen ? "block" : "hidden"} `}
@@ -93,6 +102,6 @@ function MobileNav() {
       </motion.div> */}
     </div>
   );
-}
+};
 
-export default MobileNav;
+export default memo(MobileNav);
