@@ -25,14 +25,14 @@ interface LoginFormData {
 }
 
 const LoginComponent: React.FC = () => {
-  const { mutateAsync, isPending, isError, error } = useCreateStore();
+  const { mutateAsync, isPending } = useCreateStore();
   const router = useRouter();
   const { setLoggedInUserDetails } = useUserStore();
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { isDirty },
   } = useForm<LoginFormData>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
