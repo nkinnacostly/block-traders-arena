@@ -22,6 +22,9 @@ const manrope = Manrope({
 export const metadata = {
   title: "Block Traders Academy",
   description: "Best Trading Platform",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 interface RootLayoutProps {
