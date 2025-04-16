@@ -43,6 +43,7 @@ function EquityComponent() {
   const { data } = useGetTopTraders();
   const responseData = data?.data as TopTradersResponse;
   const trader = responseData?.traders[0];
+  console.log(responseData, "responseData");
 
   return (
     <Card className="w-full">

@@ -43,6 +43,9 @@ function JournalTradeTable() {
         },
         onError: () => {
           toast.error("Failed to reset journal");
+          queryClient.invalidateQueries({
+            queryKey: ["journal-trades", "users-info"],
+          });
         },
       }
     );

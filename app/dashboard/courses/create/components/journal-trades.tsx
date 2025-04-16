@@ -50,6 +50,7 @@ export type TradeEntryForm = z.infer<typeof tradeEntrySchema>;
 
 function JournalTrades() {
   const { loggedInUserDetails } = useUserStore();
+  console.log(loggedInUserDetails, "loggedInUserDetails");
   const [isSetupComplete, setIsSetupComplete] = React.useState(false);
   const { useMutationRequest2 } = useFetchLevel2();
   const queryClient = useQueryClient();
