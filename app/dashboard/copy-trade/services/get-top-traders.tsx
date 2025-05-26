@@ -1,10 +1,10 @@
 import useFetchLevel2 from "@/hooks/useFetchLevel2";
 
 export const useGetTopTraders = () => {
-  const { useGetRequest2 } = useFetchLevel2();
-  const url = `/top-traders`;
-  const reqKey = ["top-traders"];
-  const { data, error, isLoading } = useGetRequest2(url, reqKey);
+  const { useGet } = useFetchLevel2();
+  const url = `/get-all-shared-trades`;
+  const reqKey = ["get-all-shared-trades"];
+  const { data, error, isLoading } = useGet(url, reqKey);
 
   return { data, error, isLoading };
 };

@@ -31,7 +31,7 @@ export interface UserDetails {
   paid: number;
   uuid: string;
   deleted_at: string | null;
-  has_journal: number;
+  has_journal: number | string;
 }
 
 interface Statistics {

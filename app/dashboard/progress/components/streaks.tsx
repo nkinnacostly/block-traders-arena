@@ -25,6 +25,36 @@ const Streaks: React.FC = () => {
     (item) => item.result === "Loss"
   );
 
+  const winningLength = winningStreak?.streak_length || 0;
+  const losingLength = losingStreak?.streak_length || 0;
+
+  const showBoth = winningLength === losingLength;
+  const showWinning = winningLength > losingLength;
+  const showLosing = losingLength > winningLength;
+
+  const FlameIcon = ({
+    color,
+    streakLength,
+  }: {
+    color: string;
+    streakLength: number;
+  }) => (
+    <div className="relative group">
+      <div className="relative transform transition-transform duration-300 group-hover:scale-110">
+        <Flame
+          className={`w-12 h-12 ${color} drop-shadow-[0_0_8px_rgba(255,165,0,0.5)]`}
+          style={{
+            filter: "drop-shadow(0 0 8px rgba(255,165,0,0.5))",
+            transform: "perspective(1000px) rotateX(10deg) rotateY(10deg)",
+          }}
+        />
+        <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-base font-bold">
+          {streakLength}
+        </span>
+      </div>
+    </div>
+  );
+
   return (
     <Card className="w-full">
       <CardHeader>
@@ -33,35 +63,29 @@ const Streaks: React.FC = () => {
       <Separator />
       <CardContent className="p-6 flex flex-col gap-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="relative">
-              <Flame className="w-8 h-8 text-orange-500" />
-              <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-sm font-bold">
-                {winningStreak?.streak_length || 0}
-              </span>
+          {(showBoth || showWinning) && (
+            <div className="flex items-center gap-2">
+              <FlameIcon color="text-orange-500" streakLength={winningLength} />
+              <div>
+                <p className="text-sm font-medium">Winning Streak</p>
+                <span className="text-xs text-gray-500">
+                  Consecutive profitable trades
+                </span>
+              </div>
             </div>
-            <div>
-              <p className="text-sm font-medium">Winning Streak</p>
-              <span className="text-xs text-gray-500">
-                Consecutive profitable trades
-              </span>
-            </div>
-          </div>
+          )}
 
-          <div className="flex items-center gap-2">
-            <div className="relative">
-              <Flame className="w-8 h-8 text-gray-400" />
-              <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-sm font-bold">
-                {losingStreak?.streak_length || 0}
-              </span>
+          {(showBoth || showLosing) && (
+            <div className="flex items-center gap-2">
+              <FlameIcon color="text-gray-400" streakLength={losingLength} />
+              <div>
+                <p className="text-sm font-medium">Losing Streak</p>
+                <span className="text-xs text-gray-500">
+                  Consecutive losing trades
+                </span>
+              </div>
             </div>
-            <div>
-              <p className="text-sm font-medium">Losing Streak</p>
-              <span className="text-xs text-gray-500">
-                Consecutive losing trades
-              </span>
-            </div>
-          </div>
+          )}
         </div>
       </CardContent>
     </Card>

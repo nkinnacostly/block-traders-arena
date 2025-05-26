@@ -17,35 +17,16 @@ import DashboardChallenges from "@/components/dashboard/challenges";
 // import { RiAwardFill } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/store";
-import { LineChartComponent } from "./components/line-chat";
+// import { LineChartComponent } from "./components/line-chat";
 import EquityComponent from "./components/equity";
-
+import Overview from "./components/overview";
 import FrequentlyTradedAssets from "./components/traded-assets";
 import { motion } from "framer-motion";
 import TradingCalendar from "./components/trading-calendar";
-// interface CourseContent {
-//   number: string | number;
-//   icon: React.ReactNode;
-//   tittle: string;
-//   bgColor?: string;
-// }
-
-// interface CourseData {
-//   count: number;
-// }
-
-// interface BadgeData {
-//   count: number;
-// }
 
 function Dashboard() {
   const router = useRouter();
   const { loggedInUserDetails } = useUserStore();
-
-  // const { data, isLoading: inProgressLoading } = GetCoursesInProgress();
-  // const { completed: completedData, isLoading: completedLoading } =
-  //   GetCoursesCompleted();
-  // const { badges: courseBadges } = GetBadges();
 
   useEffect(() => {
     if (loggedInUserDetails?.first_name === null) {
@@ -125,7 +106,8 @@ function Dashboard() {
         ))}
       </div> */}
       <div className="flex flex-col items-center justify-center gap-3 my-4">
-        <LineChartComponent />
+        <Overview />
+        {/* <LineChartComponent /> */}
         <TradingCalendar />
         <div className="w-full grid grid-cols-2 gap-4">
           <EquityComponent />

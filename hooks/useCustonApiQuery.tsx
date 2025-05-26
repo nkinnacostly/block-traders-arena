@@ -69,8 +69,7 @@ function useApiRequest() {
     return useQuery({
       queryKey: reqKey,
       queryFn: () => fetchData<T>(url),
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
+      // staleTime: 1000 * 60 * 5,
     });
   };
 

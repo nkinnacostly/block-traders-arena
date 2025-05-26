@@ -18,11 +18,14 @@ import * as z from "zod";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
-import { useUserStore } from "@/store/store";
+
 import useFetchLevel2 from "@/hooks/useFetchLevel2";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
+import useGetUserInfo from "@/hooks/useGetUserInfo";
+import { handleApiError } from "@/utils/error-parser";
+
 const traderSetupSchema = z.object({
   starting_equity: z.string().min(1, "Starting equity is required"),
   broker: z.string().min(1, "Broker is required"),
@@ -48,22 +51,42 @@ const tradeEntrySchema = z.object({
 export type TraderSetupForm = z.infer<typeof traderSetupSchema>;
 export type TradeEntryForm = z.infer<typeof tradeEntrySchema>;
 
+interface ApiResponse {
+  data: {
+    message: string;
+  };
+}
 function JournalTrades() {
-  const { loggedInUserDetails } = useUserStore();
-  console.log(loggedInUserDetails, "loggedInUserDetails");
   const [isSetupComplete, setIsSetupComplete] = React.useState(false);
-  const { useMutationRequest2 } = useFetchLevel2();
+  const { useMutationRequest } = useFetchLevel2();
   const queryClient = useQueryClient();
   const router = useRouter();
-  const { mutate: addTraderProfile, isPending } = useMutationRequest2();
+  const { data, isLoading, isFetching } = useGetUserInfo();
   const { mutate: addJournalTrades, isPending: isJournalTradesPending } =
-    useMutationRequest2();
+    useMutationRequest();
+
+  const { mutate: addTraderProfile, isPending } = useMutationRequest<
+    ApiResponse,
+    TraderSetupForm
+  >({
+    onSuccess: () => {
+      // toast.success(response.data.data.message);
+      setIsSetupComplete(true);
+
+      queryClient.invalidateQueries({ queryKey: ["users-info"] });
+    },
+    onError: (error) => {
+      toast.error(error.message || "An error occurred");
+      console.error("Mutation Error:", error);
+    },
+  });
   const {
     register: registerSetup,
     handleSubmit: handleSetupSubmit,
     formState: { errors: setupErrors, isDirty: isSetupDirty },
   } = useForm<TraderSetupForm>({
     resolver: zodResolver(traderSetupSchema),
+    mode: "onTouched",
   });
 
   const {
@@ -71,30 +94,21 @@ function JournalTrades() {
     handleSubmit: handleTradeSubmit,
     formState: { errors: tradeErrors },
     reset: resetTrade,
+
     setValue,
   } = useForm<TradeEntryForm>({
     resolver: zodResolver(tradeEntrySchema),
+    mode: "onTouched",
   });
 
   const onSetupSubmit = async (data: TraderSetupForm) => {
-    try {
-      addTraderProfile(
-        {
-          url: "/trader-profile-add",
-          method: "POST",
-          data,
-        },
-        {
-          onSuccess: () => {
-            setIsSetupComplete(true);
-          },
-        }
-      );
-    } catch (error) {
-      console.error("Setup submission failed:", error);
-    }
+    addTraderProfile({
+      url: "/trader-profile-add",
+      method: "POST",
+      data,
+    });
   };
-
+  // console.log(data?.data, "data");
   const onTradeSubmit = (data: TradeEntryForm) => {
     const formattedData = {
       ...data,
@@ -125,11 +139,15 @@ function JournalTrades() {
           router.push("/dashboard/courses");
           resetTrade();
         },
+        onError: (error) => {
+          // console.log(error, "error");
+          handleApiError(error);
+        },
       }
     );
   };
 
-  if (!isSetupComplete && loggedInUserDetails?.has_journal === 0) {
+  if (!isSetupComplete && data?.data?.user?.has_journal === "0") {
     return (
       <div className="w-full flex flex-col gap-4 items-start justify-center">
         <Link href={"/dashboard/courses"} className="flex items-center gap-2">
@@ -216,6 +234,9 @@ function JournalTrades() {
     );
   }
 
+  if (isLoading || isFetching) {
+    return <div>Loading...</div>;
+  }
   return (
     <Card className="w-full">
       <CardHeader>

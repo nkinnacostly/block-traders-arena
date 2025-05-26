@@ -1,9 +1,9 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Button } from "@/components/ui/button";
-import { Edit2Icon } from "lucide-react";
-import Link from "next/link";
+// import { Button } from "@/components/ui/button";
+// import { Edit2Icon } from "lucide-react";
+// import Link from "next/link";
 
 export interface JournalTrade {
   id: string;
@@ -42,7 +42,7 @@ export const journalTradeColumns: ColumnDef<JournalTrade>[] = [
   {
     accessorKey: "price",
     header: "Price",
-    cell: ({ row }) => <div className="font-medium">${row.original.price}</div>,
+    cell: ({ row }) => <div className="font-medium">{row.original.price}</div>,
   },
   {
     accessorKey: "entryTime",
@@ -62,7 +62,7 @@ export const journalTradeColumns: ColumnDef<JournalTrade>[] = [
     accessorKey: "closingPrice",
     header: "Closing Price",
     cell: ({ row }) => (
-      <div className="font-medium">${row.original.closing_price}</div>
+      <div className="font-medium">{row.original.closing_price}</div>
     ),
   },
   {
@@ -111,18 +111,18 @@ export const journalTradeColumns: ColumnDef<JournalTrade>[] = [
     accessorKey: "setup_name",
     header: "Setup Name",
   },
-  {
-    id: "actions",
-    cell: ({ row }) => {
-      return (
-        <div className="flex items-center space-x-2">
-          <Link href={`/dashboard/courses/journal-trades/${row.original.id}`}>
-            <Button variant="ghost" size="icon">
-              <Edit2Icon className="h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
-      );
-    },
-  },
+  // {
+  //   id: "actions",
+  //   cell: ({ row }) => {
+  //     return (
+  //       <div className="flex items-center space-x-2">
+  //         <Link href={`/dashboard/courses/journal-trades/${row.original.id}`}>
+  //           <Button variant="ghost" size="icon">
+  //             <Edit2Icon className="h-4 w-4" />
+  //           </Button>
+  //         </Link>
+  //       </div>
+  //     );
+  //   },
+  // },
 ];

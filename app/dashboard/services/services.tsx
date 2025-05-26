@@ -35,7 +35,7 @@ export const GetCoursesInProgress = (): CourseData => {
 
 export const GetCoursesCompleted = (): CourseCompletedData => {
   const { loggedInUserDetails } = useUserStore();
-  const { setStatistics, statistics } = useStatsStore();
+  const { setStatistics } = useStatsStore();
   const { useGetRequest } = useApiRequest();
   const url = `/courses/completed?user_id=${loggedInUserDetails?.id}`;
   const reqKey = ["courses-completed"];
@@ -46,7 +46,7 @@ export const GetCoursesCompleted = (): CourseCompletedData => {
       setStatistics(data.data);
     }
   }, [data?.data, isSuccess, setStatistics]);
-  console.log("statistics", statistics);
+  // console.log("statistics", statistics);
   return { completed: data?.data, error, isLoading };
 };
 

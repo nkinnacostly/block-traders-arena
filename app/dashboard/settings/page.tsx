@@ -1,8 +1,8 @@
 import React from "react";
-import UserAccesibility from "./components/user-accesibility";
+// import UserAccesibility from "./components/user-accesibility";
 import UserAccountStatus from "./components/user-account-status";
 import UserFeedBack from "./components/user-feedback";
-import UserLanguage from "./components/user-language";
+// import UserLanguage from "./components/user-language";
 import UserNotificationPreference from "./components/user-notifcation-preference";
 import UserProfilePic from "./components/user-profile-picture";
 import UserSecurity from "./components/user-security";
@@ -15,11 +15,11 @@ const Settings: React.FC = () => {
         <UserProfilePic />
         <UserNotificationPreference />
         <UserSecurity />
-        <UserLanguage />
+        {/* <UserLanguage /> */}
       </div>
       <div className="flex flex-col items-start justify-start space-y-5">
         <UsersInfo />
-        <UserAccesibility />
+        {/* <UserAccesibility /> */}
         <UserFeedBack />
         <UserAccountStatus />
       </div>

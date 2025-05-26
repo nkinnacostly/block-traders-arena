@@ -1,9 +1,9 @@
 import useFetchLevel2 from "@/hooks/useFetchLevel2";
 
-export const GetTradesEntry = () => {
+export const useGetUserStatsOverview = () => {
   const { useGet } = useFetchLevel2();
-  const url = `/all-trades`;
-  const reqKey = ["journal-trades"];
+  const url = `/overview-stats`;
+  const reqKey = ["overview-stats"];
   const { data, error, isLoading } = useGet(url, reqKey);
 
   return { data, error, isLoading };

@@ -8,9 +8,8 @@ import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experime
 interface ProvidersProps {
   children: React.ReactNode;
 }
-
+export const queryClient = new QueryClient();
 function Providers({ children }: ProvidersProps) {
-  const [client] = React.useState(() => new QueryClient());
   const [hydrated, setHydrated] = React.useState<boolean>(false);
 
   React.useEffect(() => {
@@ -22,7 +21,7 @@ function Providers({ children }: ProvidersProps) {
   }
 
   return (
-    <QueryClientProvider client={client}>
+    <QueryClientProvider client={queryClient}>
       <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

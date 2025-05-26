@@ -1,49 +1,31 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import React from "react";
-import { useGetTopTraders } from "../services/get-top-traders";
-interface Trade {
-  id: number;
-  day_date: string;
-  result_amount: string;
-  copy_trade: number;
-  trading_pair: string;
-}
-
-interface WinRate {
-  wins: number;
-  total: number;
-  win_rate: number;
-}
+import { useGetTradeStats } from "../services/get-trade-stats";
+import { useShareTrade } from "../services/share-trade";
+import { Button } from "@/components/ui/button";
 
 interface Trader {
-  id: number;
-  name: string;
-  learners_level: string;
   equity: number;
-  one_week_gain: number;
-  percentage_increase: number;
-  average_profit: number;
-  average_loss: number;
-  frequently_traded_assets: {
-    [key: string]: number;
-  };
-  win_rate_by_asset: {
-    [key: string]: WinRate;
-  };
-  trades: Trade[];
+  one_week_gain: string;
+  equity_growth: string;
 }
 
 interface TopTradersResponse {
   message: string;
-  traders: Trader[];
+  data: Trader;
   status: number;
 }
 function EquityComponent() {
-  const { data } = useGetTopTraders();
+  const { data } = useGetTradeStats();
+
+  const { isLoading, refetch } = useShareTrade();
   const responseData = data?.data as TopTradersResponse;
-  const trader = responseData?.traders[0];
-  console.log(responseData, "responseData");
+  const trader = responseData?.data;
+
+  const handleShareTrade = () => {
+    refetch();
+  };
 
   return (
     <Card className="w-full">
@@ -73,10 +55,18 @@ function EquityComponent() {
             <p className="text-sm font-medium">Average Profit</p>
             <h5 className="text-[24px] font-[500]">
               <span className="text-[#008000]">
-                ${trader?.average_profit?.toLocaleString() || "0.00"}
+                ${trader?.equity_growth?.toLocaleString() || "0.00"}
               </span>
             </h5>
           </div>
+
+          {trader?.equity_growth && parseInt(trader.equity_growth) > 50 && (
+            <div>
+              <Button onClick={handleShareTrade} disabled={isLoading}>
+                {isLoading ? "Sharing..." : "Share Trade"}
+              </Button>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>

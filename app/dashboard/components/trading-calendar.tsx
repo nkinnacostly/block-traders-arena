@@ -32,10 +32,10 @@ interface ApiResponse {
 function TradingCalendar() {
   const [date, setDate] = useState<Date | undefined>(new Date());
   const { data } = useGetCalendars();
-  console.log(data, "data data");
+
   const mockData = data?.data as ApiResponse;
 
-  console.log(mockData, "Mock data");
+  // console.log(mockData, "Mock data");
 
   const getDayData = (day: Date) => {
     const dateString = format(day, "yyyy-MM-dd");
