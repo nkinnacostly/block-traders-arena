@@ -79,7 +79,7 @@ const DashboardSidebar = () => {
       <div className="flex items-center justify-center">
         <div className="relative w-20 h-20 border-2 rounded-full overflow-hidden">
           <Image
-            src="/assets/img/png/chef.png"
+            src={loggedInUserDetails?.image_url ?? "/assets/img/png/chef.png"}
             fill
             className="object-cover"
             alt="Profile"
