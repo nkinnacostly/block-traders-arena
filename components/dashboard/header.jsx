@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/assets/img/png/logo.png";
 import React from "react";
-import { useUserStore } from "@/store/userStore";
+import { useUserStore } from "@/store/store";
 
 function DashboardHeader() {
   const { loggedInUserDetails } = useUserStore();
