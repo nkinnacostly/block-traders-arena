@@ -14,6 +14,7 @@ import { z } from "zod";
 import { ImageSchema } from "@/schemas/settings";
 import { cn } from "@/lib/utils";
 import { FiCamera, FiTrash2, FiUpload } from "react-icons/fi";
+import { handleApiError } from "@/utils/error-parser";
 
 type ImageFormData = z.infer<typeof ImageSchema>;
 
@@ -63,12 +64,7 @@ export default function UserProfilePic() {
           }
         },
         onError: (error) => {
-          console.log(error, "This is error");
-          const errorMessage =
-            error?.message ||
-            error?.message ||
-            "Failed to update profile picture";
-          toast.error(errorMessage);
+          handleApiError(error);
         },
       }
     );

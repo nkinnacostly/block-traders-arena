@@ -4,7 +4,7 @@ export const useGetTradeStats = () => {
   const { useGet } = useFetchLevel2();
   const url = `/user-trade-stats`;
   const reqKey = ["user-trade-stats"];
-  const { data, error, isLoading } = useGet(url, reqKey);
+  const { data, error, isLoading, refetch } = useGet(url, reqKey);
 
-  return { data, error, isLoading };
+  return { data, error, isLoading, refetch };
 };

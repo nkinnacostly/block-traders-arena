@@ -20,7 +20,16 @@ interface UserTrades {
 }
 
 interface CalendarData {
-  [date: string]: UserTrades[];
+  [date: string]: {
+    daily_summary: {
+      total_profit: number;
+      total_loss: number;
+      total_amount: number;
+      total_trade_count: number;
+      status: string;
+    };
+    user_trades: UserTrades[];
+  };
 }
 
 interface ApiResponse {
@@ -49,24 +58,10 @@ function TradingCalendar() {
       };
     }
 
-    const totalAmount = dayData.reduce((sum, user) => {
-      return (
-        sum +
-        user.trades.reduce((userSum, trade) => {
-          return userSum + parseFloat(trade.result_amount);
-        }, 0)
-      );
-    }, 0);
-
-    const tradeCount = dayData.reduce((sum, user) => {
-      return sum + user.trades.length;
-    }, 0);
-
     return {
-      status:
-        totalAmount > 0 ? "profit" : totalAmount < 0 ? "loss" : "breakeven",
-      totalAmount,
-      tradeCount,
+      status: dayData.daily_summary.status,
+      totalAmount: dayData.daily_summary.total_amount,
+      tradeCount: dayData.daily_summary.total_trade_count,
     };
   };
 

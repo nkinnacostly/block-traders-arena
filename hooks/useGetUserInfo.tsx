@@ -9,7 +9,7 @@ interface UserData {
 function useGetUserInfo() {
   const { loggedInUserDetails, setLoggedInUserDetails } = useUserStore();
   const url = `/single-user?id=${loggedInUserDetails.id}`;
-  const reqKey = ["dddd"];
+  const reqKey = ["users-info"];
   const { useGetRequest } = useApiRequest();
   const { data, error, isLoading, isSuccess, isFetching } =
     useGetRequest<UserData>(url, reqKey);

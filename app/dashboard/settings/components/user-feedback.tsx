@@ -1,31 +1,30 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import React from "react";
 
 function UserFeedBack() {
-  const [feedback, setFeedback] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
+  // const [feedback, setFeedback] = useState("");
+  // const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [submitStatus, setSubmitStatus] = useState<
+  //   "idle" | "success" | "error"
+  // >("idle");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+  //   setSubmitStatus("idle");
 
-    try {
-      // TODO: Implement actual feedback submission logic here
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulated API call
-      setSubmitStatus("success");
-      setFeedback("");
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  //   try {
+  //     // TODO: Implement actual feedback submission logic here
+  //     await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulated API call
+  //     setSubmitStatus("success");
+  //     setFeedback("");
+  //   } catch (error) {
+  //     setSubmitStatus("error");
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
 
   return (
     <>
@@ -36,10 +35,10 @@ function UserFeedBack() {
 
         <div className="w-full p-4 border-b-2">
           <p className="font-medium">Contact Support</p>
-          <p className="text-gray-600">snrdev@gmail.com</p>
+          <p className="text-gray-600">blocktradersacademy@gmail.com</p>
         </div>
 
-        <div className="w-full p-4">
+        {/* <div className="w-full p-4">
           <p className="font-medium mb-4">Provide Feedback</p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <textarea
@@ -65,7 +64,7 @@ function UserFeedBack() {
               </p>
             )}
           </form>
-        </div>
+        </div> */}
       </div>
     </>
   );
