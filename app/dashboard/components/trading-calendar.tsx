@@ -44,8 +44,6 @@ function TradingCalendar() {
 
   const mockData = data?.data as ApiResponse;
 
-  console.log(mockData.data, "Mock data");
-
   const getDayData = (day: Date) => {
     const dateString = format(day, "yyyy-MM-dd");
     const dayData = mockData?.data[dateString];
