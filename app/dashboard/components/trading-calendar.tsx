@@ -9,32 +9,23 @@ interface Trade {
   id: number;
   trading_pair: string;
   result_amount: string;
-  copy_trade: number;
-  day_date: string;
+  copy_trade: string;
+  result: string;
 }
 
-interface UserTrades {
-  user_id: number;
-  username: string;
+interface DayData {
+  date: string;
+  total_trades: number;
+  status: string;
+  amount: number;
+  profit: number;
+  loss: number;
   trades: Trade[];
-}
-
-interface CalendarData {
-  [date: string]: {
-    daily_summary: {
-      total_profit: number;
-      total_loss: number;
-      total_amount: number;
-      total_trade_count: number;
-      status: string;
-    };
-    user_trades: UserTrades[];
-  };
 }
 
 interface ApiResponse {
   message: string;
-  data: CalendarData;
+  data: DayData[];
   status: number;
 }
 
@@ -46,8 +37,7 @@ function TradingCalendar() {
 
   const getDayData = (day: Date) => {
     const dateString = format(day, "yyyy-MM-dd");
-    const dayData = mockData?.data[dateString];
-    console.log(dayData, "Day data");
+    const dayData = mockData?.data.find((item) => item.date === dateString);
 
     if (!dayData) {
       return {
@@ -58,15 +48,15 @@ function TradingCalendar() {
     }
 
     return {
-      status: dayData.daily_summary.status,
-      totalAmount: dayData.daily_summary.total_amount,
-      tradeCount: dayData.daily_summary.total_trade_count,
+      status: dayData.status.toLowerCase(),
+      totalAmount: dayData.amount,
+      tradeCount: dayData.total_trades,
     };
   };
 
   const handleDayClick = (day: Date) => {
     const dateString = format(day, "yyyy-MM-dd");
-    const dayData = mockData.data[dateString];
+    const dayData = mockData?.data.find((item) => item.date === dateString);
 
     if (dayData) {
       console.log("Selected day data:", dayData);
