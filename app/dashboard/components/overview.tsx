@@ -1,7 +1,7 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
 import { useGetUserStatsOverview } from "../services/get-user-stats-overview";
-import { FaUser, FaMoneyBill } from "react-icons/fa";
+import { FaUser, FaMoneyBill, FaCopy } from "react-icons/fa";
 import { ArrowDown } from "lucide-react";
 interface ApiResponse {
   data: {
@@ -46,11 +46,11 @@ const Overview = () => {
       value: `$ ${_data?.Cumulative_Profit}`,
       icon: <FaMoneyBill size={20} className="text-black" />,
     },
-    // {
-    //   title: "Total Hours",
-    //   value: _data?.Total_hours,
-    //   icon: <FaClock size={20} className="text-black" />,
-    // },
+    {
+      title: "Copy Trade",
+      value: _data?.copy_trade,
+      icon: <FaCopy size={20} className="text-black" />,
+    },
   ];
   if (isLoading) {
     return <div>Loading...</div>;

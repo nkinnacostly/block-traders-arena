@@ -1,7 +1,6 @@
 "use client";
 import GenericTable from "@/components/react-table";
 import React from "react";
-
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { journalTradeColumns, JournalTrade } from "./journal-trade-columns";
@@ -9,6 +8,15 @@ import { GetTradesEntry } from "../create/services/get-trades-entry";
 import useFetchLevel2 from "@/hooks/useFetchLevel2";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Textarea } from "@/components/ui/text-area";
+
 interface ApiResponse {
   data: {
     data: {
@@ -28,25 +36,33 @@ function JournalTradeTable() {
   const { useMutationRequest } = useFetchLevel2();
   const queryClient = useQueryClient();
   const { mutate: resetJournal, isPending } = useMutationRequest();
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const [resetReason, setResetReason] = React.useState("");
 
   const handleResetJournal = () => {
+    if (!resetReason.trim()) {
+      toast.error("Please provide a reason for resetting the journal");
+      return;
+    }
+
     resetJournal(
       {
-        method: "POST",
+        method: "PATCH",
         url: "/trader-profile/reset",
+        data: {
+          reason: resetReason.trim(),
+        },
       },
       {
         onSuccess: (response: any) => {
           const data = response as ApiResponse;
-
           toast.success(`${data?.data?.message}`);
           queryClient.invalidateQueries({
             queryKey: ["journal-trades"],
             refetchType: "all",
           });
-          // queryClient.invalidateQueries({
-          //   queryKey: ["journal-trades"],
-          // });
+          setIsDialogOpen(false);
+          setResetReason("");
         },
         onError: (error) => {
           toast.error(`${error}`);
@@ -66,11 +82,10 @@ function JournalTradeTable() {
         <div className="flex items-center gap-2">
           <Button
             disabled={isPending}
-            isLoading={isPending}
             variant="destructive"
-            onClick={handleResetJournal}
+            onClick={() => setIsDialogOpen(true)}
           >
-            {isPending ? "Resetting..." : "Reset Journal"}
+            Reset Journal
           </Button>
           <Link
             className={`${buttonVariants({ variant: "outline" })}`}
@@ -86,6 +101,41 @@ function JournalTradeTable() {
       ) : (
         <GenericTable data={_data ?? []} columns={journalTradeColumns} />
       )}
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Reset Journal</DialogTitle>
+          </DialogHeader>
+          <div className="py-4">
+            <Textarea
+              placeholder="Please provide a reason for resetting your journal..."
+              value={resetReason}
+              onChange={(e) => setResetReason(e.target.value)}
+              className="min-h-[100px]"
+            />
+          </div>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setIsDialogOpen(false);
+                setResetReason("");
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={handleResetJournal}
+              disabled={isPending}
+              isLoading={isPending}
+            >
+              {isPending ? "Resetting..." : "Confirm Reset"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
