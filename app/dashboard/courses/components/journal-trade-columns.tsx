@@ -111,18 +111,9 @@ export const journalTradeColumns: ColumnDef<JournalTrade>[] = [
     accessorKey: "setup_name",
     header: "Setup Name",
   },
-  // {
-  //   id: "actions",
-  //   cell: ({ row }) => {
-  //     return (
-  //       <div className="flex items-center space-x-2">
-  //         <Link href={`/dashboard/courses/journal-trades/${row.original.id}`}>
-  //           <Button variant="ghost" size="icon">
-  //             <Edit2Icon className="h-4 w-4" />
-  //           </Button>
-  //         </Link>
-  //       </div>
-  //     );
-  //   },
-  // },
+  {
+    accessorKey: "note",
+    header: "Note",
+    cell: ({ row }) => <div className="font-medium">{row.original.note}</div>,
+  },
 ];

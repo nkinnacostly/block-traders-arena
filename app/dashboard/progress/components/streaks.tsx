@@ -5,39 +5,34 @@ import { Separator } from "@/components/ui/separator";
 import { Flame } from "lucide-react";
 import { useGetStreaks } from "../services/get-streaks";
 
-interface StreakItem {
-  result: "Profit" | "Loss";
-  streak_length: number;
-}
-interface StreaksResponse {
-  streaks: StreakItem[];
+interface StreakResponse {
+  message: string;
+  current_streak: {
+    result: "Profit" | "Loss" | "Breakeven";
+    streak_length: number;
+  };
+  longest_streaks: {
+    profit: number;
+    loss: number;
+    breakeven: number;
+  };
 }
 
 const Streaks: React.FC = () => {
   const { data: streaks } = useGetStreaks();
-  const streaksData = streaks?.data as StreaksResponse;
-
-  const winningStreak = streaksData?.streaks?.find(
-    (item) => item.result === "Profit"
-  );
-
-  const losingStreak = streaksData?.streaks?.find(
-    (item) => item.result === "Loss"
-  );
-
-  const winningLength = winningStreak?.streak_length || 0;
-  const losingLength = losingStreak?.streak_length || 0;
-
-  const showBoth = winningLength === losingLength;
-  const showWinning = winningLength > losingLength;
-  const showLosing = losingLength > winningLength;
+  const streaksData = streaks?.data as StreakResponse;
+  const currentStreak = streaksData?.current_streak;
 
   const FlameIcon = ({
     color,
     streakLength,
+    label,
+    description,
   }: {
     color: string;
     streakLength: number;
+    label: string;
+    description: string;
   }) => (
     <div className="relative group">
       <div className="relative transform transition-transform duration-300 group-hover:scale-110">
@@ -52,8 +47,31 @@ const Streaks: React.FC = () => {
           {streakLength}
         </span>
       </div>
+      <div>
+        <p className="text-sm font-medium">{label}</p>
+        <span className="text-xs text-gray-500">{description}</span>
+      </div>
     </div>
   );
+
+  const getStreakInfo = (streak: typeof currentStreak) => {
+    if (!streak) return null;
+
+    const isProfit = streak.result === "Profit";
+    const isLoss = streak.result === "Loss";
+
+    if (!isProfit && !isLoss) return null;
+
+    return {
+      color: isProfit ? "text-orange-500" : "text-gray-400",
+      label: isProfit ? "Winning Streak" : "Losing Streak",
+      description: `${streak.streak_length} consecutive ${
+        isProfit ? "profitable" : "losing"
+      } trades`,
+    };
+  };
+
+  const streakInfo = getStreakInfo(currentStreak);
 
   return (
     <Card className="w-full">
@@ -62,31 +80,18 @@ const Streaks: React.FC = () => {
       </CardHeader>
       <Separator />
       <CardContent className="p-6 flex flex-col gap-4">
-        <div className="flex items-center justify-between">
-          {(showBoth || showWinning) && (
-            <div className="flex items-center gap-2">
-              <FlameIcon color="text-orange-500" streakLength={winningLength} />
-              <div>
-                <p className="text-sm font-medium">Winning Streak</p>
-                <span className="text-xs text-gray-500">
-                  Consecutive profitable trades
-                </span>
-              </div>
-            </div>
-          )}
-
-          {(showBoth || showLosing) && (
-            <div className="flex items-center gap-2">
-              <FlameIcon color="text-gray-400" streakLength={losingLength} />
-              <div>
-                <p className="text-sm font-medium">Losing Streak</p>
-                <span className="text-xs text-gray-500">
-                  Consecutive losing trades
-                </span>
-              </div>
-            </div>
-          )}
-        </div>
+        {streakInfo ? (
+          <div className="flex items-center gap-2">
+            <FlameIcon
+              color={streakInfo.color}
+              streakLength={currentStreak!.streak_length}
+              label={streakInfo.label}
+              description={streakInfo.description}
+            />
+          </div>
+        ) : (
+          <p className="text-sm text-gray-500">No active streak</p>
+        )}
       </CardContent>
     </Card>
   );

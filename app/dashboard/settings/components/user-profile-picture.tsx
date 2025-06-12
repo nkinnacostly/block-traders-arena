@@ -39,7 +39,13 @@ export default function UserProfilePic() {
   useEffect(() => {
     if (loggedInUserDetails) {
       setValue("id", Number(loggedInUserDetails?.id) || 0);
-      setValue("image", (loggedInUserDetails as any).image_url || "");
+      setValue(
+        "image",
+        (loggedInUserDetails as any).image_url === "1" ||
+          (loggedInUserDetails as any).image_url === "0"
+          ? ""
+          : (loggedInUserDetails as any).image_url
+      );
     }
   }, [loggedInUserDetails, setValue]);
 
