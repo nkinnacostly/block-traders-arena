@@ -23,6 +23,7 @@ import Overview from "./components/overview";
 import FrequentlyTradedAssets from "./components/traded-assets";
 import { motion } from "framer-motion";
 import TradingCalendar from "./components/trading-calendar";
+import LiveClasses from "./components/live-clasess";
 
 function Dashboard() {
   const router = useRouter();
@@ -115,6 +116,7 @@ function Dashboard() {
           <FrequentlyTradedAssets />
         </div>
       </div>
+      <LiveClasses />
       <DashboardChallenges />
     </motion.div>
   );
