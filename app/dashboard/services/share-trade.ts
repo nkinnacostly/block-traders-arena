@@ -4,9 +4,9 @@ export const useShareTrade = () => {
   const { useGet } = useFetchLevel2();
   const url = `/share-trade`;
   const reqKey = ["share-trade"];
-  const { data, error, isLoading, refetch } = useGet(url, reqKey, {
+  const { data, error, isLoading, refetch, isError } = useGet(url, reqKey, {
     enabled: false, // This prevents the request from running automatically
   });
 
-  return { data, error, isLoading, refetch };
+  return { data, error, isLoading, refetch, isError };
 };

@@ -114,6 +114,13 @@ export const journalTradeColumns: ColumnDef<JournalTrade>[] = [
   {
     accessorKey: "note",
     header: "Note",
-    cell: ({ row }) => <div className="font-medium">{row.original.note}</div>,
+    cell: ({ row }) => (
+      <div
+        className="font-medium truncate max-w-[200px]"
+        title={row.original.note}
+      >
+        {row.original.note}
+      </div>
+    ),
   },
 ];

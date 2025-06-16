@@ -25,7 +25,12 @@ function EquityComponent() {
     refetch: refetchTradeStats,
   } = useGetTradeStats();
 
-  const { isLoading: isShareLoading, refetch } = useShareTrade();
+  const {
+    isLoading: isShareLoading,
+    refetch,
+    isError: isShareError,
+    error: shareError,
+  } = useShareTrade();
   const responseData = data?.data as TopTradersResponse;
   const trader = responseData?.data;
 
@@ -55,6 +60,25 @@ function EquityComponent() {
             >
               Try Again
             </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  if (isShareError) {
+    return (
+      <Card className="w-full border-red-200">
+        <CardHeader className="pb-2">
+          <div className="flex items-center gap-2">
+            <AlertCircle className="h-5 w-5 text-red-500" />
+            <CardTitle className="text-red-500">Error Sharing Trade</CardTitle>
+          </div>
+        </CardHeader>
+        <Separator />
+        <CardContent className="p-6">
+          <div className="flex flex-col gap-2">
+            <p className="text-sm text-red-600">{shareError?.message}</p>
           </div>
         </CardContent>
       </Card>
