@@ -86,7 +86,7 @@ function EquityComponent() {
               <p className="text-sm font-medium">Gain(1week)</p>
               <h5 className="text-[24px] font-[500]">
                 <span className="text-[#008000]">
-                  ${trader?.one_week_gain?.toLocaleString() || "0.00"}
+                  {trader?.one_week_gain?.toLocaleString() || "0.00"}
                 </span>
               </h5>
             </div>
@@ -94,7 +94,7 @@ function EquityComponent() {
               <p className="text-sm font-medium">Average Profit</p>
               <h5 className="text-[24px] font-[500]">
                 <span className="text-[#008000]">
-                  ${trader?.equity_growth?.toLocaleString() || "0.00"}
+                  {trader?.equity_growth?.toLocaleString() || "0.00"}
                 </span>
               </h5>
             </div>

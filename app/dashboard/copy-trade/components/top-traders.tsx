@@ -14,6 +14,7 @@ interface Trader {
   equity: number;
   one_week_gain: number;
   equity_growth: string;
+  learners_level: string;
   // percentage_increase: number;
 }
 
@@ -66,7 +67,7 @@ export default function TopTraders() {
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-semibold">{trader.user_name}</h3>
                   <span className="text-sm text-muted-foreground">
-                    Level {trader.equity_growth}
+                    Level {trader.learners_level}
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 mt-4">
