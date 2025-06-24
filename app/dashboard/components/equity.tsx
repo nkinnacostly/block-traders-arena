@@ -123,7 +123,7 @@ function EquityComponent() {
               </h5>
             </div>
 
-            {trader?.equity_growth && parseInt(trader.equity_growth) > 50 && (
+            {trader?.equity_growth && parseInt(trader.equity_growth) >= 15 && (
               <div>
                 <Button onClick={handleShareTrade} disabled={isShareLoading}>
                   {isShareLoading ? "Sharing..." : "Share Trade"}
