@@ -333,7 +333,12 @@ function JournalTrades() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="day_date">Date</Label>
-              <Input id="day_date" {...registerTrade("day_date")} />
+              <Input
+                id="day_date"
+                type="date"
+                {...registerTrade("day_date")}
+                min={new Date().toISOString().split("T")[0]}
+              />
               {tradeErrors.day_date && (
                 <p className="text-sm text-red-500">
                   {tradeErrors.day_date.message}
