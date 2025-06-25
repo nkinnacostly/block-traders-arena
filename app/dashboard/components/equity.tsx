@@ -5,6 +5,7 @@ import { useGetTradeStats } from "../services/get-trade-stats";
 import { useShareTrade } from "../services/share-trade";
 import { Button } from "@/components/ui/button";
 import { Loader2, AlertCircle } from "lucide-react";
+import { toast } from "sonner";
 
 interface Trader {
   equity: number;
@@ -30,6 +31,7 @@ function EquityComponent() {
     refetch,
     isError: isShareError,
     error: shareError,
+    isSuccess: isShareSuccess,
   } = useShareTrade();
   const responseData = data?.data as TopTradersResponse;
   const trader = responseData?.data;
@@ -37,6 +39,12 @@ function EquityComponent() {
   const handleShareTrade = () => {
     refetch();
   };
+
+  React.useEffect(() => {
+    if (isShareSuccess) {
+      toast.success("Trade shared successfully");
+    }
+  }, [isShareSuccess]);
 
   if (error) {
     return (
