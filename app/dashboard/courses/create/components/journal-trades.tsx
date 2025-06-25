@@ -350,6 +350,7 @@ function JournalTrades() {
               <Input
                 id="result_amount"
                 type="number"
+                step="0.01"
                 {...registerTrade("result_amount")}
               />
               {tradeErrors.result_amount && (
