@@ -81,7 +81,7 @@ const Streaks: React.FC = () => {
       <Separator />
       <CardContent className="p-6 flex flex-col gap-4">
         {streakInfo ? (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 justify-center">
             <FlameIcon
               color={streakInfo.color}
               streakLength={currentStreak!.streak_length}
