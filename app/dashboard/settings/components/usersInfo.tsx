@@ -137,7 +137,7 @@ export default function UsersInfo() {
           <p>{loggedInUserDetails?.learners_level}</p>
         </div>
         <div className="w-full p-4 border-b-2 ">
-          <p>Block Level</p>
+          <p>Referral Code</p>
           <p>{loggedInUserDetails?.referral_code}</p>
         </div>
         <div className="flex items-center justify-center w-full p-4 border-b-2 ">

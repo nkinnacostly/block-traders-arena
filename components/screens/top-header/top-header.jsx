@@ -57,14 +57,6 @@ function Topheader({
             >
               Get Started
             </Link>
-
-            <Link
-              className={cn(buttonVariants({ size: "xl" }))}
-              href={"/sign-up"}
-            >
-              Start Learning
-              {/* Create campaign <PlusCircledIcon /> */}
-            </Link>
           </div>
         </div>
       </div>
