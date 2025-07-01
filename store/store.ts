@@ -32,6 +32,7 @@ export interface UserDetails {
   uuid: string;
   deleted_at: string | null;
   has_journal: number | string;
+  referral_code: string;
 }
 
 interface Statistics {
