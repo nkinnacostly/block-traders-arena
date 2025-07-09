@@ -41,7 +41,7 @@ export const journalTradeColumns: ColumnDef<JournalTrade>[] = [
   },
   {
     accessorKey: "price",
-    header: "Price",
+    header: "Entry Price",
     cell: ({ row }) => <div className="font-medium">{row.original.price}</div>,
   },
   {

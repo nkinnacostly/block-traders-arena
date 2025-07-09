@@ -47,7 +47,7 @@ const Overview = () => {
       icon: <FaMoneyBill size={20} className="text-black" />,
     },
     {
-      title: "Copy Trade",
+      title: "Copy Traders",
       value: _data?.copy_trade,
       icon: <FaCopy size={20} className="text-black" />,
     },

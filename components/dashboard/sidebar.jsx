@@ -56,7 +56,7 @@ const DashboardSidebar = () => {
       },
       {
         icon: <TbTargetArrow />,
-        title: "Copy Trades",
+        title: "Copy Trading",
         link: "/dashboard/copy-trade",
       },
       {

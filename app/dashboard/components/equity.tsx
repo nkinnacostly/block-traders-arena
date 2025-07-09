@@ -115,7 +115,7 @@ function EquityComponent() {
               </h5>
             </div>
             <div className="flex flex-col gap-2">
-              <p className="text-sm font-medium">Gain(1week)</p>
+              <p className="text-sm font-medium">5-Day Rolling Return</p>
               <h5 className="text-[24px] font-[500]">
                 <span className="text-[#008000]">
                   {trader?.one_week_gain?.toLocaleString() || "0.00"}
@@ -123,7 +123,7 @@ function EquityComponent() {
               </h5>
             </div>
             <div className="flex flex-col gap-2">
-              <p className="text-sm font-medium">Average Profit</p>
+              <p className="text-sm font-medium">Return on Equity</p>
               <h5 className="text-[24px] font-[500]">
                 <span className="text-[#008000]">
                   {trader?.equity_growth?.toLocaleString() || "0.00"}

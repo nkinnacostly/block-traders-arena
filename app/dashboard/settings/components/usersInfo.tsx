@@ -122,18 +122,18 @@ export default function UsersInfo() {
           />
         </div>
         <div className="w-full p-4 border-b-2 ">
-          <p>Block Path</p>
+          <p>Block Trader Path</p>
           <Input
             // name="block_path"
             {...register("block_path")}
             // error={errors.block_path}
             type="text"
-            placeholder="Block Path"
+            placeholder="Block Trader Path"
             defaultValue={loggedInUserDetails?.block_path}
           />
         </div>
         <div className="w-full p-4 border-b-2 ">
-          <p>Block Level</p>
+          <p>Block Trader Level</p>
           <p>{loggedInUserDetails?.learners_level}</p>
         </div>
         <div className="w-full p-4 border-b-2 ">
