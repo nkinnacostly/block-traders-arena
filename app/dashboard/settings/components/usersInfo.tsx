@@ -123,24 +123,19 @@ export default function UsersInfo() {
         </div>
         <div className="w-full p-4 border-b-2 ">
           <p>Block Trader Path</p>
-          <Input
+          {/* <Input
             // name="block_path"
             {...register("block_path")}
             // error={errors.block_path}
             type="text"
             placeholder="Block Trader Path"
-            defaultValue={
-              loggedInUserDetails?.block_path ||
-              (Number(loggedInUserDetails?.learners_level) > 3
-                ? "Trade Arena"
-                : "Academy")
-            }
-          />
-          {/* <p>
+            defaultValue={loggedInUserDetails?.block_path}
+          /> */}
+          <p>
             {Number(loggedInUserDetails?.learners_level) > 3
               ? "Trade Arena"
               : "Academy"}
-          </p> */}
+          </p>
         </div>
         <div className="w-full p-4 border-b-2 ">
           <p>Block Trader Level</p>
