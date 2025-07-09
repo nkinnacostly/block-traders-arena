@@ -56,7 +56,7 @@ export default function TopTraders() {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Copy Trades</CardTitle>
+        <CardTitle>Copy Trading</CardTitle>
       </CardHeader>
       <Separator />
       <CardContent className="mt-3 p-6">
