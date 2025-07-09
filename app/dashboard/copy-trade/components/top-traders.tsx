@@ -87,7 +87,9 @@ export default function TopTraders() {
                   </div>
                 </div>
                 <div className="mt-2">
-                  <p className="text-sm text-muted-foreground">Performance</p>
+                  <p className="text-sm text-muted-foreground">
+                    Return on Equity
+                  </p>
                   <p className="text-lg font-medium text-green-500">
                     {trader.equity_growth}
                   </p>
