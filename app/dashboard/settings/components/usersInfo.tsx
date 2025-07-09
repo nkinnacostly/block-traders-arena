@@ -131,7 +131,7 @@ export default function UsersInfo() {
             placeholder="Block Trader Path"
             defaultValue={loggedInUserDetails?.block_path}
           /> */}
-          <p>
+          <p {...register("block_path")}>
             {Number(loggedInUserDetails?.learners_level) > 3
               ? "Trade Arena"
               : "Academy"}
