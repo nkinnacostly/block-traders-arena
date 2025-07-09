@@ -14,7 +14,7 @@ export const settingSchema = z.object({
   last_name: z.string(),
   email: z.string().email(),
   phone: z.string({ message: "Number is Required" }),
-  block_path: z.string(),
+  block_path: z.string().optional(),
 });
 
 export type SettingSchema = z.infer<typeof settingSchema>;
