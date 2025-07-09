@@ -79,7 +79,7 @@ export default function TopTraders() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground text-right">
-                      1 Week Gain
+                      5-Day Rolling Return
                     </p>
                     <p className="text-lg font-medium text-green-500 text-right">
                       +${trader.one_week_gain.toLocaleString()}
