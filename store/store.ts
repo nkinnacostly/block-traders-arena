@@ -19,7 +19,7 @@ export interface UserDetails {
   language: string | null;
   timezone: string | null;
   account_status: "Active" | "Inactive";
-  learners_level: string;
+  learners_level: string | number;
   image_url: string | null;
   twoFA: "YES" | "NO";
   notification_email: number;
