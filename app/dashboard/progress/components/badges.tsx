@@ -33,6 +33,7 @@ const badgeIcons: Record<string, { icon: React.ReactNode; color: string }> = {
   "Risk Manager": { icon: <FaCertificate />, color: "text-green-500" },
   "Signal Provider": { icon: <FaChartLine />, color: "text-red-500" },
   "Money Monger": { icon: <FaAward />, color: "text-orange-500" },
+  "Block Trader": { icon: <FaTrophy />, color: "text-[#FFD700]" },
 };
 
 const Badges: React.FC = () => {
