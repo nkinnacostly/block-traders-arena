@@ -116,7 +116,10 @@ function Dashboard() {
           <FrequentlyTradedAssets />
         </div>
       </div>
-      <LiveClasses />
+      <div className="my-4 w-full p-4 mt-8 border-2 shadow-lg rounded-xl">
+        <h5 className="text-[24px]  font-[500] mb-8">Live Sessions</h5>
+        <LiveClasses />
+      </div>
       <DashboardChallenges />
     </motion.div>
   );

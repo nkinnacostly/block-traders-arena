@@ -32,7 +32,7 @@ const Overview = () => {
       icon: <FaUser size={20} className="text-black" />,
     },
     {
-      title: "Available Profit",
+      title: "Available Balance",
       value: `$ ${_data?.Available_profit}`,
       icon: <FaMoneyBill size={20} className="text-black" />,
     },
