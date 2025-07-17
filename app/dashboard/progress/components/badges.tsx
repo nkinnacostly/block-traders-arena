@@ -27,7 +27,7 @@ interface BadgeResponse {
 }
 
 const badgeIcons: Record<string, { icon: React.ReactNode; color: string }> = {
-  "Newbie Trader": { icon: <FaTrophy />, color: "text-yellow-500" },
+  "Newbie Trader": { icon: <FaTrophy />, color: "text-gray-500" },
   "Wannabe Profitable Trader": { icon: <FaMedal />, color: "text-blue-500" },
   "Profitable Trader": { icon: <FaStar />, color: "text-purple-500" },
   "Risk Manager": { icon: <FaCertificate />, color: "text-green-500" },
