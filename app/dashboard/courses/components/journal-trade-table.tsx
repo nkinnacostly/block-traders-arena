@@ -77,7 +77,7 @@ function JournalTradeTable() {
 
   return (
     <div className="w-full flex flex-col gap-4 items-center justify-center">
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex flex-col md:flex-row md:items-center justify-between gap-4">
         <h1 className="text-xl font-normal">Journal Trades</h1>
         <div className="flex items-center gap-2">
           <Button
