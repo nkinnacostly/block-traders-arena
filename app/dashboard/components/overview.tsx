@@ -62,7 +62,7 @@ const Overview = () => {
   return (
     <Card className="w-full">
       <CardContent className="p-6">
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {overview.map((item) => (
             <div
               key={item.title}

@@ -53,7 +53,7 @@ export default function EquityGraph() {
       </CardHeader>
       <Separator />
       <CardContent className="mt-3">
-        <div className="grid grid-cols-3 gap-4 mb-6 px-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 px-2">
           <div className="p-4 bg-muted rounded-lg">
             <h3 className="text-sm font-medium text-muted-foreground">
               Starting Equity

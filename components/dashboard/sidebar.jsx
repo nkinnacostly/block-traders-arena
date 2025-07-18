@@ -4,7 +4,6 @@ import { GiProgression } from "react-icons/gi";
 import { GoBook } from "react-icons/go";
 import Image from "next/image";
 import { IoMdSettings } from "react-icons/io";
-// import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { MdDashboard } from "react-icons/md";
 import React, { memo, useMemo } from "react";
@@ -13,30 +12,32 @@ import { usePathname } from "next/navigation";
 import { useUserStore } from "@/store/store";
 import { useVideoStore } from "@/store/store";
 
-const SidebarLink = memo(({ icon, title, link, isActive, disabled }) => (
-  <Link
-    className={`
+const SidebarLink = memo(
+  ({ icon, title, link, isActive, disabled, onClick }) => (
+    <Link
+      className={`
       flex items-center justify-start rounded-lg px-3 cursor-pointer
       ${isActive ? "bg-[#1E1E1E99] border border-green-300" : ""}
       ${disabled ? "pointer-events-none opacity-50" : ""}
       hover:bg-[#1E1E1E66] transition-colors
     `}
-    href={disabled ? "#" : link}
-  >
-    <span className="flex items-center justify-center w-6">{icon}</span>
-    <span className="text-[16px] font-[400] p-2">{title}</span>
-  </Link>
-));
+      href={disabled ? "#" : link}
+      onClick={onClick}
+    >
+      <span className="flex items-center justify-center w-6">{icon}</span>
+      <span className="text-[16px] font-[400] p-2">{title}</span>
+    </Link>
+  )
+);
 
 SidebarLink.displayName = "SidebarLink";
 
-const DashboardSidebar = () => {
+const DashboardSidebar = ({ onLinkClick }) => {
   const { loggedInUserDetails } = useUserStore();
   const { watchedVideos } = useVideoStore();
-  // const router = useRouter();
   const isLevel1 = loggedInUserDetails?.learners_level === "1";
   const pathname = usePathname();
-  // console.log(pathname, "This is pathname");
+
   const sideLinks = useMemo(
     () => [
       {
@@ -97,6 +98,7 @@ const DashboardSidebar = () => {
             link={link.link}
             isActive={pathname === link.link}
             disabled={link.disabled}
+            onClick={onLinkClick}
           />
         ))}
       </nav>

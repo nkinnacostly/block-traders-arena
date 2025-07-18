@@ -39,7 +39,7 @@ const TradeStats: React.FC = () => {
         {tradeStats?.data.map((item, index) => (
           <div
             key={index}
-            className="flex flex-row justify-between gap-4 w-full"
+            className="flex flex-col justify-between gap-4 w-full md:flex-row"
           >
             <div className="flex-1 text-start p-2">
               <p className="text-sm font-medium">{item.setup_name}</p>
@@ -48,11 +48,11 @@ const TradeStats: React.FC = () => {
               </span>
             </div>
             <div className="flex-1 text-start p-2">
-              <div className="flex gap-2 justify-center items-center text-green-500">
+              <div className="flex gap-2 md:justify-center items-center text-green-500">
                 <p className="text-sm font-medium">{item.average_profit}</p>
                 <span className="text-xs text-gray-500">Avg. Profit</span>
               </div>
-              <div className="flex gap-2 justify-center items-center text-red-500">
+              <div className="flex gap-2 md:justify-center items-center text-red-500">
                 <p className="text-sm font-medium">{item.average_loss}</p>
                 <span className="text-xs text-gray-500">Avg. Loss</span>
               </div>
