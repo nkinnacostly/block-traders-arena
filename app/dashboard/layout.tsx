@@ -61,18 +61,18 @@ function DashboardLayout({ children }: DashboardLayoutProps) {
         {/* Mobile Sidebar Overlay */}
         {isSidebarOpen && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            className="fixed inset-0 bg-opacity-50 z-40 lg:hidden"
             onClick={closeSidebar}
           />
         )}
 
         {/* Mobile Sidebar */}
         <aside
-          className={`fixed top-0 left-0 h-full w-[280px] bg-black z-50 transform transition-transform duration-300 ease-in-out lg:hidden shadow-xl ${
+          className={`fixed top-0 left-0 h-full w-[280px] z-50 transform transition-transform duration-300 ease-in-out lg:hidden shadow-xl ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div className="flex items-center justify-between p-4 border-b bg-black">
+          <div className="flex items-center justify-between p-4 border-b ">
             <Image src={Logo} height={35} width={35} alt="logo" />
             <button
               onClick={closeSidebar}
