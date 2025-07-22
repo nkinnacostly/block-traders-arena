@@ -94,7 +94,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className=" rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <Card cardData={[item]} />
               </MotionDiv>
@@ -260,7 +260,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="py-16 px-4 lg:px-20 bg-white">
+      <div className="py-16 px-4 lg:px-20">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="text-center lg:text-left">
             <h2 className="text-4xl font-bold mb-4">
