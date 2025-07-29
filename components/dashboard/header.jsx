@@ -4,14 +4,30 @@ import Down from "@/public/assets/img/svg/down.svg";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/assets/img/png/logo.png";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import LogoDark from "@/public/assets/img/png/logo-dark.png";
+
+import { useTheme } from "next-themes";
 
 function DashboardHeader() {
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div className="items-center justify-center hidden w-full h-full p-4 mb-2 lg:flex">
       <div className="flex items-center w-full justify-evenly ">
         <div>
-          <Image src={Logo} height={100} width={100} alt="logo" />
+          <Image
+            src={mounted && resolvedTheme === "dark" ? Logo : LogoDark}
+            height={100}
+            width={100}
+            alt="logo"
+          />
         </div>
         <div className="flex items-center space-x-5">
           <Link href={"/"} className="">

@@ -1,6 +1,15 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useMobile } from "@/hooks/use-mobile";
 // import { Button } from "@/components/ui/button";
 // import { Edit2Icon } from "lucide-react";
 // import Link from "next/link";
@@ -20,6 +29,57 @@ export interface JournalTrade {
   setup_name: string;
   note?: string;
 }
+
+// Note Modal Component
+const NoteModal = ({ note }: { note?: string }) => {
+  const [open, setOpen] = useState(false);
+  const isMobile = useMobile();
+
+  if (!note) return null;
+
+  if (!isMobile) {
+    return (
+      <div
+        className="font-medium truncate max-w-[200px] cursor-default"
+        title={note}
+      >
+        {note}
+      </div>
+    );
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <div className="font-medium truncate max-w-[200px] cursor-pointer hover:bg-gray-100 p-1 rounded transition-colors">
+          {note}
+        </div>
+      </DialogTrigger>
+      <DialogContent
+        className="max-w-md"
+        onInteractOutside={() => {
+          // Allow closing when clicking outside
+          setOpen(false);
+        }}
+        onEscapeKeyDown={() => {
+          // Allow closing with escape key
+          setOpen(false);
+        }}
+        onPointerDownOutside={() => {
+          // Allow closing when clicking outside
+          setOpen(false);
+        }}
+      >
+        <DialogHeader>
+          <DialogTitle>Note</DialogTitle>
+        </DialogHeader>
+        <div className="mt-4">
+          <p className="text-sm text-gray-700 whitespace-pre-wrap">{note}</p>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 export const journalTradeColumns: ColumnDef<JournalTrade>[] = [
   {
@@ -114,13 +174,6 @@ export const journalTradeColumns: ColumnDef<JournalTrade>[] = [
   {
     accessorKey: "note",
     header: "Note",
-    cell: ({ row }) => (
-      <div
-        className="font-medium truncate max-w-[200px]"
-        title={row.original.note}
-      >
-        {row.original.note}
-      </div>
-    ),
+    cell: ({ row }) => <NoteModal note={row.original.note} />,
   },
 ];
