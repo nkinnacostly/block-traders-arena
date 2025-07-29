@@ -248,7 +248,14 @@ function JournalTrades() {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="trading_pair">Trading Pair/Asset</Label>
-              <Input id="trading_pair" {...registerTrade("trading_pair")} />
+              <Input
+                id="trading_pair"
+                {...registerTrade("trading_pair")}
+                onInput={(e) => {
+                  e.currentTarget.value = e.currentTarget.value.toUpperCase();
+                }}
+                style={{ textTransform: "uppercase" }}
+              />
               {tradeErrors.trading_pair && (
                 <p className="text-sm text-red-500">
                   {tradeErrors.trading_pair.message}
@@ -383,7 +390,14 @@ function JournalTrades() {
 
             <div className="space-y-2">
               <Label htmlFor="setup_name">Setup Name</Label>
-              <Input id="setup_name" {...registerTrade("setup_name")} />
+              <Input
+                id="setup_name"
+                {...registerTrade("setup_name")}
+                onInput={(e) => {
+                  e.currentTarget.value = e.currentTarget.value.toUpperCase();
+                }}
+                style={{ textTransform: "uppercase" }}
+              />
               {tradeErrors.setup_name && (
                 <p className="text-sm text-red-500">
                   {tradeErrors.setup_name.message}
