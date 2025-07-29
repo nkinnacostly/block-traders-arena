@@ -1,8 +1,5 @@
 "use client";
-
-import Down from "@/public/assets/img/svg/down.svg";
 import Image from "next/image";
-import Link from "next/link";
 import Logo from "@/public/assets/img/png/logo.png";
 import React from "react";
 
