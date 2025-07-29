@@ -9,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useMobile } from "@/hooks/use-mobile";
 // import { Button } from "@/components/ui/button";
 // import { Edit2Icon } from "lucide-react";
 // import Link from "next/link";
@@ -33,20 +32,8 @@ export interface JournalTrade {
 // Note Modal Component
 const NoteModal = ({ note }: { note?: string }) => {
   const [open, setOpen] = useState(false);
-  const isMobile = useMobile();
 
   if (!note) return null;
-
-  if (!isMobile) {
-    return (
-      <div
-        className="font-medium truncate max-w-[200px] cursor-default"
-        title={note}
-      >
-        {note}
-      </div>
-    );
-  }
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
