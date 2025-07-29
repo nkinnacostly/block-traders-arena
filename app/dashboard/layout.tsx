@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useState, ReactNode } from "react";
+import React, { Suspense, useState, ReactNode, useEffect } from "react";
 
 import DashboardHeader from "@/components/dashboard/header";
 import DashboardSidebar from "@/components/dashboard/sidebar";
@@ -10,6 +10,8 @@ import { PiSquaresFourFill } from "react-icons/pi";
 import { IoClose } from "react-icons/io5";
 import Image from "next/image";
 import Logo from "@/public/assets/img/png/logo.png";
+import LogoDark from "@/public/assets/img/png/logo-dark.png";
+import { useTheme } from "next-themes";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -17,6 +19,12 @@ interface DashboardLayoutProps {
 
 function DashboardLayout({ children }: DashboardLayoutProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -45,7 +53,12 @@ function DashboardLayout({ children }: DashboardLayoutProps) {
             >
               <PiSquaresFourFill size={24} />
             </button>
-            <Image src={Logo} height={35} width={35} alt="logo" />
+            <Image
+              src={mounted && resolvedTheme === "dark" ? Logo : LogoDark}
+              height={35}
+              width={35}
+              alt="logo"
+            />
           </div>
           <div className="text-lg font-semibold">Dashboard</div>
           <div className="w-10"></div> {/* Spacer for centering */}
@@ -73,7 +86,12 @@ function DashboardLayout({ children }: DashboardLayoutProps) {
           }`}
         >
           <div className="flex items-center justify-between p-4 border-b ">
-            <Image src={Logo} height={35} width={35} alt="logo" />
+            <Image
+              src={mounted && resolvedTheme === "dark" ? Logo : LogoDark}
+              height={35}
+              width={35}
+              alt="logo"
+            />
             <button
               onClick={closeSidebar}
               className="p-2 hover:bg-black rounded-lg transition-colors"

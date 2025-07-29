@@ -1,15 +1,17 @@
 "use client";
 
-import React, { useState, useCallback, memo } from "react";
+import React, { useState, useCallback, memo, useEffect } from "react";
 
 // import Down from "@/public/assets/img/svg/down.svg";
 import { FaSortDown } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/assets/img/png/logo.png";
+import LogoDark from "@/public/assets/img/png/logo-dark.png";
 import { PiSquaresFourFill } from "react-icons/pi";
 import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 // import { motion } from "framer-motion";
 
@@ -23,6 +25,12 @@ NavLink.displayName = "NavLink";
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleMenu = useCallback(() => {
     setIsOpen((prev) => !prev);
@@ -36,7 +44,13 @@ const MobileNav = () => {
     <div className="lg:hidden xl:hidden 2xl:hidden">
       <div className="bg-[#f9eeb2] px-[2rem] py-3 flex items-center justify-between">
         <div>
-          <Image src={Logo} height={50} width={50} alt="logo" priority />
+          <Image
+            src={mounted && resolvedTheme === "dark" ? Logo : LogoDark}
+            height={50}
+            width={50}
+            alt="logo"
+            priority
+          />
         </div>
         <button
           onClick={toggleMenu}
