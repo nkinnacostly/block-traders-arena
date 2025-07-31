@@ -42,7 +42,7 @@ function EquityComponent() {
 
   React.useEffect(() => {
     if (isShareSuccess) {
-      toast.success("Trade shared successfully");
+      toast.success("Trade shared successfully, wait for admin approval");
     }
   }, [isShareSuccess]);
 
@@ -134,7 +134,7 @@ function EquityComponent() {
             {trader?.equity_growth && parseInt(trader.equity_growth) >= 15 && (
               <div>
                 <Button onClick={handleShareTrade} disabled={isShareLoading}>
-                  {isShareLoading ? "Sharing..." : "Share Trade"}
+                  {isShareLoading ? "Sharing..." : "Share to Copy Trading"}
                 </Button>
               </div>
             )}
