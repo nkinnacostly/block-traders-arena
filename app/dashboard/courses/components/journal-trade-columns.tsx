@@ -38,7 +38,7 @@ const NoteModal = ({ note }: { note?: string }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <div className="font-medium truncate max-w-[200px] cursor-pointer hover:bg-gray-100 p-1 rounded transition-colors">
+        <div className="font-medium truncate max-w-[200px] cursor-pointer p-1 rounded transition-colors">
           {note}
         </div>
       </DialogTrigger>
@@ -61,7 +61,7 @@ const NoteModal = ({ note }: { note?: string }) => {
           <DialogTitle>Note</DialogTitle>
         </DialogHeader>
         <div className="mt-4">
-          <p className="text-sm text-gray-700 whitespace-pre-wrap">{note}</p>
+          <p className="text-sm  whitespace-pre-wrap">{note}</p>
         </div>
       </DialogContent>
     </Dialog>
