@@ -63,7 +63,7 @@ const LoginComponent: React.FC = () => {
       <form
         action="post"
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4"
+        className="space-y-4 w-full"
       >
         {/* <TimeoutAlert message={error?.error} show={isError} duration={3000} /> */}
         <Input
