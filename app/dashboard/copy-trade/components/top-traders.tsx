@@ -98,10 +98,10 @@ export default function TopTraders() {
                       {trader.last_trade_date[0]}
                     </p>
                   </div>
-                  <div>
+                  <div className="mt-2 text-right">
                     <p className="text-sm text-muted-foreground">Win Rate</p>
-                    <p className="text-lg font-medium">
-                      ${trader.win_rate.toLocaleString()}
+                    <p className="text-lg font-medium text-green-500">
+                      {trader.win_rate.toLocaleString()}
                     </p>
                   </div>
                 </div>
