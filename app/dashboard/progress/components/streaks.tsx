@@ -43,13 +43,13 @@ const Streaks: React.FC = () => {
             transform: "perspective(1000px) rotateX(10deg) rotateY(10deg)",
           }}
         />
-        <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-base font-bold">
+        <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-base font-bold">
           {streakLength}
         </span>
       </div>
       <div>
         <p className="text-sm font-medium">{label}</p>
-        <span className="text-xs text-gray-500">{description}</span>
+        <span className="text-xs ">{description}</span>
       </div>
     </div>
   );
