@@ -74,6 +74,7 @@ const LoginComponent: React.FC = () => {
           type="text"
           {...register("username")}
           // error={errors.username}
+          className="w-full"
         />
         <Input
           placeholder={"Enter Password"}
@@ -82,6 +83,7 @@ const LoginComponent: React.FC = () => {
           {...register("password")}
           // error={errors.password}
           required
+          className="w-full"
         />
         {/* <p className="text-[16px] font-[400]  p-2 mt-2">
           By creating an account, you agree to the{" "}
