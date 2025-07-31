@@ -2,7 +2,7 @@
 
 import { AnimatePage } from "@/components/animations/page";
 
-import Link from "next/link";
+// import Link from "next/link";
 import LoginHeader from "@/components/loginHeader";
 
 import React from "react";
@@ -83,11 +83,17 @@ const LoginComponent: React.FC = () => {
           // error={errors.password}
           required
         />
-        <p className="text-[16px] font-[400]  p-2 mt-2">
+        {/* <p className="text-[16px] font-[400]  p-2 mt-2">
           By creating an account, you agree to the{" "}
-          <span className="underline cursor-pointer">Terms of use</span> and{" "}
-          <span className="underline cursor-pointer">Privacy Policy</span>.
-        </p>
+          <Link className="underline cursor-pointer" href={"/terms-of-use"}>
+            Terms of use
+          </Link>{" "}
+          and{" "}
+          <Link className="underline cursor-pointer" href={"/privacy-policy"}>
+            Privacy Policy
+          </Link>
+          .
+        </p> */}
         <Button
           // btnText={"Login"}
           className={"disabled:bg-gray-400 bg-yellow-400 w-full"}
@@ -97,7 +103,7 @@ const LoginComponent: React.FC = () => {
           Login
         </Button>
       </form>
-      <div className="flex items-center justify-center w-full">
+      {/* <div className="flex items-center justify-center w-full">
         <p className="text-[16px] font-[400]  p-2">
           Do not have an account?{" "}
           <Link
@@ -107,7 +113,7 @@ const LoginComponent: React.FC = () => {
             Sign Up
           </Link>
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

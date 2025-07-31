@@ -169,11 +169,11 @@ const SignUp: React.FC = () => {
             and marketing promotions.
           </Label>
         </div>
-        <p className="text-[16px] font-[400]  p-2 mt-2">
+        {/* <p className="text-[16px] font-[400]  p-2 mt-2">
           By creating an account, you agree to the{" "}
           <span className="underline cursor-pointer">Terms of use</span> and{" "}
           <span className="underline cursor-pointer">Privacy Policy</span>.
-        </p>
+        </p> */}
         <Button
           className={"disabled:bg-gray-400 bg-yellow-400"}
           disabled={!isDirty || isPending}
