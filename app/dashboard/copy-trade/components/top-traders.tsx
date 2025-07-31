@@ -73,12 +73,15 @@ export default function TopTraders() {
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 mt-4">
-                  <div>
-                    <p className="text-sm text-muted-foreground">Win Rate</p>
-                    <p className="text-lg font-medium">
-                      ${trader.win_rate.toLocaleString()}
+                  <div className="mt-2">
+                    <p className="text-sm text-muted-foreground">
+                      Return on Equity
+                    </p>
+                    <p className="text-lg font-medium text-green-500">
+                      {trader.equity_growth}
                     </p>
                   </div>
+
                   <div>
                     <p className="text-sm text-muted-foreground text-right">
                       5-Day Rolling Return
@@ -87,22 +90,20 @@ export default function TopTraders() {
                       {trader.one_week_gain.toLocaleString()}
                     </p>
                   </div>
-                </div>
-                <div className="mt-2">
-                  <p className="text-sm text-muted-foreground">
-                    Return on Equity
-                  </p>
-                  <p className="text-lg font-medium text-green-500">
-                    {trader.equity_growth}
-                  </p>
-                </div>
-                <div className="mt-2">
-                  <p className="text-sm text-muted-foreground">
-                    Last Trade Date
-                  </p>
-                  <p className="text-lg font-medium text-green-500">
-                    {trader.last_trade_date[0]}
-                  </p>
+                  <div className="mt-2">
+                    <p className="text-sm text-muted-foreground">
+                      Last Trade Date
+                    </p>
+                    <p className="text-lg font-medium text-green-500">
+                      {trader.last_trade_date[0]}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Win Rate</p>
+                    <p className="text-lg font-medium">
+                      ${trader.win_rate.toLocaleString()}
+                    </p>
+                  </div>
                 </div>
                 <Button
                   className="w-full mt-4"
