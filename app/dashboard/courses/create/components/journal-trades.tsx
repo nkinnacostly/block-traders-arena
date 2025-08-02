@@ -18,6 +18,7 @@ import * as z from "zod";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
+import { format, parse } from "date-fns";
 
 import useFetchLevel2 from "@/hooks/useFetchLevel2";
 import { toast } from "sonner";
@@ -112,18 +113,8 @@ function JournalTrades() {
   const onTradeSubmit = (data: TradeEntryForm) => {
     const formattedData = {
       ...data,
-      entry_time: new Date(data.entry_time).toLocaleTimeString("en-US", {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      }),
-      closing_time: new Date(data.closing_time).toLocaleTimeString("en-US", {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      }),
+      entry_time: `${data.day_date} ${data.entry_time}:00`,
+      closing_time: `${data.day_date} ${data.closing_time}:00`,
     };
 
     addJournalTrades(
@@ -302,7 +293,7 @@ function JournalTrades() {
               <Label htmlFor="entryTime">Entry Time</Label>
               <Input
                 id="entry_time"
-                type="datetime-local"
+                type="time"
                 {...registerTrade("entry_time")}
               />
               {tradeErrors.entry_time && (
@@ -329,7 +320,7 @@ function JournalTrades() {
               <Label htmlFor="closingTime">Closing Time</Label>
               <Input
                 id="closing_time"
-                type="datetime-local"
+                type="time"
                 {...registerTrade("closing_time")}
               />
               {tradeErrors.closing_time && (
@@ -339,12 +330,48 @@ function JournalTrades() {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="day_date">Date</Label>
+              <Label htmlFor="day_date">Date (dd-mm-yyyy)</Label>
               <Input
                 id="day_date"
-                type="date"
-                {...registerTrade("day_date")}
-                min={new Date().toISOString().split("T")[0]}
+                type="text"
+                placeholder="dd-mm-yyyy"
+                {...registerTrade("day_date", {
+                  validate: (value) => {
+                    if (!value) return "Date is required";
+
+                    // Check if the date format is dd-mm-yyyy
+                    const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
+                    if (!dateRegex.test(value)) {
+                      return "Date must be in dd-mm-yyyy format";
+                    }
+
+                    // Validate the date
+                    try {
+                      const parsedDate = parse(value, "dd-MM-yyyy", new Date());
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0);
+
+                      if (parsedDate < today) {
+                        return "Date cannot be in the past";
+                      }
+
+                      return true;
+                    } catch (error) {
+                      return "Invalid date";
+                    }
+                  },
+                  setValueAs: (value) => {
+                    if (!value) return value;
+
+                    try {
+                      // Convert dd-mm-yyyy to yyyy-mm-dd for form submission
+                      const parsedDate = parse(value, "dd-MM-yyyy", new Date());
+                      return format(parsedDate, "yyyy-MM-dd");
+                    } catch (error) {
+                      return value;
+                    }
+                  },
+                })}
               />
               {tradeErrors.day_date && (
                 <p className="text-sm text-red-500">
