@@ -110,7 +110,9 @@ export default function TopTraders() {
                   onClick={() => handleCopyTrade(trader.user_id)}
                   disabled={loadingTraders[trader.user_id]}
                 >
-                  {loadingTraders[trader.user_id] ? "Copying..." : "Copy Trade"}
+                  {loadingTraders[trader.user_id]
+                    ? "Copying..."
+                    : "Copy Trader"}
                 </Button>
               </div>
             </Card>
