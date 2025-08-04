@@ -25,7 +25,7 @@ function Footercontact() {
             <div className="flex items-center justify-start pl-4 mt-10 space-x-4">
               <Image src={Envelop} height={20} width={20} alt="envelop" />
               <p className="text-xl font-medium text-white ">
-                blocktrader@gmail.com
+                support@blocktradersacademy.com
               </p>
             </div>
             <div className="flex items-center justify-start space-x-4 border-2 border-amber-400 rounded-2xl h-[78px] pl-4">

@@ -7,7 +7,7 @@ import { IoMdSettings } from "react-icons/io";
 import Link from "next/link";
 import { MdDashboard } from "react-icons/md";
 import React, { memo, useMemo } from "react";
-import { TbTargetArrow } from "react-icons/tb";
+import { TbTargetArrow, TbMoneybag } from "react-icons/tb";
 import { usePathname } from "next/navigation";
 import { useUserStore } from "@/store/store";
 import { useVideoStore } from "@/store/store";
@@ -61,7 +61,7 @@ const DashboardSidebar = ({ onLinkClick }) => {
         link: "/dashboard/copy-trade",
       },
       {
-        icon: <TbTargetArrow />,
+        icon: <TbMoneybag />,
         title: "Refer and Earn",
         link: "/dashboard/challenges",
         disabled: watchedVideos !== 3 || isLevel1,

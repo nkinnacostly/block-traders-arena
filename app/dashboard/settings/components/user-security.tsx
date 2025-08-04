@@ -1,7 +1,7 @@
 "use client";
 
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
+// import { Label } from "@/components/ui/label";
+// import { Switch } from "@/components/ui/switch";
 
 function UserSecurity() {
   return (
@@ -14,10 +14,10 @@ function UserSecurity() {
         <p>*************</p>
         {/* <ToggleSwitch /> */}
       </div>
-      <div className="flex items-center justify-between w-full p-4 space-x-3 ">
+      {/* <div className="flex items-center justify-between w-full p-4 space-x-3 ">
         <Label htmlFor="airplane-mode">2FA</Label>
         <Switch id="airplane-mode" />
-      </div>
+      </div> */}
     </div>
   );
 }

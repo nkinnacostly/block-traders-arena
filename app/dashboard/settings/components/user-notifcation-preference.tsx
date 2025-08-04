@@ -132,7 +132,7 @@ function UserNotificationPreference() {
           }
         />
       </div>
-      <div className="flex items-center justify-between w-full p-4 space-x-3 border-b-2">
+      {/* <div className="flex items-center justify-between w-full p-4 space-x-3 border-b-2">
         <Label htmlFor="push">Push Notification</Label>
         <Switch
           name="notification_push"
@@ -151,7 +151,7 @@ function UserNotificationPreference() {
             handleCheckedChange("notification_sms", value)
           }
         />
-      </div>
+      </div> */}
     </div>
   );
 }

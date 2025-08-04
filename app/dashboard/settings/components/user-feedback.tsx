@@ -35,7 +35,7 @@ function UserFeedBack() {
 
         <div className="w-full p-4 border-b-2">
           <p className="font-medium">Contact Support</p>
-          <p className="text-gray-600">blocktradersacademy@gmail.com</p>
+          <p className="text-gray-600">support@blocktradersacademy.com</p>
         </div>
 
         {/* <div className="w-full p-4">
