@@ -2,7 +2,7 @@
 
 import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
-import { Switch } from "@/components/ui/switch";
+// import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -68,7 +68,10 @@ function UserAccountStatus() {
 
         <div className="flex items-center justify-between w-full p-4 space-x-3 border-b-2">
           <Label htmlFor="airplane-mode">Delete Account</Label>
-          <Switch id="airplane-mode" onClick={handleSwitchClick} />
+          {/* <Switch id="airplane-mode" onClick={handleSwitchClick} /> */}
+          <Button variant={"destructive"} onClick={handleSwitchClick}>
+            Delete Account
+          </Button>
         </div>
         <div className="flex items-end justify-end w-full p-4">
           <Button onClick={() => logout()}>Log Out</Button>
