@@ -7,6 +7,7 @@ import { useCopyTrader } from "../services/copy-trader";
 import { AxiosResponse } from "axios";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useUserStore } from "@/store/store";
 
 interface Trader {
   user_id: number;
@@ -30,6 +31,8 @@ export default function TopTraders() {
   const response = data as AxiosResponse<TopTradersResponse> | undefined;
   const traders = response?.data?.data;
   const copyTraderMutation = useCopyTrader();
+  const { loggedInUserDetails } = useUserStore();
+
   const [loadingTraders, setLoadingTraders] = useState<Record<number, boolean>>(
     {}
   );
@@ -40,6 +43,10 @@ export default function TopTraders() {
       const response = await copyTraderMutation.mutateAsync({
         url: `/copy-trader/${userId}`,
         method: "POST",
+        data: {
+          email: loggedInUserDetails?.email,
+          name: loggedInUserDetails?.first_name,
+        },
       });
       console.log("response", response);
       // const trader = traders?.find((t) => t.user_id === userId);
