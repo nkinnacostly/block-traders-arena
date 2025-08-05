@@ -36,7 +36,7 @@ function UserAccountStatus() {
 
   const handleDeleteAccount = async () => {
     const response = await mutateAsync({
-      url: `/deleteUser/?id=${loggedInUserDetails?.id}&account_status=deleted`,
+      url: `/deleteUser?id=${loggedInUserDetails?.id}&account_status=deleted`,
       method: "DELETE",
     });
     if (response) {
