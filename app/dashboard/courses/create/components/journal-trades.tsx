@@ -28,7 +28,12 @@ import useGetUserInfo from "@/hooks/useGetUserInfo";
 import { handleApiError } from "@/utils/error-parser";
 
 const traderSetupSchema = z.object({
-  starting_equity: z.string().min(1, "Starting equity is required"),
+  starting_equity: z
+    .string()
+    .min(1, "Starting equity is required")
+    .refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
+      message: "Starting equity must be a valid positive number",
+    }),
   broker: z.string().min(1, "Broker is required"),
   login: z.string().min(1, "Login is required"),
   investor_password: z.string().min(1, "Investor password is required"),
@@ -38,13 +43,28 @@ const traderSetupSchema = z.object({
 const tradeEntrySchema = z.object({
   trading_pair: z.string().min(1, "Trading pair is required"),
   trade_type: z.enum(["buy", "sell"]),
-  price: z.string().min(1, "Entry price is required"),
+  price: z
+    .string()
+    .min(1, "Entry price is required")
+    .refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
+      message: "Entry price must be a valid positive number",
+    }),
   entry_time: z.string().min(1, "Entry time is required"),
-  closing_price: z.string().min(1, "Closing price is required"),
+  closing_price: z
+    .string()
+    .min(1, "Closing price is required")
+    .refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
+      message: "Closing price must be a valid positive number",
+    }),
   closing_time: z.string().min(1, "Closing time is required"),
   day_date: z.string().min(1, "Date is required"),
   result: z.string().min(1, "Result is required"),
-  result_amount: z.string().min(1, "Amount is required"),
+  result_amount: z
+    .string()
+    .min(1, "Amount is required")
+    .refine((val) => !isNaN(Number(val)), {
+      message: "Amount must be a valid number",
+    }),
   setup_name: z.string().min(1, "Setup name is required"),
   note: z.string().optional(),
 });
@@ -160,6 +180,10 @@ function JournalTrades() {
                 <Input
                   id="starting_equity"
                   type="number"
+                  step="0.01"
+                  min="0"
+                  placeholder="0.00"
+                  inputMode="decimal"
                   {...registerSetup("starting_equity")}
                 />
                 {setupErrors.starting_equity && (
