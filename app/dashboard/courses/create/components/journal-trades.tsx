@@ -138,7 +138,7 @@ function JournalTrades() {
     );
   };
 
-  if (!isSetupComplete && data?.data?.user?.has_journal === "0") {
+  if (!isSetupComplete && data?.data?.user?.has_journal === 0) {
     return (
       <div className="w-full flex flex-col gap-4 items-start justify-center">
         <Link href={"/dashboard/courses"} className="flex items-center gap-2">
