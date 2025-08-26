@@ -357,7 +357,7 @@ function JournalTrades() {
               <Label htmlFor="day_date">Date (dd-mm-yyyy)</Label>
               <Input
                 id="day_date"
-                type="text"
+                type="date"
                 placeholder="dd-mm-yyyy"
                 {...registerTrade("day_date", {
                   validate: (value) => {
