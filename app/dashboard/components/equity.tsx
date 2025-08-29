@@ -137,7 +137,7 @@ function EquityComponent() {
                 const growthValue = parseFloat(
                   trader.equity_growth.replace("%", "")
                 );
-                return !isNaN(growthValue) && growthValue >= 15;
+                return !isNaN(growthValue) && growthValue > 15;
               })() && (
                 <div>
                   <Button onClick={handleShareTrade} disabled={isShareLoading}>
