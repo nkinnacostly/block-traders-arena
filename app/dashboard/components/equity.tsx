@@ -11,6 +11,7 @@ interface Trader {
   equity: number;
   one_week_gain: string;
   equity_growth: string;
+  trade_status: string | number;
 }
 
 interface TopTradersResponse {
@@ -132,6 +133,7 @@ function EquityComponent() {
             </div>
 
             {trader?.equity_growth &&
+              trader?.trade_status === 0 &&
               (() => {
                 // Parse percentage string like "51.47%" to get the numeric value
                 const growthValue = parseFloat(
