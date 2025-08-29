@@ -131,13 +131,20 @@ function EquityComponent() {
               </h5>
             </div>
 
-            {trader?.equity_growth && parseInt(trader.equity_growth) >= 15 && (
-              <div>
-                <Button onClick={handleShareTrade} disabled={isShareLoading}>
-                  {isShareLoading ? "Sharing..." : "Share to Copy Trading"}
-                </Button>
-              </div>
-            )}
+            {trader?.equity_growth &&
+              (() => {
+                // Parse percentage string like "51.47%" to get the numeric value
+                const growthValue = parseFloat(
+                  trader.equity_growth.replace("%", "")
+                );
+                return !isNaN(growthValue) && growthValue >= 15;
+              })() && (
+                <div>
+                  <Button onClick={handleShareTrade} disabled={isShareLoading}>
+                    {isShareLoading ? "Sharing..." : "Share to Copy Trading"}
+                  </Button>
+                </div>
+              )}
           </div>
         )}
       </CardContent>
