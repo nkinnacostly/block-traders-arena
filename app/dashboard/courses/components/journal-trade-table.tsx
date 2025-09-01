@@ -16,23 +16,27 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/text-area";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ApiResponse {
   data: {
     data: {
       data: JournalTrade[];
+      total: number;
     };
     message: string;
   };
 }
 
 function JournalTradeTable() {
-  const { data, error, isLoading } = GetTradesEntry() as {
+  const [page, setPage] = React.useState(1);
+  const { data, error, isLoading } = GetTradesEntry(page) as {
     data: ApiResponse | undefined;
     error: any;
     isLoading: boolean;
   };
   const _data = React.useMemo(() => data?.data?.data.data, [data]);
+  const totalPages = React.useMemo(() => data?.data?.data.total, [data]) || 1;
   const { useMutationRequest } = useFetchLevel2();
   const queryClient = useQueryClient();
   const { mutate: resetJournal, isPending } = useMutationRequest();
@@ -74,6 +78,13 @@ function JournalTradeTable() {
       }
     );
   };
+  const handlePreviousPage = () => {
+    setPage((prev) => Math.max(1, prev - 1));
+  };
+
+  const handleNextPage = () => {
+    setPage((prev) => Math.min(totalPages, prev + 1));
+  };
 
   return (
     <div className="w-full flex flex-col gap-4 items-center justify-center">
@@ -99,7 +110,29 @@ function JournalTradeTable() {
       {isLoading ? (
         <div className="text-gray-500">Loading...</div>
       ) : (
-        <GenericTable data={_data ?? []} columns={journalTradeColumns} />
+        <>
+          <GenericTable data={_data ?? []} columns={journalTradeColumns} />
+          <div className="space-x-2 flex items-center">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handlePreviousPage}
+              disabled={page === 1 || isLoading}
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Previous
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleNextPage}
+              disabled={page >= totalPages || isLoading}
+            >
+              Next
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </>
       )}
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
