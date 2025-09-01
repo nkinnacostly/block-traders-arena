@@ -133,8 +133,7 @@ function JournalTrades() {
   const onTradeSubmit = (data: TradeEntryForm) => {
     const formattedData = {
       ...data,
-      entry_time: `${data.day_date} ${data.entry_time}:00`,
-      closing_time: `${data.day_date} ${data.closing_time}:00`,
+      // entry_time and closing_time are already formatted by setValueAs
     };
 
     addJournalTrades(
@@ -321,9 +320,10 @@ function JournalTrades() {
                 {...registerTrade("entry_time", {
                   setValueAs: (value) => {
                     if (!value) return value;
-                    // Format as yyyy-MM-dd HH:mm:ss for backend
-                    const date = new Date(value);
-                    return format(date, "yyyy-MM-dd HH:mm:ss");
+                    // datetime-local returns "yyyy-MM-ddTHH:mm" format
+                    // We need to convert it to "yyyy-MM-dd HH:mm:ss"
+                    const [datePart, timePart] = value.split("T");
+                    return `${datePart} ${timePart}:00`;
                   },
                 })}
               />
@@ -355,9 +355,10 @@ function JournalTrades() {
                 {...registerTrade("closing_time", {
                   setValueAs: (value) => {
                     if (!value) return value;
-                    // Format as yyyy-MM-dd HH:mm:ss for backend
-                    const date = new Date(value);
-                    return format(date, "yyyy-MM-dd HH:mm:ss");
+                    // datetime-local returns "yyyy-MM-ddTHH:mm" format
+                    // We need to convert it to "yyyy-MM-dd HH:mm:ss"
+                    const [datePart, timePart] = value.split("T");
+                    return `${datePart} ${timePart}:00`;
                   },
                 })}
               />
