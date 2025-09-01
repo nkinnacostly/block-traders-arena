@@ -23,6 +23,7 @@ interface ApiResponse {
     data: {
       data: JournalTrade[];
       total: number;
+      last_page: number;
     };
     message: string;
   };
@@ -37,6 +38,7 @@ function JournalTradeTable() {
   };
   const _data = React.useMemo(() => data?.data?.data.data, [data]);
   const totalPages = React.useMemo(() => data?.data?.data.total, [data]) || 1;
+  const lastPage = React.useMemo(() => data?.data?.data.last_page, [data]) || 1;
   const { useMutationRequest } = useFetchLevel2();
   const queryClient = useQueryClient();
   const { mutate: resetJournal, isPending } = useMutationRequest();
@@ -126,7 +128,7 @@ function JournalTradeTable() {
               variant="outline"
               size="sm"
               onClick={handleNextPage}
-              disabled={page >= totalPages || isLoading}
+              disabled={page >= lastPage || isLoading}
             >
               Next
               <ChevronRight className="h-4 w-4" />
