@@ -314,11 +314,18 @@ function JournalTrades() {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="entryTime">Entry Time</Label>
+              <Label htmlFor="entryTime">Entry Date & Time</Label>
               <Input
                 id="entry_time"
-                type="time"
-                {...registerTrade("entry_time")}
+                type="datetime-local"
+                {...registerTrade("entry_time", {
+                  setValueAs: (value) => {
+                    if (!value) return value;
+                    // Format as yyyy-MM-dd HH:mm:ss for backend
+                    const date = new Date(value);
+                    return format(date, "yyyy-MM-dd HH:mm:ss");
+                  },
+                })}
               />
               {tradeErrors.entry_time && (
                 <p className="text-sm text-red-500">
@@ -341,11 +348,18 @@ function JournalTrades() {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="closingTime">Closing Time</Label>
+              <Label htmlFor="closingTime">Closing Date & Time</Label>
               <Input
                 id="closing_time"
-                type="time"
-                {...registerTrade("closing_time")}
+                type="datetime-local"
+                {...registerTrade("closing_time", {
+                  setValueAs: (value) => {
+                    if (!value) return value;
+                    // Format as yyyy-MM-dd HH:mm:ss for backend
+                    const date = new Date(value);
+                    return format(date, "yyyy-MM-dd HH:mm:ss");
+                  },
+                })}
               />
               {tradeErrors.closing_time && (
                 <p className="text-sm text-red-500">
