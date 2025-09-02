@@ -133,6 +133,7 @@ function JournalTrades() {
   const onTradeSubmit = (data: TradeEntryForm) => {
     const formattedData = {
       ...data,
+      closing_time: `${data.day_date} ${data.closing_time}:00`,
       // entry_time and closing_time are already formatted by setValueAs
     };
 
@@ -348,19 +349,11 @@ function JournalTrades() {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="closingTime">Closing Date & Time</Label>
+              <Label htmlFor="closingTime">Closing Time</Label>
               <Input
                 id="closing_time"
-                type="datetime-local"
-                {...registerTrade("closing_time", {
-                  setValueAs: (value) => {
-                    if (!value) return value;
-                    // datetime-local returns "yyyy-MM-ddTHH:mm" format
-                    // We need to convert it to "yyyy-MM-dd HH:mm:ss"
-                    const [datePart, timePart] = value.split("T");
-                    return `${datePart} ${timePart}:00`;
-                  },
-                })}
+                type="time"
+                {...registerTrade("closing_time")}
               />
               {tradeErrors.closing_time && (
                 <p className="text-sm text-red-500">
